@@ -3,7 +3,7 @@ body {
     background-color: #19181c;
     height: 100vh;
     margin: 0;
-    font-family: 'Arial', sans-serif;  /* Changed to standard font */
+    font-family: 'Arial', sans-serif;  /* Standard font */
     position: relative;
     overflow: hidden;
   }
