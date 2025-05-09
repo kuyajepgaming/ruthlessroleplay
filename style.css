@@ -1,0 +1,16 @@
+body {
+    background-color: #19181c; /* Set background color */
+    background-image: url('https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/images/main/backgroundimage.png'); /* Direct URL to the image */
+    background-repeat: no-repeat;
+    background-position: 700px center; /* Background Image Position */
+    background-size: 60%; /* Image size by percentage */
+    height: 100vh; /* Ensure the background covers the full screen height */
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.content {
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
