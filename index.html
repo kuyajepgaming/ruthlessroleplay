@@ -4,14 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ruthless Roleplay</title>
-  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Barlow Condensed Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&display=swap" rel="stylesheet">
+  <!-- Open Sans Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --line-top: 9.5vh;         /* 10% of viewport height */
-      --line-thickness: 1px;
-      --header-top: 100px;       /* Control of Header Text */
-      --header-left: 510px;       /* Control of Header Text */
-      --logo-size: 130px;       /* Set the logo size */
+      --line-top: 10vh;
+      --line-thickness: 2px;
+      --header-top: 250px;
+      --header-left: 10%;
+      --logo-size: 130px;
+      --player-count-font-size: 1rem;
+      --player-count-top: 30%;
+      --player-count-left: 50%;
+      --pulse-circle-top: 264px;
+      --pulse-circle-left: 848px;
     }
 
     body {
@@ -25,14 +35,52 @@
       font-family: Arial, sans-serif;
     }
 
+    header, .logo, .circle {
+      transition: opacity 0.4s ease;
+    }
+
+    .fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
     header {
       position: absolute;
-      top: var(--header-top);
-      left: var(--header-left);
+      top: 90px;
+      left: 500px;
+      width: 80%;
       text-align: left;
       color: white;
       font-size: 1rem;
-      transition: all 0.3s ease;
+      transition: opacity 0.4s ease;
+    }
+
+    header h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 3rem;
+      margin-bottom: -1rem;
+      background: linear-gradient(90deg, #ff69b4, #da70d6, #ba55d3);
+      background-size: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      transition: filter 0.4s ease;
+    }
+
+    header h1:hover {
+      animation: pulseGlow 1.5s infinite;
+      filter: drop-shadow(0 0 20px rgba(231, 144, 222, 0.8));
+    }
+
+    header p {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 600;
+      font-size: .9rem;
+      color: white;
     }
 
     footer {
@@ -42,7 +90,7 @@
       position: fixed;
       bottom: 0;
       width: 100%;
-      font-size: .75rem;
+      font-size: 0.75rem;
     }
 
     .logo {
@@ -55,10 +103,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      transition: all 0.3s ease;
     }
 
-    /* Shine inside the logo shape */
     .logo .shine {
       position: absolute;
       top: 0;
@@ -86,29 +132,8 @@
       mask-position: center;
     }
 
-    .logo:hover::after {
-      animation: shineThrough 1.5s ease-in-out forwards;
-      opacity: 1;
-    }
-
-    @keyframes shine {
-      0% {
-        left: -60%;
-        opacity: 0;
-      }
-      20% {
-        opacity: 1;
-      }
-      80% {
-        opacity: 1;
-      }
-      100% {
-        left: 120%;
-        opacity: 0;
-      }
-    }
-
-    .logo .default-logo {
+    .logo .default-logo,
+    .logo .pink-logo {
       position: absolute;
       width: 100%;
       height: 100%;
@@ -116,11 +141,7 @@
     }
 
     .logo .pink-logo {
-      position: absolute;
-      width: 100%;
-      height: 100%;
       opacity: 0;
-      transition: opacity 0.4s ease;
     }
 
     .logo:hover .default-logo {
@@ -136,23 +157,17 @@
     }
 
     @keyframes pulseGlow {
-      0% {
-        filter: drop-shadow(0 0 12px rgba(255, 105, 180, 0.4));
-      }
-      50% {
-        filter: drop-shadow(0 0 25px rgba(255, 105, 180, 0.8));
-      }
-      100% {
-        filter: drop-shadow(0 0 12px rgba(255, 105, 180, 0.4));
-      }
+      0% { filter: drop-shadow(0 0 12px rgba(255, 105, 180, 0.4)); }
+      50% { filter: drop-shadow(0 0 25px rgba(255, 105, 180, 0.8)); }
+      100% { filter: drop-shadow(0 0 12px rgba(255, 105, 180, 0.4)); }
     }
 
     .circle {
       position: absolute;
       top: 20px;
       right: 500px;
-      width: 45px;
-      height: 45px;
+      width: 50px;
+      height: 50px;
       background-color: #9b5093;
       border-radius: 50%;
       display: flex;
@@ -162,8 +177,8 @@
     }
 
     .circle img {
-      width: 9px;
-      height: 9px;
+      width: 30px;
+      height: 30px;
     }
 
     .circle:hover {
@@ -171,44 +186,223 @@
       animation: pulseGlow 1.5s infinite;
     }
 
-    .circle-size {
-      width: var(--circle-size, 80px);
-      height: var(--circle-size, 80px);
-    }
-
-    .circle img {
-      width: var(--img-size, 35px);
-      height: var(--img-size, 35px);
-    }
-
-    /* Horizontal line */
     .horizontal-line {
       position: absolute;
       top: var(--line-top);
-      left: 0;
+      left: 50%;
       width: 100%;
       height: var(--line-thickness);
       background-color: white;
       z-index: 0;
+      transform: translateX(-50%);
     }
+
+    .player-count {
+      color: white;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 600;
+      font-size: var(--player-count-font-size);
+      position: absolute;
+      top: var(--player-count-top);
+      left: calc(var(--player-count-left) + 10px); /* Moved 10px to the right */
+      transform: translate(-50%, -55%);
+      text-align: center;
+      line-height: 25px;
+      z-index: 2; /* In front of the box */
+      user-select: none; /* Prevent text selection */
+    }
+
+    .box {
+      width: 250px;
+      height: 45px;
+      background-color: rgba(255, 20, 147, 0.5);
+      border: 1px solid #FF1493;
+      border-radius: 10px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+      margin: 0 auto;
+      position: absolute;
+      top: var(--player-count-top);
+      left: var(--player-count-left);
+      transform: translate(-50%, -50%);
+      transition: all 0.3s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .box:hover {
+      filter: drop-shadow(0 0 12px rgba(255, 105, 180, 0.4));
+    }
+
+    .pulse-circle {
+      position: absolute;
+      top: var(--pulse-circle-top);
+      left: var(--pulse-circle-left);
+      width: 15px;
+      height: 15px;
+      background-color: #ff69b4;
+      border: 1px solid #ffc0cb;
+      border-radius: 50%;
+      animation: pulseLight 2s infinite;
+      z-index: 11;
+    }
+
+    @keyframes pulseLight {
+      0% { box-shadow: 0 0 0 0 rgba(255, 192, 203, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(255, 192, 203, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 192, 203, 0); }
+    }
+
+    /* Image styling */
+    .k-image {
+      position: absolute;
+      top: calc(var(--player-count-top) + 65px + -40px); /* 20px below the box */
+      left: 38%;
+      transform: translateX(-50%);
+      max-width: 400px; /* Set the width to 500px */
+      height: auto; /* Keeps aspect ratio intact */
+      z-index: 3;
+      filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.5)); /* Added shadow */
+    }
+
+    /* New box next to the "K" image */
+    .k-image-box {
+      position: absolute;
+      top: calc(var(--player-count-top) + 90px + 20px); /* Align with the "K" image */
+      left: 40%; /* Position it to the right of the "K" image */
+      transform: translateX(50%);
+      width: 300px;
+      height: 350px;
+      background-color: rgba(0, 0, 0, 0.75); /* Black with 75% opacity */
+      border: 2px solid #ff69b4; /* Pink border */
+      border-radius: 10px; /* Rounded corners */
+      display: flex;
+      justify-content: center;
+      align-items: flex-start; /* Align content to the top */
+      z-index: 4; /* In front of other elements */
+      padding: 10px 10px 0; /* Adjust padding to bring content up */
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6); /* Drop shadow behind the box */
+      animation: borderGlow 1.5s infinite alternate; /* Added glowing effect */
+    }
+
+        
+    @keyframes borderGlow {
+      0% {
+        border: 2px solid #ff69b4; /* Default pink border */
+        box-shadow: 0 0 5px rgba(255, 105, 180, 0.6), 0 0 10px rgba(255, 105, 180, 0.5);
+      }
+      100% {
+        border: 2px solid #ff1493; /* Darker pink border on glow */
+        box-shadow: 0 0 15px rgba(255, 20, 147, 0.8), 0 0 25px rgba(255, 20, 147, 0.6);
+      }
+    }
+
+    .k-image-box h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 3rem;
+      color: white;
+      text-align: center;
+      margin-bottom: 10px;
+      margin-top: 0; /* Ensure no extra margin at the top of the header */
+    }
+
+    .k-image-box p {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 600;
+      font-size: .9rem;
+      color: white;
+      text-align: center;
+      margin-top: 5px; /* Reduced top margin */
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    /* Rules Button */
+    .rules-button {
+      position: absolute;
+      top: 73%; /* Below the box */
+      left: 56.8%;
+      transform: translateX(-50%); /* Center horizontally */
+      width: 100px;
+      height: 40px;
+      background-color: #9b5093;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease;
+      z-index: 10;
+      margin-top: 10px; /* Add space below the box */
+    }
+
+    .rules-button:hover {
+      background-color: #e790de;
+      animation: pulseGlow 1.5s infinite;
+    }
+
+    .rules-button a {
+      font-size: 1rem;
+      color: white;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      text-align: center;
+    }
+
+
   </style>
 </head>
 <body>
   <!-- Horizontal Line -->
   <div class="horizontal-line"></div>
 
+  <!-- Player Count Text -->
+  <div class="player-count" id="playerCountText">Players Online</div>
+
+  <!-- Box without link -->
+  <div class="box"></div>
+
   <!-- Logo -->
-  <a href="/" class="logo">
+  <a href="/" class="logo" id="logo">
+    <div class="shine"></div>
     <img class="default-logo" src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/refs/heads/main/logo_header_small/RUTHLESS%20RP%20ICON%20BIG.svg" alt="Ruthless Roleplay Logo" />
     <img class="pink-logo" src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/logo_header_small/RUTHLESS%20RP%20ICON%20BIG%20pink.svg" alt="Ruthless Roleplay Pink Logo" />
   </a>
 
   <!-- Circle with image -->
-  <div class="circle">
+  <div class="circle" id="circle">
     <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/logo_header_small/discordicon_inactive.png" alt="Discord Icon" />
   </div>
 
-  <header>
+  <!-- Pink Pulse Circle -->
+  <div class="pulse-circle"></div>
+
+  <!-- Image added below the box -->
+  <img class="k-image" src="https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/K_Website_Image.png?raw=true" alt="Ruthless Roleplay Image" />
+
+  <!-- New box next to the "K" image -->
+  <div class="k-image-box">
+    <div>
+      <h2>About Us</h2>
+      <p>Ruthless RP is a story-driven roleplay community that puts quality and immersion at the forefront. We use scripts specifically selected to enhance the RP experience without compromising in-game performance. We work hand-in-hand with our players to shape the future of the server—creating features, stories, and experiences we can all be proud of.</p>
+    </div>
+  </div>
+
+  <!-- Rules Button -->
+<div class="rules-button" id="rulesButton">
+  <a href="/rules" style="text-decoration: none; color: white; font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 1rem; display: flex; justify-content: center; align-items: center; height: 100%; width: 100%; text-align: center;">
+    Rules
+  </a>
+</div>
+
+  <header id="header">
     <h1>Where Limitless Stories Begin</h1>
     <p>A story-driven Philippine FiveM server where every choice shapes your immersive journey.</p>
   </header>
@@ -216,5 +410,40 @@
   <footer>
     <p>&copy; 2025 Ruthless Roleplay | All Rights Reserved</p>
   </footer>
+
+  <script>
+    window.addEventListener("scroll", () => {
+      const header = document.getElementById("header");
+      const logo = document.getElementById("logo");
+      const circle = document.getElementById("circle");
+
+      if (window.scrollY > 100) {
+        header.classList.add("fade-out");
+        logo.classList.add("fade-out");
+        circle.classList.add("fade-out");
+      } else {
+        header.classList.remove("fade-out");
+        logo.classList.remove("fade-out");
+        circle.classList.remove("fade-out");
+      }
+    });
+
+    function updatePlayerCount() {
+      fetch("https://servers-frontend.fivem.net/api/servers/single/ovbzrj")
+        .then(res => res.json())
+        .then(data => {
+          const playerCount = data.Data?.clients || 0;
+          const maxPlayers = data.Data?.sv_maxclients || '?';
+          document.getElementById("playerCountText").textContent = `${playerCount}/${maxPlayers} Players Online`;
+        })
+        .catch(error => {
+          console.error("Error fetching server data:", error);
+          document.getElementById("playerCountText").textContent = "Server Offline";
+        });
+    }
+
+    updatePlayerCount();
+    setInterval(updatePlayerCount, 5000);
+  </script>
 </body>
 </html>
