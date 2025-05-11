@@ -10,9 +10,6 @@
         :root {
             --header-gap: 900px;
             --logo-margin-left: -7.5px;
-            --footer-gap: 30px;
-            --footer-padding: 15px;
-            --playerbox-top: 150px;
         }
 
         /* Global body styles */
@@ -44,6 +41,12 @@
             border-radius: 9px;
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4), 0 10px 6px rgba(0, 0, 0, 0.2); /* Creates the folded paper effect */
             z-index: 1000;
+        }
+
+        /* Logo */
+        header .logo {
+            height: 45px;
+            margin-left: var(--logo-margin-left);
         }
 
         /* Discord icon container (circular button) */
@@ -112,55 +115,26 @@
             opacity: 1;
             transform: translateX(-50%) translateY(20px); 
         }
-
-        /* Footer Box */
-        footer {
-            position: fixed;
-            bottom: 18.75px;
-            left: 50%;
-            transform: translateX(-50%);  /* Centers the footer */
-            display: flex;
-            align-items: center;
-            justify-content: center;  /* Centers the content inside the footer */
-            padding: 11.25px 22.5px;
-            width: 1200px;
-            background: linear-gradient(to bottom, #181717 25%, #19181c 50%, #0e0d0d 75%); /* Dark gray edges with wider background color */
-            border: 1px solid #f51fa3;
-            border-radius: 9px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.733), 0 4px 6px rgba(15, 5, 5, 0.89); /* Same folded shadow effect */
-            z-index: 1000;
-        }
-
-        /* Footer Text */
-        .footer-text {
-            color: white;
-            font-size: 0.75rem;
-            white-space: nowrap;
-        }
     </style>
 </head>
 
 <body>
 
-    <!-- Header -->
     <header>
-        <img class="logo" src="https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/logo_header_small/RUTHLESS%20RP%20ICON%20BIG.svg?raw=true" alt="Ruthless RP Logo">
-    
+        <!-- Logo wrapped in an anchor tag to redirect to the homepage -->
+        <a href="/" target="_self">
+          <img class="logo" src="https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/logo_header_small/RUTHLESS%20RP%20ICON%20BIG.svg?raw=true" alt="Ruthless RP Logo">
+      </a>
+
         <!-- Discord logo wrapped in an anchor tag to make it clickable -->
         <a href="https://discord.gg/3JrSpwRVYV" target="_blank" class="discord-container">
             <div class="discord-circle">
                 <img class="discord-icon" src="https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/logo_header_small/discordicon_inactive.png?raw=true" alt="Discord Icon">
             </div>
         </a>
+
     </header>
-    
-    <!-- Footer -->
-    <footer>
-        <div class="footer-text">
-            © 2025 Ruthless Roleplay | All Rights Reserved
-        </div>
-    </footer>
-    
+
 </body>
 
 </html>
