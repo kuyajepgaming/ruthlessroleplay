@@ -277,6 +277,68 @@
                 box-shadow: 0 0 8px #ffb6c1;  /* Subtle glow */
             }
         }
+
+        /* About Us Box */
+        .about-us-wrapper {
+            width: 300px;  /* Adjust the width to a smaller size */
+            position: fixed; /* Fixed position to keep it in place */
+            top: 400px; /* Adjust the top value for vertical positioning */
+            right: 400px; /* Adjust the right value for horizontal positioning */
+            padding: 10px 30px 45px 30px;  /* top, right, bottom, left */
+            background: linear-gradient(to bottom, #181717 25%, #19181c 50%, #0e0d0d 75%); /* Same gradient background */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.733), 0 4px 6px rgba(15, 5, 5, 0.89); /* Shadow for effect */
+            border: 1px solid #f51fa3;
+            border-radius: 9px;
+            z-index: 1000; /* Ensure it is above other content */
+        }
+
+        /* About Us Text */
+        .about-us-wrapper .about-us-text {
+            text-align: center;
+            font-family: 'Special Gothic Condensed One', sans-serif;
+            color: white;
+        }
+
+        .about-us-wrapper h2 {
+            font-size: 2.5rem;
+            background: linear-gradient(to bottom right, #b0005b, #ff66cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .about-us-wrapper p {
+            font-size: .88rem;
+            color: white;
+            font-weight: 400;
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
+            margin-top: 0;
+        }
+
+        .rules-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            font-family: 'Special Gothic Condensed One', sans-serif;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(to right, #b0005b, #ff66cc);
+            border: 1px solid #f51fa3;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+            transition: all 0.3s ease;
+        }
+
+        .rules-button:hover {
+            background: linear-gradient(to right, #ff66cc, #b0005b);
+            transform: scale(1.05);
+            box-shadow: 0 6px 14px rgba(255, 102, 204, 0.6);
+        }
+
     </style>
 
 </head>
@@ -284,8 +346,10 @@
 <body>
 
     <header>
-        <img class="logo" src="https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/logo_header_small/RUTHLESS%20RP%20ICON%20BIG.svg?raw=true" alt="Ruthless RP Logo">
-    
+        <!-- Logo wrapped in an anchor tag to redirect to the homepage -->
+        <a href="/" target="_self">
+            <img class="logo" src="https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/logo_header_small/RUTHLESS%20RP%20ICON%20BIG.svg?raw=true" alt="Ruthless RP Logo">
+        </a>
         <!-- Discord logo wrapped in an anchor tag to make it clickable -->
         <a href="https://discord.gg/3JrSpwRVYV" target="_blank" class="discord-container">
             <div class="discord-circle">
@@ -311,6 +375,17 @@
         </div>
     </div>
     
+    <!-- About Us Box -->
+    <div class="about-us-wrapper">
+        <div class="about-us-text">
+            <h2>About Us</h2>
+            <p>Ruthless RP is a story-driven roleplay community that puts quality and immersion at the forefront. We use scripts specifically selected to enhance the RP experience without compromising in-game performance. We work hand-in-hand with our players to shape the future of the server—creating features, stories, and experiences we can all be proud of.</p>
+         
+            <!-- View Rules Button -->
+         <a href="rules.html" class="rules-button">View Rules</a>        
+        </div>
+    </div>
+
     <footer>
         <div class="footer-text">
             © 2025 Ruthless Roleplay | All Rights Reserved
