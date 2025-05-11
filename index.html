@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ruthless Roleplay - Home</title>
@@ -14,7 +17,7 @@
             --footer-padding: 15px;
             --playerbox-top: 150px;
         }
-
+    
         /* Global body styles */
         body {
             margin: 0;
@@ -27,7 +30,7 @@
             background-attachment: fixed;
             background-repeat: no-repeat;
         }
-
+    
         /* Header box */
         header {
             position: fixed;
@@ -45,7 +48,7 @@
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4), 0 10px 6px rgba(0, 0, 0, 0.2); /* Creates the folded paper effect */
             z-index: 1000;
         }
-
+    
         /* Text Section Between Header and Status Box */
         .text-section {
             text-align: center;
@@ -53,7 +56,7 @@
             color: white;
             margin-top: 45px;
         }
-
+    
         /* Header Text Style */
         .text-section h2 {
             font-size: 2.5rem; /* Adjust the font size */
@@ -64,7 +67,7 @@
             text-transform: uppercase; /* Make it uppercase */
             margin-bottom: 5px; /* Adjusted space between title and paragraph */
         }
-
+    
         /* Paragraph Text Style */
         .text-section p {
             font-size: 1.0rem;
@@ -73,7 +76,7 @@
             text-shadow: 0 0 8px rgba(0, 0, 0, 0.7); /* Subtle shadow for contrast */
             margin-top: 0; /* Ensure there's no extra space above the paragraph */
         }
-
+    
         /* Footer Box */
         footer {
             position: fixed;
@@ -91,20 +94,20 @@
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.733), 0 4px 6px rgba(15, 5, 5, 0.89); /* Same folded shadow effect */
             z-index: 1000;
         }
-
+    
         /* Footer Text */
         .footer-text {
             color: white;
             font-size: 0.75rem;
             white-space: nowrap;
         }
-
+    
         /* Logo */
         header .logo {
             height: 45px;
             margin-left: var(--logo-margin-left);
         }
-
+    
         /* Discord icon container (circular button) */
         .discord-container {
             position: relative;
@@ -116,7 +119,7 @@
             margin-left: auto;  /* Push the container to the right */
             margin-right: 0px;  /* Equal spacing on the right side of the Discord button */
         }
-
+    
         /* Discord icon container (circular button) */
         .discord-circle {
             position: relative;
@@ -132,24 +135,24 @@
             cursor: pointer;
             overflow: hidden; /* Prevent text from spilling out of the circle */
         }
-
+    
         /* Discord icon */
         .discord-icon {
             width: 22.5px;
             height: 22.5px;
             transition: transform 0.3s ease;
         }
-
+    
         /* Hover effect for Discord icon */
         .discord-circle:hover {
             transform: scale(1.4);
             box-shadow: 0 0 30px rgba(255, 0, 119, 1);
         }
-
+    
         .discord-circle:hover .discord-icon {
             transform: rotate(360deg);
         }
-
+    
         /* Text for "JOIN DISCORD" */
         .join-discord-text {
             position: absolute;
@@ -165,13 +168,13 @@
             display: block; 
             white-space: nowrap;
         }
-
+    
         /* Show the text when hovering over the circle */
         .discord-circle:hover + .join-discord-text {
             opacity: 1;
             transform: translateX(-50%) translateY(20px); 
         }
-
+    
         /* Wrapper for entire status section */
         .status-wrapper {
             width: 225px;
@@ -186,7 +189,7 @@
             border: 1px solid #f51fa3;
             border-radius: 9px;
         }
-
+    
         /* Server Status Text */
         .status-wrapper .status-text {
             color: white; /* Change text color to white */
@@ -194,7 +197,7 @@
             font-size: 1rem; /* Optional: Adjust font size if needed */
             margin-bottom: 7.5px; /* Maintain space between text and box */
         }
-
+    
         /* Status Box and Indicator */
         .status-box {
             display: flex;
@@ -206,7 +209,7 @@
             color: #ffffff;
             text-align: center;
         }
-
+    
         /* Player Count and "PLAYERS ONLINE" Text */
         #playerCountText {
             font-family: 'Open Sans', sans-serif;
@@ -217,7 +220,7 @@
             align-items: center;
             justify-content: center;
         }
-
+    
         /* Player Count Number */
         .player-count-number {
             color: #ff66cc;
@@ -225,7 +228,7 @@
             font-size: .9rem;
             margin-right: 3.75px;
         }
-
+    
         /* Status Indicator (Pink Circle) */
         .status-indicator {
             width: 10.5px;
@@ -236,7 +239,7 @@
             box-shadow: 0 0 8px #ffb6c1;  /* Subtle glow effect */
             margin-top: -0.75px;
         }
-
+    
         /* Pulse animation */
         @keyframes pulse {
             0% {
@@ -244,41 +247,116 @@
                 opacity: 0.8;
                 box-shadow: 0 0 8px #ffb6c1;  /* Subtle glow */
             }
-
+    
             50% {
                 transform: scale(1.2);
                 opacity: 1;
                 box-shadow: 0 0 15px #ffb6c1;  /* Slightly stronger glow */
             }
-
+    
             100% {
                 transform: scale(1);
                 opacity: 0.8;
                 box-shadow: 0 0 8px #ffb6c1;  /* Subtle glow */
             }
         }
-
-        /* About Us Box */
+    
+        /* K Image Section - Modified for animation */
+        .image-section {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 50px;
+            position: relative;
+            width: 40%;
+            float: left;
+            opacity: 0; /* Start invisible */
+            transform: translateX(-100px); /* Start from left */
+            animation: fadeInLeft 1.5s ease forwards;
+            animation-delay: 0.5s; /* Small delay before starting */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 450px; /* Increased height to prevent content from being cut off */
+        }
+    
+        /* Animation for image fading in from left */
+        @keyframes fadeInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    
+        /* Shadow that follows the shape of the image */
+        .image-section img {
+            width: 75%;
+            height: auto;
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+            position: relative;
+            clip-path: inset(0% round 20px);
+        }
+    
+        /* About Us Box - Modified for animation */
         .about-us-wrapper {
-            width: 300px;  /* Adjust the width to a smaller size */
-            position: absolute; /* Fixed position to keep it in place */
-            top: 400px; /* Adjust the top value for vertical positioning */
-            right: 400px; /* Adjust the right value for horizontal positioning */
-            padding: 10px 30px 45px 30px;  /* top, right, bottom, left */
-            background: linear-gradient(to bottom, #181717 25%, #19181c 50%, #0e0d0d 75%); /* Same gradient background */
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.733), 0 4px 6px rgba(15, 5, 5, 0.89); /* Shadow for effect */
+            width: 35%;
+            position: relative;
+            float: right;
+            margin-top: 30px;
+            padding: 15px 30px 30px 30px;
+            background: linear-gradient(to bottom, #181717 25%, #19181c 50%, #0e0d0d 75%);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.733), 0 4px 6px rgba(15, 5, 5, 0.89);
             border: 1px solid #f51fa3;
             border-radius: 9px;
-            z-index: 1000; /* Ensure it is above other content */
+            z-index: 1000;
+            opacity: 0; /* Start invisible */
+            transform: translateX(100px); /* Start from right */
+            animation: fadeInRight 1.5s ease forwards;
+            animation-delay: 0.5s; /* Small delay before starting */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 450px;
+            
+            /* Add background image when the content is expanded */
+            background-image: url('https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/logo_header_small/RuthlessRPIcon%2025%25.png?raw=true');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 90%;
+            background-blend-mode: overlay;
+            background-color: rgba(43, 41, 47, 0.9);
+            overflow: auto; /* Add scrolling if content overflows */
         }
-
-        /* About Us Text */
+    
+        /* Animation for about us box fading in from right */
+        @keyframes fadeInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    
+        /* About Us Text - Make sure it fits properly */
         .about-us-wrapper .about-us-text {
             text-align: center;
             font-family: 'Special Gothic Condensed One', sans-serif;
             color: white;
+            width: 100%;
+            padding: 15px 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-
+    
         .about-us-wrapper h2 {
             font-size: 2.5rem;
             background: linear-gradient(to bottom right, #b0005b, #ff66cc);
@@ -288,7 +366,7 @@
             text-transform: uppercase;
             margin-bottom: 10px;
         }
-
+    
         .about-us-wrapper p {
             font-size: .88rem;
             color: white;
@@ -296,10 +374,25 @@
             text-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
             margin-top: 0;
         }
-
+    
+        /* Add a container to hold both elements centered */
+        .content-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 70px auto;
+            width: 85%;
+            max-width: 1100px;
+            clear: both;
+            overflow: visible;
+            height: 450px;
+            position: relative;
+        }
+    
         .rules-button {
             display: inline-block;
             margin-top: 15px;
+            margin-bottom: 15px; /* Added bottom margin */
             padding: 10px 20px;
             font-size: 0.9rem;
             font-family: 'Special Gothic Condensed One', sans-serif;
@@ -312,208 +405,320 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
             transition: all 0.3s ease;
         }
-
+    
         .rules-button:hover {
             background: linear-gradient(to right, #ff66cc, #b0005b);
             transform: scale(1.05);
             box-shadow: 0 6px 14px rgba(255, 102, 204, 0.6);
         }
-
-        /* K Image Section */
-        .image-section {
-            text-align: center; /* Centers the image */
-            margin-top: 30px; /* Space between the status box and the image */
-            margin-bottom: 50px; /* Adds space below the image */
-            position: relative; /* Allows for absolute positioning of the image */
+    
+        /* Responsive adjustments */
+        @media screen and (max-width: 768px) {
+            .content-container {
+                flex-direction: column;
+                align-items: center;
+                height: auto;
+                margin: 30px auto;
+            }
+            
+            .image-section, .about-us-wrapper {
+                width: 85%;
+                float: none;
+                margin: 15px auto;
+                height: auto;
+                min-height: 300px;
+            }
+            
+            .image-section img {
+                width: 70%;
+            }
+            
+            .about-us-wrapper {
+                padding: 15px;
+                overflow: visible;
+            }
+            
+            .about-us-wrapper .about-us-text {
+                padding: 10px 5px;
+            }
         }
-
-        /* Shadow that follows the shape of the image */
-        .image-section img {
-            width: 20%; /* Make the image scale to its container */
-            height: auto; /* Maintains the aspect ratio */
-            max-width: 100%; /* Removes restrictions on maximum width */
-            border-radius: 20px; /* Optional: Adjust rounded corners to suit the image */
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4); /* Adds a subtle shadow */
-            position: relative; /* Keeps image position relative to the section */
-            top: 0; /* Optional: Adjusts image position from the top */
-            left: 0; /* Optional: Adjusts image position from the left */
-            transform: translateX(0); /* Optionally adjust the image's horizontal position */
-            clip-path: inset(0% round 20px); /* Creates rounded corners with shadow following the shape */
-
+    
+        /* Particles container */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            pointer-events: none;
         }
-
-        /* Audio Player - Centered and Fixed */
-            .audio-player {
-            position: absolute;
-            bottom: 30px;
+    
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+    
+        ::-webkit-scrollbar-track {
+            background: #19181c;
+        }
+    
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #b0005b, #ff66cc);
+            border-radius: 5px;
+        }
+    
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #ff66cc, #b0005b);
+        }
+    
+        /* Fixed Position for the Player */
+        .audio-player-container {
+            position: fixed;
+            top: 50px;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 1000;
-            width: 550px;
-            background-color: black;
-            padding: 15px;
-            border: 1px solid rgb(197, 14, 151); /* Thicker pink border */
+            display: flex;
+            width: 600px;
+            height: 120px;
+            background-color: rgba(25, 24, 28, 0.8);
+            border: 1px solid #f51fa3;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgb(197, 14, 151), 0 0 20px rgb(197, 14, 151); /* Initial glow */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
             overflow: hidden;
-            text-align: center;
-            animation: pulse-glow 2s ease-in-out infinite; /* Pulsing glow effect */
+            z-index: 1000;
+            backdrop-filter: blur(15px);
         }
-
-        @keyframes pulse-glow {
-            0% {
-                box-shadow: 0 0 10px rgb(197, 14, 151), 0 0 20px rgb(197, 14, 151);
+    
+        /* Drag Handle */
+        .drag-handle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background-color: transparent;
+            cursor: move;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #888;
+            font-size: 0.6rem;
+            z-index: 1;
+        }
+    
+        /* Left Container for CD Image */
+        .left-container {
+            flex: 0 0 auto;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+    
+        /* Spinning CD Image */
+        .cd-image {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            animation: spin 10s linear infinite;
+            animation-play-state: paused;
+            box-shadow: 0 0 10px rgba(255, 0, 119, 0.6);
+            transition: transform 0.3s ease;
+        }
+    
+        /* CD Image spinning animation */
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
             }
-            50% {
-                box-shadow: 0 0 20px rgb(255, 20, 147), 0 0 40px rgb(255, 20, 147); /* Stronger pink */
-            }
-            100% {
-                box-shadow: 0 0 10px rgb(197, 14, 151), 0 0 20px rgb(197, 14, 151);
+            to {
+                transform: rotate(360deg);
             }
         }
-
-            /* Scrolling Text */
-            .scrolling-text-container {
-                width: 100%;
-                overflow: hidden;
-                margin-bottom: 10px;
-            }
-
-            .scrolling-text {
-                display: inline-block;
-                color: white;
-                font-size: 16px;
-                font-weight: bold;
-                white-space: nowrap;
-                animation: scroll-left 20s linear infinite;
-                padding-bottom: 5px;
-                min-width: 100%;
-                will-change: transform;
-            }
-
-            @keyframes scroll-left {
-                0% {
-                    transform: translateX(100%);
-                }
-                100% {
-                    transform: translateX(-100%);
-                }
-            }
-
-            /* Player Controls Layout */
-            .player-controls {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                color: white;
-            }
-
-            /* Buttons */
-            .play-pause-btn,
-            .mute-btn {
-                background-color: black;
-                color: white;
-                border: 2px solid rgb(197, 14, 151);
-                border-radius: 5px;
-                padding: 5px 10px;
-                cursor: pointer;
-                transition: all 0.2s ease-in-out;
-            }
-
-            .play-pause-btn:hover,
-            .mute-btn:hover {
-                background-color: rgb(197, 14, 151);
-                color: white;
-            }
-
-            /* Seekbar */
-            .seekbar {
-                flex-grow: 1;
-                margin: 0 10px;
-                height: 5px;
-                border-radius: 5px;
-                -webkit-appearance: none;
-                background: transparent;
-            }
-
-            .seekbar::-webkit-slider-runnable-track {
-                background-color: rgb(247, 127, 217);
-                height: 5px;
-                border-radius: 5px;
-            }
-            .seekbar::-webkit-slider-thumb {
-                -webkit-appearance: none;
-                appearance: none;
-                width: 15px;
-                height: 15px;
-                background-color: rgb(197, 14, 151);
-                border-radius: 50%;
-                cursor: pointer;
-                margin-top: -5px;
-            }
-            .seekbar::-moz-range-track {
-                background-color: rgb(247, 127, 217);
-                height: 5px;
-                border-radius: 5px;
-            }
-            .seekbar::-moz-range-thumb {
-                width: 15px;
-                height: 15px;
-                background-color: rgb(197, 14, 151);
-                border-radius: 50%;
-                cursor: pointer;
-            }
-
-            /* Volume Control */
-            .volume-control {
-                width: 100px;
-                height: 5px;
-                border-radius: 5px;
-                -webkit-appearance: none;
-                background: transparent;
-            }
-
-            .volume-control::-webkit-slider-runnable-track {
-                background-color: rgb(197, 14, 151);
-                height: 5px;
-                border-radius: 5px;
-            }
-            .volume-control::-webkit-slider-thumb {
-                -webkit-appearance: none;
-                appearance: none;
-                width: 15px;
-                height: 15px;
-                background-color: rgb(197, 14, 151);
-                border-radius: 50%;
-                cursor: pointer;
-                margin-top: -5px;
-            }
-            .volume-control::-moz-range-track {
-                background-color: rgb(197, 14, 151);
-                height: 5px;
-                border-radius: 5px;
-            }
-            .volume-control::-moz-range-thumb {
-                width: 15px;
-                height: 15px;
-                background-color: rgb(197, 14, 151);
-                border-radius: 50%;
-                cursor: pointer;
-            }
-
-            /* Focus for Accessibility */
-            button:focus,
-            input[type="range"]:focus {
-                outline: none;
-                box-shadow: 0 0 0 2px rgba(197, 14, 151, 0.5);
-            }
- 
-
+    
+        /* Right Container for Song Info and Controls */
+        .right-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 10px 15px;
+            justify-content: space-between;
+            max-width: calc(100% - 120px);
+        }
+    
+        /* Song Info (Title and Artist) */
+        .song-info {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-bottom: 10px;
+            color: white;
+            max-width: 100%;
+        }
+    
+        .song-title {
+            font-size: 0.95rem;
+            font-weight: bold;
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    
+        .song-artist {
+            font-size: 0.75rem;
+            color: #f1a9ca;
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    
+        /* Progress/Seekbar Container */
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    
+        /* Time Display */
+        .time {
+            font-size: 0.65rem;
+            color: #f1a9ca;
+            min-width: 35px;
+        }
+    
+        .current-time {
+            text-align: right;
+        }
+    
+        .duration {
+            text-align: left;
+        }
+    
+        /* Seekbar Container */
+        .seekbar-container {
+            flex: 1;
+            position: relative;
+        }
+    
+        /* Seekbar Slider Styling */
+        .seekbar {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 4px;
+            background: #3a383f;
+            border-radius: 2px;
+            outline: none;
+            transition: background 0.3s;
+        }
+    
+        .seekbar::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #f51fa3;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+    
+        .seekbar::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 10px #f51fa3;
+        }
+    
+        /* Player Controls Container */
+        .player-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    
+        /* Control Buttons */
+        .control-btn {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            padding: 5px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            outline: none;
+        }
+    
+        .control-btn:hover {
+            color: #f51fa3;
+            transform: scale(1.2);
+        }
+    
+        /* Play/Pause Button (Larger) */
+        .play-pause-btn {
+            font-size: 1rem;
+            background-color: rgba(245, 31, 163, 0.2);
+            width: 25px;
+            height: 25px;
+        }
+    
+        .play-pause-btn:hover {
+            background-color: rgba(245, 31, 163, 0.4);
+        }
+    
+        /* Volume Container */
+        .volume-container {
+            flex: 1;
+            max-width: 80px;
+            display: flex;
+            align-items: center;
+        }
+    
+        /* Volume Slider Styling */
+        .volume-control {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 4px;
+            background: #3a383f;
+            border-radius: 2px;
+            outline: none;
+        }
+    
+        .volume-control::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #f51fa3;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+    
+        .volume-control::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 10px #f51fa3;
+        }
+    
+        /* Active button style */
+        .control-btn.active {
+            color: #f51fa3;
+            text-shadow: 0 0 10px rgba(245, 31, 163, 0.7);
+        }
     </style>
 
 </head>
 
 <body>
+
+    <div id="particles-js"></div>
 
     <header>
         <!-- Logo wrapped in an anchor tag to redirect to the homepage -->
@@ -544,7 +749,13 @@
             <div class="status-indicator"></div>
         </div>
     </div>
-    
+
+<!-- Content Container for Image and About Us -->
+<div class="content-container">
+    <!-- K Image -->
+    <div class="image-section">
+        <img src="https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/K_Website_Image.png?raw=true" alt="K Monkey Mask">
+    </div>
     <!-- About Us Box -->
     <div class="about-us-wrapper">
         <div class="about-us-text">
@@ -552,41 +763,70 @@
             <p>Ruthless RP is a story-driven roleplay community that puts quality and immersion at the forefront. We use scripts specifically selected to enhance the RP experience without compromising in-game performance. We work hand-in-hand with our players to shape the future of the server—creating features, stories, and experiences we can all be proud of.</p>
          
             <!-- View Rules Button -->
-         <a href="rules.html" class="rules-button">View Rules</a>        
+            <a href="rules.html" class="rules-button">View Rules</a>        
         </div>
     </div>
+</div>
 
-    <!-- K Image -->
-    <div class="image-section">
-        <img src="https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/K_Website_Image.png?raw=true" alt="K Monkey Mask">
+ <!-- Custom Audio Player -->
+<div class="audio-player-container" id="audioPlayerContainer">
+
+    <!-- Drag Handle -->
+    <div class="drag-handle" id="dragHandle">
+        <i class="fas fa-grip-lines"></i>
     </div>
 
-    <!-- Audio player for Ruthless OST -->
-    <div class="audio-player">
-        <!-- Scrolling Text Inside Player -->
-        <div class="scrolling-text-container">
-            <div class="scrolling-text">Play Ruthless OST by Latrelle</div>
+    <!-- Left Container for Spinning CD Image -->
+    <div class="left-container">
+        <!-- Spinning CD Image -->
+        <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/ruthless%20cd.png" alt="Spinning CD" class="cd-image">
+    </div>
+
+    <!-- Right Container for Song Info and Controls -->
+    <div class="right-container">
+        <!-- Song Info -->
+        <div class="song-info">
+            <div class="song-title">Ruthless Roleplay OST</div>
+            <div class="song-artist">by Latrelle</div>
         </div>
 
-        <!-- Custom Audio Player -->
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <span id="currentTime" class="time current-time">00:00</span>
+            <div class="seekbar-container">
+                <input type="range" id="seekbar" class="seekbar" value="0" max="100" aria-label="Seek bar">
+            </div>
+            <span id="duration" class="time duration">00:00</span>
+        </div>
+
+        <!-- Player Controls -->
         <div class="player-controls">
-            <!-- Play/Pause Button -->
-            <button id="playPauseBtn" class="play-pause-btn" aria-label="Play or Pause">Play</button>
-
-            <!-- Seekbar -->
-            <input type="range" id="seekbar" class="seekbar" value="0" max="100" aria-label="Seek bar">
-
-            <!-- Mute Button -->
-            <button id="muteBtn" class="mute-btn" aria-label="Mute or Unmute">Mute</button>
-
-            <!-- Volume Control -->
-            <input type="range" id="volumeControl" class="volume-control" value="70" min="0" max="100" aria-label="Volume control">
+            <button id="prevBtn" class="control-btn" aria-label="Previous">
+                <i class="fas fa-step-backward"></i>
+            </button>
+            <button id="playPauseBtn" class="control-btn play-pause-btn" aria-label="Play or Pause">
+                <i class="fas fa-play"></i>
+            </button>
+            <button id="nextBtn" class="control-btn" aria-label="Next">
+                <i class="fas fa-step-forward"></i>
+            </button>
+            <button id="shuffleBtn" class="control-btn" aria-label="Shuffle">
+                <i class="fas fa-random"></i>
+            </button>
+            <button id="repeatBtn" class="control-btn" aria-label="Repeat">
+                <i class="fas fa-redo"></i>
+            </button>
+            <button id="muteBtn" class="control-btn" aria-label="Mute or Unmute">
+                <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="volume-container">
+                <input type="range" id="volumeControl" class="volume-control" value="30" min="0" max="100" aria-label="Volume control">
+            </div>
         </div>
-
-        <!-- Audio Player -->
-        <audio id="audioPlayer" src="https://cdn.jsdelivr.net/gh/kuyajepgaming/ruthlessroleplay/Ruthless%20OST.mp3" preload="auto" autoplay></audio>
     </div>
 
+    <audio id="audioPlayer" src="https://cdn.jsdelivr.net/gh/kuyajepgaming/ruthlessroleplay/Ruthless%20OST.mp3" preload="auto" autoplay></audio>
+</div>
 
     <footer>
         <div class="footer-text">
@@ -611,68 +851,286 @@
         }
         setInterval(updatePlayerCount, 5000); // Update every 5 seconds
         updatePlayerCount(); // Initial call
+        
     </script>
     
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        particlesJS('particles-js', {
+          "particles": {
+            "number": {
+              "value": 50,
+              "density": {
+                "enable": true,
+                "value_area": 800
+              }
+            },
+            "color": {
+              "value": "#f51fa3"
+            },
+            "shape": {
+              "type": "circle",
+              "stroke": {
+                "width": 0,
+                "color": "#000000"
+              }
+            },
+            "opacity": {
+              "value": 0.5,
+              "random": true,
+              "anim": {
+                "enable": true,
+                "speed": 1,
+                "opacity_min": 0.1,
+                "sync": false
+              }
+            },
+            "size": {
+              "value": 3,
+              "random": true
+            },
+            "line_linked": {
+              "enable": true,
+              "distance": 150,
+              "color": "#ff66cc",
+              "opacity": 0.4,
+              "width": 1
+            },
+            "move": {
+              "enable": true,
+              "speed": 2,
+              "direction": "none",
+              "random": true,
+              "straight": false,
+              "out_mode": "out",
+              "bounce": false
+            }
+          },
+          "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+              "onhover": {
+                "enable": true,
+                "mode": "repulse"
+              },
+              "onclick": {
+                "enable": true,
+                "mode": "push"
+              },
+              "resize": true
+            }
+          },
+          "retina_detect": true
+        });
+      });
+    </script>
+
+   <!-- Font Awesome CDN -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- Font Awesome CDN -->
 
     <script>
-        // Dynamically load the audio
-        const audio = new Audio('https://cdn.jsdelivr.net/gh/kuyajepgaming/ruthlessroleplay/Ruthless%20OST.mp3');
-        audio.preload = 'auto';
-        audio.autoplay = true;
-        audio.muted = true; // Required to autoplay in some browsers
+        // Script for the player controls functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const playPauseBtn = document.getElementById("playPauseBtn");
+            const prevBtn = document.getElementById("prevBtn");
+            const nextBtn = document.getElementById("nextBtn");
+            const shuffleBtn = document.getElementById("shuffleBtn");
+            const repeatBtn = document.getElementById("repeatBtn");
+            const muteBtn = document.getElementById("muteBtn");
+            const audioPlayer = document.getElementById("audioPlayer");
+            const volumeControl = document.getElementById("volumeControl");
+            const seekbar = document.getElementById("seekbar");
+            const currentTimeDisplay = document.getElementById("currentTime");
+            const durationDisplay = document.getElementById("duration");
+            const playerContainer = document.getElementById('audioPlayerContainer');
+            const dragHandle = document.getElementById('dragHandle');
     
-        const playPauseBtn = document.getElementById('playPauseBtn');
-        const muteBtn = document.getElementById('muteBtn');
-        const seekbar = document.getElementById('seekbar');
-        const volumeControl = document.getElementById('volumeControl');
+            let isPlaying = false;
+            let isMuted = false;
+            let isDragging = false;
+            let offsetX, offsetY;
     
-        // Remove mute on user interaction (required by browsers)
-        window.addEventListener('click', () => {
-            if (audio.muted) {
-                audio.muted = false;
+            // Set initial volume to 30%
+            audioPlayer.volume = 0.3;
+            volumeControl.value = 30;
+    
+            // Set initial position
+            playerContainer.style.left = '50%';
+            playerContainer.style.transform = 'translateX(-50%)';
+    
+            // Mouse down event on drag handle
+            dragHandle.addEventListener('mousedown', function(e) {
+                isDragging = true;
+    
+                // Calculate the offset of the mouse relative to the player container
+                const rect = playerContainer.getBoundingClientRect();
+                offsetX = e.clientX - rect.left;
+                offsetY = e.clientY - rect.top;
+                
+                // Remove the centering transform
+                playerContainer.style.transform = 'none';
+                
+                // Update position to keep it in the same place visually
+                playerContainer.style.left = rect.left + 'px';
+                playerContainer.style.top = rect.top + 'px';
+                
+                // Prevent text selection during drag
+                e.preventDefault();
+            });
+    
+            // Mouse move event (on document to allow dragging outside the element)
+            document.addEventListener('mousemove', function(e) {
+                if (!isDragging) return;
+                
+                // Update player position
+                playerContainer.style.left = (e.clientX - offsetX) + 'px';
+                playerContainer.style.top = (e.clientY - offsetY) + 'px';
+            });
+            
+            // Mouse up event to stop dragging
+            document.addEventListener('mouseup', function() {
+                isDragging = false;
+            });
+            
+            // Touch events for mobile support
+            dragHandle.addEventListener('touchstart', function(e) {
+                isDragging = true;
+                
+                const rect = playerContainer.getBoundingClientRect();
+                const touch = e.touches[0];
+                
+                offsetX = touch.clientX - rect.left;
+                offsetY = touch.clientY - rect.top;
+                
+                playerContainer.style.transform = 'none';
+                playerContainer.style.left = rect.left + 'px';
+                playerContainer.style.top = rect.top + 'px';
+                
+                e.preventDefault();
+            });
+            
+            document.addEventListener('touchmove', function(e) {
+                if (!isDragging) return;
+                
+                const touch = e.touches[0];
+                playerContainer.style.left = (touch.clientX - offsetX) + 'px';
+                playerContainer.style.top = (touch.clientY - offsetY) + 'px';
+            });
+            
+            document.addEventListener('touchend', function() {
+                isDragging = false;
+            });
+    
+            // Update duration once metadata is loaded
+            audioPlayer.addEventListener('loadedmetadata', function() {
+                durationDisplay.textContent = formatTime(audioPlayer.duration);
+            });
+    
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
             }
-        }, { once: true });
     
-        // Play/Pause toggle
-        playPauseBtn.addEventListener('click', () => {
-            if (audio.paused) {
-                audio.play();
-                playPauseBtn.textContent = 'Pause';
-            } else {
-                audio.pause();
-                playPauseBtn.textContent = 'Play';
+            // Play/Pause button
+            playPauseBtn.addEventListener("click", () => {
+                if (isPlaying) {
+                    audioPlayer.pause();
+                    playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                } else {
+                    audioPlayer.play();
+                    playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                }
+                isPlaying = !isPlaying;
+            });
+    
+            // Previous button (placeholder functionality)
+            prevBtn.addEventListener("click", () => {
+                // For now, just restart the current track
+                audioPlayer.currentTime = 0;
+            });
+    
+            // Next button (placeholder functionality)
+            nextBtn.addEventListener("click", () => {
+                // For now, just go to the end of the track
+                audioPlayer.currentTime = audioPlayer.duration;
+            });
+    
+            // Shuffle button (placeholder functionality) 
+            shuffleBtn.addEventListener("click", () => {
+                shuffleBtn.classList.toggle('active');
+            });
+    
+            // Repeat button (placeholder functionality)
+            repeatBtn.addEventListener("click", () => {
+                repeatBtn.classList.toggle('active');
+                audioPlayer.loop = !audioPlayer.loop;
+            });
+    
+            // Mute/Unmute button
+            muteBtn.addEventListener("click", () => {
+                if (isMuted) {
+                    audioPlayer.muted = false;
+                    muteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+                } else {
+                    audioPlayer.muted = true;
+                    muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+                }
+                isMuted = !isMuted;
+            });
+    
+            // Volume control
+            volumeControl.addEventListener("input", (e) => {
+                audioPlayer.volume = e.target.value / 100;
+                if (audioPlayer.volume === 0) {
+                    muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+                } else {
+                    muteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+                }
+            });
+    
+            // Update progress bar and current time
+            audioPlayer.addEventListener("timeupdate", () => {
+                const currentTime = audioPlayer.currentTime;
+                const duration = audioPlayer.duration;
+                if (!isNaN(duration)) {
+                    seekbar.value = (currentTime / duration) * 100;
+        
+                    // Update current time display
+                    currentTimeDisplay.textContent = formatTime(currentTime);
+                    
+                    // Update duration display as a countdown (time remaining)
+                    const timeRemaining = duration - currentTime;
+                    durationDisplay.textContent = "-" + formatTime(timeRemaining);
+                }
+            });
+    
+            // Seekbar functionality
+            seekbar.addEventListener("input", () => {
+                const duration = audioPlayer.duration;
+                const newTime = (seekbar.value / 100) * duration;
+                audioPlayer.currentTime = newTime;
+            });
+    
+            // Add an active class style for the active buttons
+            document.querySelectorAll('.control-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (this !== playPauseBtn && this !== muteBtn) {
+                        this.classList.toggle('active');
+                    }
+                });
+            });
+            
+            // Set initial state for autoplay if enabled
+            if (!audioPlayer.paused) {
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                isPlaying = true;
             }
         });
-    
-        // Update seekbar as audio plays
-        audio.addEventListener('timeupdate', () => {
-            if (!isNaN(audio.duration)) {
-                const progress = (audio.currentTime / audio.duration) * 100;
-                seekbar.value = progress || 0;
-            }
-        });
-    
-        // Seek to position when seekbar is moved
-        seekbar.addEventListener('input', () => {
-            const seekTime = (seekbar.value / 100) * audio.duration;
-            audio.currentTime = seekTime;
-        });
-    
-        // Mute/Unmute toggle
-        muteBtn.addEventListener('click', () => {
-            audio.muted = !audio.muted;
-            muteBtn.textContent = audio.muted ? 'Unmute' : 'Mute';
-        });
-    
-        // Volume control
-        volumeControl.addEventListener('input', () => {
-            audio.volume = volumeControl.value / 100;
-        });
-    
-        // Set default volume
-        audio.volume = 0.7;
-    </script>
+</script>
 
 </body>
+
 
 </html>
