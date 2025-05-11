@@ -319,6 +319,29 @@
             box-shadow: 0 6px 14px rgba(255, 102, 204, 0.6);
         }
 
+        /* K Image Section */
+        .image-section {
+            text-align: center; /* Centers the image */
+            margin-top: 30px; /* Space between the status box and the image */
+            margin-bottom: 50px; /* Adds space below the image */
+            position: relative; /* Allows for absolute positioning of the image */
+        }
+
+        /* Shadow that follows the shape of the image */
+        .image-section img {
+            width: 20%; /* Make the image scale to its container */
+            height: auto; /* Maintains the aspect ratio */
+            max-width: 100%; /* Removes restrictions on maximum width */
+            border-radius: 20px; /* Optional: Adjust rounded corners to suit the image */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4); /* Adds a subtle shadow */
+            position: relative; /* Keeps image position relative to the section */
+            top: 0; /* Optional: Adjusts image position from the top */
+            left: 0; /* Optional: Adjusts image position from the left */
+            transform: translateX(0); /* Optionally adjust the image's horizontal position */
+            clip-path: inset(0% round 20px); /* Creates rounded corners with shadow following the shape */
+
+        }
+
     </style>
 
 </head>
@@ -342,8 +365,8 @@
     <div class="text-section">
         <h2>Where Limitless Stories Begin</h2>
         <p>A story-driven Philippine FiveM server where every choice shapes your immersive journey.</p>
-    </div>
-    
+    </div>  
+
     <!-- Status Container with the text above the box -->
     <div class="status-wrapper">
         <div class="status-text">Server Status</div>
@@ -364,6 +387,11 @@
             <!-- View Rules Button -->
          <a href="rules.html" class="rules-button">View Rules</a>        
         </div>
+    </div>
+
+    <!-- K Image -->
+    <div class="image-section">
+        <img src="https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/K_Website_Image.png?raw=true" alt="K Monkey Mask">
     </div>
 
     <footer>
