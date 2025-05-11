@@ -342,123 +342,172 @@
 
         }
 
-    /* Audio Player - Centered and Fixed */
-        .audio-player {
+        /* Audio Player - Centered and Fixed */
+            .audio-player {
             position: absolute;
-            top: 90%;
+            bottom: 30px;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translateX(-50%);
             z-index: 1000;
             width: 550px;
             background-color: black;
             padding: 15px;
+            border: 1px solid rgb(197, 14, 151); /* Thicker pink border */
             border-radius: 10px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 0 10px rgb(197, 14, 151), 0 0 20px rgb(197, 14, 151); /* Initial glow */
             overflow: hidden;
             text-align: center;
+            animation: pulse-glow 2s ease-in-out infinite; /* Pulsing glow effect */
         }
 
-        /* Scrolling Text */
-        .scrolling-text-container {
-            width: 100%;
-            overflow: hidden;
-            margin-bottom: 10px;
-        }
-
-        .scrolling-text {
-            display: inline-block;
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            white-space: nowrap;
-            animation: scroll-left 20s linear infinite; /* Slower scroll speed */
-            padding-bottom: 5px;
-        }
-
-        @keyframes scroll-left {
+        @keyframes pulse-glow {
             0% {
-                transform: translateX(100%); /* Start the text off-screen */
+                box-shadow: 0 0 10px rgb(197, 14, 151), 0 0 20px rgb(197, 14, 151);
+            }
+            50% {
+                box-shadow: 0 0 20px rgb(255, 20, 147), 0 0 40px rgb(255, 20, 147); /* Stronger pink */
             }
             100% {
-                transform: translateX(-100%); /* Move the text to the left off-screen */
+                box-shadow: 0 0 10px rgb(197, 14, 151), 0 0 20px rgb(197, 14, 151);
             }
         }
 
-        /* Player Controls */
-        .player-controls {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            color: white;
-        }
+            /* Scrolling Text */
+            .scrolling-text-container {
+                width: 100%;
+                overflow: hidden;
+                margin-bottom: 10px;
+            }
 
-        /* Play/Pause Button */
-        .play-pause-btn, .mute-btn {
-            background-color: black;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+            .scrolling-text {
+                display: inline-block;
+                color: white;
+                font-size: 16px;
+                font-weight: bold;
+                white-space: nowrap;
+                animation: scroll-left 20s linear infinite;
+                padding-bottom: 5px;
+                min-width: 100%;
+                will-change: transform;
+            }
 
-        .play-pause-btn {
-            border: 2px solid rgb(197, 14, 151);
-            padding: 5px 10px;
-        }
+            @keyframes scroll-left {
+                0% {
+                    transform: translateX(100%);
+                }
+                100% {
+                    transform: translateX(-100%);
+                }
+            }
 
-        .play-pause-btn:hover {
-            background-color: rgb(197, 14, 151);
-            color: rgb(255, 255, 255);
-        }
+            /* Player Controls Layout */
+            .player-controls {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                color: white;
+            }
 
-        .mute-btn {
-            border: 2px solid rgb(197, 14, 151);
-            padding: 5px 10px;
-        }
+            /* Buttons */
+            .play-pause-btn,
+            .mute-btn {
+                background-color: black;
+                color: white;
+                border: 2px solid rgb(197, 14, 151);
+                border-radius: 5px;
+                padding: 5px 10px;
+                cursor: pointer;
+                transition: all 0.2s ease-in-out;
+            }
 
-        .mute-btn:hover {
-            
-            background-color: rgb(197, 14, 151);
-            color: rgb(248, 248, 248);
-        }
+            .play-pause-btn:hover,
+            .mute-btn:hover {
+                background-color: rgb(197, 14, 151);
+                color: white;
+            }
 
-        /* Seekbar */
-        .seekbar {
-            flex-grow: 1;
-            margin: 0 10px;
-            height: 5px;
-            background-color: rgb(247, 127, 217);
-            border-radius: 5px;
-            -webkit-appearance: none;
-        }
+            /* Seekbar */
+            .seekbar {
+                flex-grow: 1;
+                margin: 0 10px;
+                height: 5px;
+                border-radius: 5px;
+                -webkit-appearance: none;
+                background: transparent;
+            }
 
-        .seekbar::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 15px;
-            height: 15px;
-            background-color: rgb(197, 14, 151);
-            border-radius: 50%;
-            cursor: pointer;
-        }
+            .seekbar::-webkit-slider-runnable-track {
+                background-color: rgb(247, 127, 217);
+                height: 5px;
+                border-radius: 5px;
+            }
+            .seekbar::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 15px;
+                height: 15px;
+                background-color: rgb(197, 14, 151);
+                border-radius: 50%;
+                cursor: pointer;
+                margin-top: -5px;
+            }
+            .seekbar::-moz-range-track {
+                background-color: rgb(247, 127, 217);
+                height: 5px;
+                border-radius: 5px;
+            }
+            .seekbar::-moz-range-thumb {
+                width: 15px;
+                height: 15px;
+                background-color: rgb(197, 14, 151);
+                border-radius: 50%;
+                cursor: pointer;
+            }
 
-        /* Volume Control */
-        .volume-control {
-            width: 100px;
-            height: 5px;
-            background-color: rgb(197, 14, 151);
-            border-radius: 5px;
-            -webkit-appearance: none;
-        }
+            /* Volume Control */
+            .volume-control {
+                width: 100px;
+                height: 5px;
+                border-radius: 5px;
+                -webkit-appearance: none;
+                background: transparent;
+            }
 
-        .volume-control::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 15px;
-            height: 15px;
-            background-color: rgb(197, 14, 151);
-            border-radius: 50%;
-            cursor: pointer;
-        }
+            .volume-control::-webkit-slider-runnable-track {
+                background-color: rgb(197, 14, 151);
+                height: 5px;
+                border-radius: 5px;
+            }
+            .volume-control::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 15px;
+                height: 15px;
+                background-color: rgb(197, 14, 151);
+                border-radius: 50%;
+                cursor: pointer;
+                margin-top: -5px;
+            }
+            .volume-control::-moz-range-track {
+                background-color: rgb(197, 14, 151);
+                height: 5px;
+                border-radius: 5px;
+            }
+            .volume-control::-moz-range-thumb {
+                width: 15px;
+                height: 15px;
+                background-color: rgb(197, 14, 151);
+                border-radius: 50%;
+                cursor: pointer;
+            }
+
+            /* Focus for Accessibility */
+            button:focus,
+            input[type="range"]:focus {
+                outline: none;
+                box-shadow: 0 0 0 2px rgba(197, 14, 151, 0.5);
+            }
+ 
 
     </style>
 
@@ -518,19 +567,20 @@
         <div class="scrolling-text-container">
             <div class="scrolling-text">Play Ruthless OST by Latrelle</div>
         </div>
+
         <!-- Custom Audio Player -->
         <div class="player-controls">
             <!-- Play/Pause Button -->
-            <button id="playPauseBtn" class="play-pause-btn">Play</button>
+            <button id="playPauseBtn" class="play-pause-btn" aria-label="Play or Pause">Play</button>
 
             <!-- Seekbar -->
-            <input type="range" id="seekbar" class="seekbar" value="0" max="100">
+            <input type="range" id="seekbar" class="seekbar" value="0" max="100" aria-label="Seek bar">
 
             <!-- Mute Button -->
-            <button id="muteBtn" class="mute-btn">Mute</button>
+            <button id="muteBtn" class="mute-btn" aria-label="Mute or Unmute">Mute</button>
 
             <!-- Volume Control -->
-            <input type="range" id="volumeControl" class="volume-control" value="70" min="0" max="100">
+            <input type="range" id="volumeControl" class="volume-control" value="70" min="0" max="100" aria-label="Volume control">
         </div>
 
         <!-- Audio Player -->
@@ -561,42 +611,67 @@
         }
         setInterval(updatePlayerCount, 5000); // Update every 5 seconds
         updatePlayerCount(); // Initial call
-        </script>
+    </script>
     
 
-        <script>
-            const audio = new Audio('https://cdn.jsdelivr.net/gh/kuyajepgaming/ruthlessroleplay/Ruthless%20OST.mp3'); // Link your audio file
-            const playPauseBtn = document.querySelector('.play-pause-btn');
-            const muteBtn = document.querySelector('.mute-btn');
-            const volumeControl = document.querySelector('.volume-control');
-            const volumeDisplay = document.querySelector('.volume-display');
-            
-            // Play/Pause Button
-            playPauseBtn.addEventListener('click', () => {
-                if (audio.paused) {
-                    audio.play();
-                    playPauseBtn.textContent = 'Pause';
-                } else {
-                    audio.pause();
-                    playPauseBtn.textContent = 'Play';
-                }
-            });
-
-            // Mute Button
-            muteBtn.addEventListener('click', () => {
-                audio.muted = !audio.muted;
-                muteBtn.textContent = audio.muted ? 'Unmute' : 'Mute';
-            });
-
-            // Volume Control
-            volumeControl.addEventListener('input', () => {
-                audio.volume = volumeControl.value / 100;  // Set volume (0 to 1)
-                volumeDisplay.textContent = `${volumeControl.value}%`; // Display volume level
-            });
-
-            // Set initial volume
+    <script>
+        // Dynamically load the audio
+        const audio = new Audio('https://cdn.jsdelivr.net/gh/kuyajepgaming/ruthlessroleplay/Ruthless%20OST.mp3');
+        audio.preload = 'auto';
+        audio.autoplay = true;
+        audio.muted = true; // Required to autoplay in some browsers
+    
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const muteBtn = document.getElementById('muteBtn');
+        const seekbar = document.getElementById('seekbar');
+        const volumeControl = document.getElementById('volumeControl');
+    
+        // Remove mute on user interaction (required by browsers)
+        window.addEventListener('click', () => {
+            if (audio.muted) {
+                audio.muted = false;
+            }
+        }, { once: true });
+    
+        // Play/Pause toggle
+        playPauseBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playPauseBtn.textContent = 'Pause';
+            } else {
+                audio.pause();
+                playPauseBtn.textContent = 'Play';
+            }
+        });
+    
+        // Update seekbar as audio plays
+        audio.addEventListener('timeupdate', () => {
+            if (!isNaN(audio.duration)) {
+                const progress = (audio.currentTime / audio.duration) * 100;
+                seekbar.value = progress || 0;
+            }
+        });
+    
+        // Seek to position when seekbar is moved
+        seekbar.addEventListener('input', () => {
+            const seekTime = (seekbar.value / 100) * audio.duration;
+            audio.currentTime = seekTime;
+        });
+    
+        // Mute/Unmute toggle
+        muteBtn.addEventListener('click', () => {
+            audio.muted = !audio.muted;
+            muteBtn.textContent = audio.muted ? 'Unmute' : 'Mute';
+        });
+    
+        // Volume control
+        volumeControl.addEventListener('input', () => {
             audio.volume = volumeControl.value / 100;
-        </script>
+        });
+    
+        // Set default volume
+        audio.volume = 0.7;
+    </script>
 
 </body>
 
