@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruthless Roleplay - Home</title>
+
+    <style>
+        :root {
+            --header-gap: 900px;
+            --logo-margin-left: -7.5px;
+            --footer-gap: 30px;
+            --footer-padding: 15px;
+            --playerbox-top: 150px;
+        }
+
+        /* Global body styles */
+        body {
+            margin: 0;
+            padding-top: 67.5px;
+            font-family: Arial, sans-serif;
+            background-color: #19181c;
+            background-image: url('https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/backgroundimage.png?raw=true');
+            background-size: 45% auto;
+            background-position: 700px 20px;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        /* Header box */
+        header {
+            position: fixed;
+            top: 18.75px;
+            left: 50%;
+            margin-left: -600px;  /* Offset to center the header */
+            display: flex;
+            width: 1200px;
+            align-items: center;
+            justify-content: space-between;  /* Align items to the left and right edges */
+            padding: 12px 22.5px;
+            background: linear-gradient(to bottom, #181717 25%, #19181c 50%, #0e0d0d 75%); /* Dark gray edges with wider background color */
+            border: 1px solid #f51fa3;
+            border-radius: 9px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4), 0 10px 6px rgba(0, 0, 0, 0.2); /* Creates the folded paper effect */
+            z-index: 1000;
+        }
+
+        /* Discord icon container (circular button) */
+        .discord-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-left: auto;  /* Push the container to the right */
+            margin-right: 0px;  /* Equal spacing on the right side of the Discord button */
+        }
+
+        /* Discord icon container (circular button) */
+        .discord-circle {
+            position: relative;
+            width: 37px;
+            height: 37px;
+            border-radius: 50%;
+            background: linear-gradient(to bottom left, #b0005b, #ff66cc);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 10px rgba(255, 0, 119, 0.6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            overflow: hidden; /* Prevent text from spilling out of the circle */
+        }
+
+        /* Discord icon */
+        .discord-icon {
+            width: 22.5px;
+            height: 22.5px;
+            transition: transform 0.3s ease;
+        }
+
+        /* Hover effect for Discord icon */
+        .discord-circle:hover {
+            transform: scale(1.4);
+            box-shadow: 0 0 30px rgba(255, 0, 119, 1);
+        }
+
+        .discord-circle:hover .discord-icon {
+            transform: rotate(360deg);
+        }
+
+        /* Text for "JOIN DISCORD" */
+        .join-discord-text {
+            position: absolute;
+            top: 100%; 
+            left: 50%; 
+            transform: translateX(-50%) translateY(10px); 
+            color: white;
+            font-size: 0.75rem; 
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            text-align: center; 
+            display: block; 
+            white-space: nowrap;
+        }
+
+        /* Show the text when hovering over the circle */
+        .discord-circle:hover + .join-discord-text {
+            opacity: 1;
+            transform: translateX(-50%) translateY(20px); 
+        }
+
+        /* Footer Box */
+        footer {
+            position: fixed;
+            bottom: 18.75px;
+            left: 50%;
+            transform: translateX(-50%);  /* Centers the footer */
+            display: flex;
+            align-items: center;
+            justify-content: center;  /* Centers the content inside the footer */
+            padding: 11.25px 22.5px;
+            width: 1200px;
+            background: linear-gradient(to bottom, #181717 25%, #19181c 50%, #0e0d0d 75%); /* Dark gray edges with wider background color */
+            border: 1px solid #f51fa3;
+            border-radius: 9px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.733), 0 4px 6px rgba(15, 5, 5, 0.89); /* Same folded shadow effect */
+            z-index: 1000;
+        }
+
+        /* Footer Text */
+        .footer-text {
+            color: white;
+            font-size: 0.75rem;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <img class="logo" src="https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/logo_header_small/RUTHLESS%20RP%20ICON%20BIG.svg?raw=true" alt="Ruthless RP Logo">
+    
+        <!-- Discord logo wrapped in an anchor tag to make it clickable -->
+        <a href="https://discord.gg/3JrSpwRVYV" target="_blank" class="discord-container">
+            <div class="discord-circle">
+                <img class="discord-icon" src="https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/logo_header_small/discordicon_inactive.png?raw=true" alt="Discord Icon">
+            </div>
+        </a>
+    </header>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-text">
+            © 2025 Ruthless Roleplay | All Rights Reserved
+        </div>
+    </footer>
+    
+</body>
+
+</html>
