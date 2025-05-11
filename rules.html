@@ -1,140 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ruthless Roleplay - Home</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ruthless Roleplay - Rules</title>
 
-    <style>
-        :root {
-            --header-gap: 900px;
-            --logo-margin-left: -7.5px;
-        }
+  <style>
+    :root {
+      --logo-margin-left: -7.5px;
+    }
 
-        /* Global body styles */
-        body {
-            margin: 0;
-            padding-top: 67.5px;
-            font-family: Arial, sans-serif;
-            background-color: #19181c;
-            background-image: url('https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/backgroundimage.png?raw=true');
-            background-size: 45% auto;
-            background-position: 700px 20px;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-        }
+    /* Global styles */
+    body {
+      margin: 0;
+      padding-top: 90px;
+      font-family: Arial, sans-serif;
+      background-color: #19181c;
+      background-image: url('https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/backgroundimage.png?raw=true');
+      background-size: 45% auto;
+      background-position: 700px 20px;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      color: white;
+    }
 
-        /* Header box */
-        header {
-            position: fixed;
-            top: 18.75px;
-            left: 50%;
-            margin-left: -600px;  /* Offset to center the header */
-            display: flex;
-            width: 1200px;
-            align-items: center;
-            justify-content: space-between;  /* Align items to the left and right edges */
-            padding: 12px 22.5px;
-            background: linear-gradient(to bottom, #181717 25%, #19181c 50%, #0e0d0d 75%); /* Dark gray edges with wider background color */
-            border: 1px solid #f51fa3;
-            border-radius: 9px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4), 0 10px 6px rgba(0, 0, 0, 0.2); /* Creates the folded paper effect */
-            z-index: 1000;
-        }
+    /* Header */
+    header {
+      position: fixed;
+      top: 18.75px;
+      left: 50%;
+      margin-left: -600px;
+      width: 1200px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 22.5px;
+      background: linear-gradient(to bottom, #181717 25%, #19181c 50%, #0e0d0d 75%);
+      border: 1px solid #f51fa3;
+      border-radius: 9px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4), 0 10px 6px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }
 
-        /* Logo */
-        header .logo {
-            height: 45px;
-            margin-left: var(--logo-margin-left);
-        }
+    header .logo {
+      height: 45px;
+      margin-left: var(--logo-margin-left);
+    }
 
-        /* Discord icon container (circular button) */
-        .discord-container {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            margin-left: auto;  /* Push the container to the right */
-            margin-right: 0px;  /* Equal spacing on the right side of the Discord button */
-        }
+    .discord-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
 
-        /* Discord icon container (circular button) */
-        .discord-circle {
-            position: relative;
-            width: 37px;
-            height: 37px;
-            border-radius: 50%;
-            background: linear-gradient(to bottom left, #b0005b, #ff66cc);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 0 10px rgba(255, 0, 119, 0.6);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-            overflow: hidden; /* Prevent text from spilling out of the circle */
-        }
+    .discord-circle {
+      width: 37px;
+      height: 37px;
+      border-radius: 50%;
+      background: linear-gradient(to bottom left, #b0005b, #ff66cc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 0 10px rgba(255, 0, 119, 0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+    }
 
-        /* Discord icon */
-        .discord-icon {
-            width: 22.5px;
-            height: 22.5px;
-            transition: transform 0.3s ease;
-        }
+    .discord-icon {
+      width: 22.5px;
+      height: 22.5px;
+      transition: transform 0.3s ease;
+    }
 
-        /* Hover effect for Discord icon */
-        .discord-circle:hover {
-            transform: scale(1.4);
-            box-shadow: 0 0 30px rgba(255, 0, 119, 1);
-        }
+    .discord-circle:hover {
+      transform: scale(1.4);
+      box-shadow: 0 0 30px rgba(255, 0, 119, 1);
+    }
 
-        .discord-circle:hover .discord-icon {
-            transform: rotate(360deg);
-        }
+    .discord-circle:hover .discord-icon {
+      transform: rotate(360deg);
+    }
 
-        /* Text for "JOIN DISCORD" */
-        .join-discord-text {
-            position: absolute;
-            top: 100%; 
-            left: 50%; 
-            transform: translateX(-50%) translateY(10px); 
-            color: white;
-            font-size: 0.75rem; 
-            font-weight: bold;
-            opacity: 0;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            text-align: center; 
-            display: block; 
-            white-space: nowrap;
-        }
+    /* Main rules section */
+    .rules-wrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* This ensures child boxes are centered */
+      padding: 30px 20px;
+    }
 
-        /* Show the text when hovering over the circle */
-        .discord-circle:hover + .join-discord-text {
-            opacity: 1;
-            transform: translateX(-50%) translateY(20px); 
-        }
-    </style>
+    .rule-section {
+      width: 100%;
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .rule-text {
+      font-size: 1.6rem; /* Same size for the clickable text */
+      font-weight: bold;
+      color: #ff66cc;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: transform 0.3s ease, text-shadow 0.3s ease;
+      display: inline-block;
+      padding: 10px 15px;
+      background: none; /* Removed the background box */
+      border: none; /* Removed the border */
+      box-shadow: none; /* Removed the box-shadow */
+    }
+
+    .rule-text:hover {
+      transform: scale(1.1);
+      text-shadow: 0 0 10px rgba(255, 0, 119, 0.9); /* Maintains the glow effect */
+    }
+
+    /* Content box around the revealed content */
+    .rule-content {
+      display: block;
+      margin-top: 10px;
+      font-size: 0.95rem; /* Slightly smaller content */
+      line-height: 1.4; /* Adjusted line spacing */
+      text-align: justify;
+      width: 1000px;
+      margin: 20px auto; /* Center the box with margin auto */
+      background-color: #2b292f;
+      border: 1px solid #f51fa3;
+      border-radius: 5px;
+      padding: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      display: none;
+      margin-top: 10px;
+      font-size: 0.95rem; /* Adjusted font size (3px smaller) */
+      line-height: 1; /* Reduced line spacing */
+      text-align: center;
+    }
+
+    .rule-content.show {
+      display: block;
+    }
+
+    /* Footer Box */
+    footer {
+        position: fixed;
+        bottom: 18.75px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 11.25px 22.5px;
+        width: 1200px;
+        background: linear-gradient(to bottom, #181717 25%, #19181c 50%, #0e0d0d 75%);
+        border: 1px solid #f51fa3;
+        border-radius: 9px;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.733), 0 4px 6px rgba(15, 5, 5, 0.89);
+        z-index: 1000;
+    }
+
+    /* Footer Text */
+    .footer-text {
+        color: white;
+        font-size: 0.75rem;
+        white-space: nowrap;
+    }
+  </style>
 </head>
 
 <body>
 
-    <header>
-        <!-- Logo wrapped in an anchor tag to redirect to the homepage -->
-        <a href="/" target="_self">
-          <img class="logo" src="https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/logo_header_small/RUTHLESS%20RP%20ICON%20BIG.svg?raw=true" alt="Ruthless RP Logo">
-      </a>
+  <!-- Header -->
+  <header>
+    <a href="/" target="_self">
+      <img class="logo" src="https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/logo_header_small/RUTHLESS%20RP%20ICON%20BIG.svg?raw=true" alt="Ruthless RP Logo">
+    </a>
+    <a href="https://discord.gg/3JrSpwRVYV" target="_blank" class="discord-container">
+      <div class="discord-circle">
+        <img class="discord-icon" src="https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/logo_header_small/discordicon_inactive.png?raw=true" alt="Discord Icon">
+      </div>
+    </a>
+  </header>
 
-        <!-- Discord logo wrapped in an anchor tag to make it clickable -->
-        <a href="https://discord.gg/3JrSpwRVYV" target="_blank" class="discord-container">
-            <div class="discord-circle">
-                <img class="discord-icon" src="https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/logo_header_small/discordicon_inactive.png?raw=true" alt="Discord Icon">
-            </div>
-        </a>
+  <!-- Main Rule Sections -->
+  <main>
+    <div class="rules-wrapper">
+      <!-- Goals and Philosophy Section -->
+      <div class="rule-section">
+        <div class="rule-text" onclick="toggleContent(this)">Goals and Philosophy</div>
+        
+        <div class="rule-content">
+        </div>
+      </div>
 
-    </header>
+      <!-- Community Rules Section -->
+      <div class="rule-section">
+        <div class="rule-text" onclick="toggleContent(this)">Community Rules</div>
+
+        <div class="rule-content">
+        </div>
+      </div>
+
+      <!-- General Rules Section -->
+      <div class="rule-section">
+        <div class="rule-text" onclick="toggleContent(this)">General Rules</div>
+
+        <div class="rule-content">
+        </div>
+      </div>
+
+      <!-- Conflicts and Illegal Rules Section -->
+      <div class="rule-section">
+        <div class="rule-text" onclick="toggleContent(this)">Conflicts and Illegal Rules</div>
+        <div class="rule-content">
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+      <div class="footer-text">
+          © 2025 Ruthless Roleplay | All Rights Reserved
+      </div>
+  </footer>
+
+  <script>
+    function toggleContent(element) {
+      const content = element.nextElementSibling;
+      content.classList.toggle('show');
+    }
+  </script>
 
 </body>
-
 </html>
