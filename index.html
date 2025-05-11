@@ -321,7 +321,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 450px;
+            height: 320px;
             
             /* Add background image when the content is expanded */
             background-image: url('https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/logo_header_small/RuthlessRPIcon%2025%25.png?raw=true');
@@ -385,7 +385,7 @@
             max-width: 1100px;
             clear: both;
             overflow: visible;
-            height: 450px;
+            height: 320px;
             position: relative;
         }
     
@@ -426,7 +426,7 @@
                 float: none;
                 margin: 15px auto;
                 height: auto;
-                min-height: 300px;
+                min-height: 320px;
             }
             
             .image-section img {
@@ -479,7 +479,7 @@
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            width: 600px;
+            width: 450px;
             height: 120px;
             background-color: rgba(25, 24, 28, 0.8);
             border: 1px solid #f51fa3;
@@ -945,6 +945,7 @@
             const durationDisplay = document.getElementById("duration");
             const playerContainer = document.getElementById('audioPlayerContainer');
             const dragHandle = document.getElementById('dragHandle');
+            const cdImage = document.querySelector('.cd-image');
     
             let isPlaying = false;
             let isMuted = false;
@@ -1038,9 +1039,12 @@
                 if (isPlaying) {
                     audioPlayer.pause();
                     playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    cdImage.style.animationPlayState = 'paused'; // Pause CD spinning
                 } else {
                     audioPlayer.play();
                     playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    cdImage.style.animationPlayState = 'running'; // Start CD spinning
+
                 }
                 isPlaying = !isPlaying;
             });
@@ -1096,13 +1100,17 @@
                 const duration = audioPlayer.duration;
                 if (!isNaN(duration)) {
                     seekbar.value = (currentTime / duration) * 100;
-        
                     // Update current time display
                     currentTimeDisplay.textContent = formatTime(currentTime);
                     
                     // Update duration display as a countdown (time remaining)
                     const timeRemaining = duration - currentTime;
                     durationDisplay.textContent = "-" + formatTime(timeRemaining);
+                    
+                    // Check if ended and reset CD spinning
+                    if (audioPlayer.currentTime >= audioPlayer.duration) {
+                        cdImage.style.animationPlayState = 'paused';
+                    }
                 }
             });
     
@@ -1126,6 +1134,7 @@
             if (!audioPlayer.paused) {
                 playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
                 isPlaying = true;
+                cdImage.style.animationPlayState = 'running'; // Start CD spinning if music is playing
             }
         });
 </script>
