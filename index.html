@@ -261,7 +261,7 @@
         /* About Us Box */
         .about-us-wrapper {
             width: 300px;  /* Adjust the width to a smaller size */
-            position: fixed; /* Fixed position to keep it in place */
+            position: absolute; /* Fixed position to keep it in place */
             top: 400px; /* Adjust the top value for vertical positioning */
             right: 400px; /* Adjust the right value for horizontal positioning */
             padding: 10px 30px 45px 30px;  /* top, right, bottom, left */
@@ -342,6 +342,113 @@
 
         }
 
+    /* Audio Player - Centered and Fixed */
+        .audio-player {
+            position: absolute;
+            top: 90%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            width: 320px;
+            background-color: black;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        /* Scrolling text container */
+        .scrolling-text-container {
+            width: 300px; /* Limit width of scrollable text */
+            overflow: hidden;
+            margin: 0 auto 10px auto; /* Center and add spacing below */
+        }
+
+        /* Scrolling Text */
+        .scrolling-text {
+            display: inline-block;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            white-space: nowrap;
+            animation: scroll-left 20s linear infinite;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Player Controls */
+        .player-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            margin-top: 10px;
+        }
+
+        /* Buttons */
+        .play-pause-btn,
+        .mute-btn {
+            background-color: black;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .play-pause-btn {
+            border: 1px solid rgb(197, 14, 151);
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .play-pause-btn:hover {
+            background-color:rgb(197, 14, 151);
+            color: rgb(255, 255, 255);
+        }
+
+        .mute-btn {
+            border: 1px solid rgb(197, 14, 151);
+            padding: 5px 10px;
+        }
+
+        .mute-btn:hover {
+            background-color: rgb(197, 14, 151);
+            color: rgb(255, 255, 255);
+            padding: 5px 10px;
+        }
+
+        /* Seekbar */
+        .seekbar {
+            flex-grow: 1;
+            margin: 0 10px;
+            height: 5px;
+            background-color:rgb(243, 102, 208);
+            border-radius: 5px;
+            -webkit-appearance: none;
+        }
+
+        .seekbar::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            background-color: rgb(197, 14, 151);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        /* Volume Display */
+        .volume-display {
+            margin-left: 10px;
+        }
+
     </style>
 
 </head>
@@ -394,6 +501,23 @@
         <img src="https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/K_Website_Image.png?raw=true" alt="K Monkey Mask">
     </div>
 
+    <!-- Audio player for Ruthless OST -->
+        <div class="audio-player">
+            <!-- Scrolling Text Inside Player -->
+             <div class="scrolling-text-container">
+                  <div class="scrolling-text">Ruthless OST by Latrelle</div>
+              </div>
+            <!-- Custom Audio Player -->
+            <div class="player-controls">
+                <button id="playPauseBtn" class="play-pause-btn">Play</button>
+                <input type="range" id="seekbar" class="seekbar" value="0" max="100">
+                <button id="muteBtn" class="mute-btn">Mute</button>
+                <span id="volumeDisplay" class="volume-display">Volume: 70%</span>
+            </div>
+            <audio id="audioPlayer" src="https://cdn.jsdelivr.net/gh/kuyajepgaming/ruthlessroleplay/Ruthless%20OST.mp3" preload="auto" autoplay muted></audio>
+        </div>
+
+
     <footer>
         <div class="footer-text">
             © 2025 Ruthless Roleplay | All Rights Reserved
@@ -415,11 +539,62 @@
                     console.error('Error fetching player count:', err);
                 });
         }
-    
         setInterval(updatePlayerCount, 5000); // Update every 5 seconds
         updatePlayerCount(); // Initial call
-    </script>
+        </script>
     
+
+        <script>
+            const audio = document.getElementById('audioPlayer');
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            const muteBtn = document.getElementById('muteBtn');
+            const seekbar = document.getElementById('seekbar');
+            const volumeDisplay = document.getElementById('volumeDisplay');
+
+            // Volume Control
+            audio.volume = 0.4;
+
+            // Unmute after loading to allow autoplay
+            window.addEventListener('load', () => {
+                audio.muted = false;
+                audio.play();
+            });
+
+            // Play/Pause functionality
+            playPauseBtn.addEventListener('click', () => {
+                if (audio.paused) {
+                    audio.play();
+                    playPauseBtn.textContent = 'Pause';
+                } else {
+                    audio.pause();
+                    playPauseBtn.textContent = 'Play';
+                }
+            });
+
+            // Mute/Unmute functionality
+            muteBtn.addEventListener('click', () => {
+                if (audio.muted) {
+                    audio.muted = false;
+                    muteBtn.textContent = 'Mute';
+                } else {
+                    audio.muted = true;
+                    muteBtn.textContent = 'Unmute';
+                }
+            });
+
+            // Update seekbar as the audio plays
+            audio.addEventListener('timeupdate', () => {
+                const progress = (audio.currentTime / audio.duration) * 100;
+                seekbar.value = progress;
+            });
+
+            // Seek functionality
+            seekbar.addEventListener('input', () => {
+                const seekTo = (seekbar.value / 100) * audio.duration;
+                audio.currentTime = seekTo;
+            });
+        </script>
+
 </body>
 
 </html>
