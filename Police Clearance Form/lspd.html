@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Display on Document Image</title>
+  <style>
+    /* Global Styles */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #121212;
+    }
+
+    /* Main Container (for left and right alignment) */
+    .container {
+      display: flex;
+      justify-content: space-between;
+      width: 80%;
+      height: 80%;
+      position: relative;
+    }
+
+    /* Form Styles */
+    .form-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 2;
+      position: relative;
+      width: 40%;
+    }
+
+    .form-container input, .form-container textarea, .form-container select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    .form-container button {
+      padding: 10px 20px;
+      background-color: #ff2f92;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .form-container button:hover {
+      background-color: #e02b7b;
+    }
+
+    /* Document Image */
+    .document-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://via.placeholder.com/800x600.png?text=Document+Image');
+      background-size: cover;
+      background-position: center;
+      z-index: 1;
+      opacity: 0.5; /* Make image semi-transparent */
+    }
+
+    /* Display input data */
+    .data-display {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      z-index: 3;
+      max-width: 80%;
+      text-align: center;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Left Side: Form -->
+    <div class="form-container">
+      <h2>Fill out the form</h2>
+      <form id="userForm" onsubmit="return displayData(event)">
+        <!-- Date Field -->
+        <input type="date" id="date" required>
+
+        <!-- Citizen Name Field -->
+        <input type="text" id="name" placeholder="Enter Citizen Name" required>
+
+        <!-- Citizen ID Field -->
+        <input type="text" id="idNumber" placeholder="Enter Citizen ID Number" required>
+
+        <!-- Summary Box -->
+        <textarea id="summary" placeholder="Enter Summary" rows="4" required></textarea>
+
+        <!-- Submit Button -->
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <!-- Right Side: Display Form Data (Initially Hidden) -->
+    <div class="data-display" id="dataDisplay"></div>
+  </div>
+
+  <!-- Document Background Image -->
+  <div class="document-image"></div>
+
+  <script>
+    // Function to display form data on the document image
+    function displayData(event) {
+      event.preventDefault(); // Prevent form from refreshing the page
+
+      // Get values from form inputs
+      const date = document.getElementById("date").value;
+      const name = document.getElementById("name").value;
+      const idNumber = document.getElementById("idNumber").value;
+      const summary = document.getElementById("summary").value;
+
+      // Get the data display container
+      const dataDisplay = document.getElementById("dataDisplay");
+
+      // Update the content inside the data display container
+      dataDisplay.innerHTML = `
+        <h3>Date: ${date}</h3>
+        <h4>Citizen Name: ${name}</h4>
+        <h4>Citizen ID: ${idNumber}</h4>
+        <p>Summary: ${summary}</p>
+      `;
+
+      // Optionally, clear the form after submission
+      document.getElementById("userForm").reset();
+
+      // Show the data display after form submission
+      dataDisplay.style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
