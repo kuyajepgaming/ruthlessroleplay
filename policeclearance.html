@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Police Clearance Form</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <!-- Arial Font -->
+  <style>
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #e0e0e0;
+      overflow: hidden;
+      font-size: 12px;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+      overflow: visible;
+    }
+
+    .form-section {
+      width: 40%;
+      padding: 20px;
+      background-color: #f4f4f4;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .form-section h2 {
+      margin-bottom: 20px;
+    }
+
+    .form-section label {
+      display: block;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    .form-section input,
+    .form-section textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      resize: vertical;
+    }
+
+    .display-section {
+      width: 60%;
+      background-color: #fff;
+    }
+
+    .output-area {
+      position: relative;
+      width: 1000px;
+      height: 750px;
+      background-image: url('https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Police%20Clearance%20Form/CriminalRecordsTemplate2.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .output {
+      position: absolute;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      font-weight: bold;
+      color: #000;
+      cursor: move;
+    }
+
+    #displayDate     { top: 98px; left: 659px; }
+    #displayName     { top: 148px; left: 250px; }
+    #displayId       { top: 191px; left: 250px; }
+    #displayPlaceOfBirth { top: 235px; left: 250px; }
+    #displayComments { top: 290px; left: 250px; height: 200px; width: 500px; line-height: 1.6; white-space: pre-wrap; word-wrap: break-word; }
+    #displayOfficerContainer { top: 645px; left: 230px; }
+    #displayOfficer, #displayRank, #displayBadgeNumber { margin-bottom: 5px; }
+    #displayDepartment { top: 345px; left: 50px; font-size: 13px; margin-top: 8px; }
+    #displaySignature { top: 612px; left: 230px; font-size: 20px; margin-top: 8px; }
+
+    /* Checklist Section */
+    #checklistDisplay {
+      top: 450px;
+      left: 50px;
+      width: 500px;
+      max-height: 500px;
+      overflow-y: auto;
+      line-height: 1.2;
+      font-size: 12px;
+      padding-right: 10px;
+    }
+
+    #checklistOutputContainer {
+      position: absolute;
+      font-size: 9px;
+      line-height: 1.4;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      top: 155px;
+      left: 480px;
+      width: 300px;
+      height: 500px;
+      overflow-y: auto;
+    }
+
+    .checklist-row {
+      display: flex;
+      align-items: center;
+    }
+
+    .checkmark-column {
+      flex: 0 0 20px;
+      text-align: center;
+    }
+
+    .description-column {
+      flex: 1;
+      padding-left: 10px;
+    }
+
+    #checklistOutput {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    #checklistOutput > div {
+      display: flex;
+      width: 100%;
+      margin-bottom: 5px;
+    }
+
+    #checklistDisplay ul {
+      padding-left: 0;
+      margin: 5px 0;
+      list-style-type: none;
+    }
+
+    #checklistDisplay li {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    #checklistDisplay .checkmark {
+      flex: 0 0 20px;
+      text-align: center;
+      margin-right: 10px;
+      width: 200px;
+    }
+
+    #checklistDisplay .description {
+      flex: 1;
+      text-align: left;
+      justify-content: flex-start;
+      width: 500px;
+    }
+
+    /* Styling for cursor on draggable elements */
+    .output {
+      cursor: move;
+    }
+
+    /* Placeholder-like style for output */
+    .placeholder {
+      color: rgb(65, 40, 40);
+    }
+
+    #displayComments {
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      border: none;
+      padding: 5px;
+      border-radius: 4px;
+    }
+
+    .checklist-item-box {
+      border: none;
+      padding: 15px;
+      width: 300px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .checkmark, .description {
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    #displaySignature {
+      font-family: 'Dancing Script', cursive;
+      color: black;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-section">
+      <h2>Fill Out Information</h2>
+      <form>
+        <label>Date:
+          <input type="date" id="date" />
+          Font Size: <input type="number" id="fontSizeDate" value="12" min="10" max="40" />
+        </label>
+        <label>Name of Applicant:
+          <input type="text" id="applicantName" />
+          Font Size: <input type="number" id="fontSizeName" value="12" min="10" max="40" />
+        </label>
+        <label>Citizen ID Number:
+          <input type="text" id="citizenId" />
+          Font Size: <input type="number" id="fontSizeId" value="12" min="10" max="40" />
+        </label>
+        <label>Place of Birth:
+          <input type="text" id="placeOfBirth" />
+          Font Size: <input type="number" id="fontSizePlaceOfBirth" value="12" min="10" max="40" />
+        </label>
+        <label>Comments:
+          <textarea id="comments" rows="4"></textarea>
+          Font Size: <input type="number" id="fontSizeComments" value="12" min="10" max="40" />
+        </label>
+        <label>Issuing Officer:
+          <input type="text" id="officer" />
+          Font Size: <input type="number" id="fontSizeOfficer" value="12" min="10" max="40" />
+        </label>
+        <label>Rank:
+          <input type="text" id="rank" />
+          Font Size: <input type="number" id="fontSizeRank" value="12" min="10" max="40" />
+        </label>
+        <label>Badge Number:
+          <input type="text" id="badgeNumber" />
+          Font Size: <input type="number" id="fontSizeBadge" value="12" min="10" max="40" />
+        </label>
+        <label>Signature:
+          <input type="text" id="signature" />
+          Font Size: <input type="number" id="fontSizeSignature" value="20" min="10" max="40" />
+        </label>
+
+        <label>Checklist:</label>
+        <div id="checklistDisplay">
+          <ul>
+            <li>
+              <div class="checkmark"><input type="checkbox" id="consentCheckbox" onclick="updateOutput()" /></div>
+              <div class="description">Acquired consent from the individual to do background check</div>
+            </li>
+            <li>
+              <div class="checkmark"><input type="checkbox" id="verificationCheckbox" onclick="updateOutput()" /></div>
+              <div class="description">Verified Identification (Citizen ID, Driver's License)</div>
+            </li>
+            <li>
+              <div class="checkmark"><input type="checkbox" id="fingerprintCheckbox" onclick="updateOutput()" /></div>
+              <div class="description">Collect fingerprints for cross-checking in criminal databases</div>
+            </li>
+            <li>
+              <div class="checkmark"><input type="checkbox" id="crossReferenceCheckbox" onclick="updateOutput()" /></div>
+              <div class="description">Cross-reference fingerprint data to identify any previous criminal records</div>
+            </li>
+            <li>
+              <div class="checkmark"><input type="checkbox" id="searchCheckbox" onclick="updateOutput()" /></div>
+              <div class="description">Search databases (e.g., State Databases) for any active warrants, arrests, or criminal history</div>
+            </li>
+            <li>
+              <div class="checkmark"><input type="checkbox" id="warrantCheckbox" onclick="updateOutput()" /></div>
+              <div class="description">Verify if there are any active warrants in the system</div>
+            </li>
+          </ul>
+        </div>
+
+        <button type="button" onclick="captureAndSend()">Print</button>
+
+      </form>
+    </div>
+
+    <div class="display-section">
+      <div class="output-area">
+        <div class="output placeholder" id="displayDate">[Enter Date]</div>
+        <div class="output placeholder" id="displayName">[Enter Name]</div>
+        <div class="output placeholder" id="displayId">[Enter Citizen ID]</div>
+        <div class="output placeholder" id="displayPlaceOfBirth">[Enter Place of Birth]</div>
+        <div class="output placeholder" id="displayComments">[Enter Comments]</div>
+        <div class="output placeholder" id="displaySignature">[Enter Signature]</div>
+
+        <!-- Officer, Rank, Badge Number and Department Output -->
+        <div class="output placeholder" id="displayOfficerContainer">
+          <div id="displayOfficer">[Enter Officer Name]</div>
+          <div id="displayRank">[Enter Rank]</div>
+          <div id="displayBadgeNumber">[Enter Badge Number]</div>
+
+          <!-- Department info below Officer, Rank, and Badge Number -->
+          <div id="displayDepartment">
+            <div id="missionRowPoliceDept">Mission Row Police Department</div>
+            <div id="losSantosSanAndreas">Los Santos, San Andreas</div>
+          </div>
+        </div>
+
+        <!-- Checklist Output Area -->
+        <div class="checklist-output-container" id="checklistOutputContainer">
+          <!-- This container will be dynamically adjusted -->
+          <div id="checklistOutput">
+            <div class="checklist-row"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+function updateOutput() {
+  document.getElementById('displayDate').textContent = document.getElementById('date').value || '[Enter Date]';
+  document.getElementById('displayName').textContent = document.getElementById('applicantName').value || '[Enter Name]';
+  document.getElementById('displayId').textContent = document.getElementById('citizenId').value || '[Enter Citizen ID]';
+  document.getElementById('displayPlaceOfBirth').textContent = document.getElementById('placeOfBirth').value || '[Enter Place of Birth]';
+  document.getElementById('displayComments').textContent = document.getElementById('comments').value || '[Enter Comments]';
+  document.getElementById('displayOfficer').textContent = document.getElementById('officer').value || '[Enter Officer Name]';
+  document.getElementById('displayRank').textContent = document.getElementById('rank').value || '[Enter Rank]';
+
+  const badge = document.getElementById('badgeNumber').value || '[Enter Badge Number]';
+  document.getElementById('displayBadgeNumber').textContent = badge !== '[Enter Badge Number]' ? 'Badge # ' + badge : '[Enter Badge Number]';
+
+  document.getElementById('displaySignature').textContent = document.getElementById('signature').value || '[Enter Signature]';
+
+  // Set individual font sizes
+  document.getElementById('displayDate').style.fontSize = document.getElementById('fontSizeDate').value + 'px';
+  document.getElementById('displayName').style.fontSize = document.getElementById('fontSizeName').value + 'px';
+  document.getElementById('displayId').style.fontSize = document.getElementById('fontSizeId').value + 'px';
+  document.getElementById('displayPlaceOfBirth').style.fontSize = document.getElementById('fontSizePlaceOfBirth').value + 'px';
+  document.getElementById('displayComments').style.fontSize = document.getElementById('fontSizeComments').value + 'px';
+  document.getElementById('displayOfficer').style.fontSize = document.getElementById('fontSizeOfficer').value + 'px';
+  document.getElementById('displayRank').style.fontSize = document.getElementById('fontSizeRank').value + 'px';
+  document.getElementById('displayBadgeNumber').style.fontSize = document.getElementById('fontSizeBadge').value + 'px';
+  document.getElementById('displaySignature').style.fontSize = document.getElementById('fontSizeSignature').value + 'px';
+
+  updateChecklistOutput();
+  }
+
+  function updateChecklistOutput() {
+    const checklistOutput = document.getElementById('checklistOutput');
+    const steps = [
+      { id: 'consentCheckbox', text: 'Acquired consent from the individual to do background check' },
+      { id: 'verificationCheckbox', text: 'Verified Identification (Citizen ID, Driver\'s License)' },
+      { id: 'fingerprintCheckbox', text: 'Collect fingerprints for cross-checking in criminal databases' },
+      { id: 'crossReferenceCheckbox', text: 'Cross-reference fingerprint data to identify any previous criminal records' },
+      { id: 'searchCheckbox', text: 'Search databases (e.g., State Databases) for any active warrants, arrests, or criminal history' },
+      { id: 'warrantCheckbox', text: 'Verify if there are any active warrants in the system' }
+    ];
+
+    checklistOutput.innerHTML = '';
+
+    steps.forEach(step => {
+      const checkbox = document.getElementById(step.id);
+      const checkmark = checkbox.checked ? '✔' : '✘';
+
+      const checklistRow = document.createElement('div');
+      checklistRow.className = 'checklist-row';
+
+      const checkmarkDiv = document.createElement('div');
+      checkmarkDiv.className = 'checkmark-column';
+      checkmarkDiv.textContent = checkmark;
+
+      const descriptionDiv = document.createElement('div');
+      descriptionDiv.className = 'description-column';
+      descriptionDiv.textContent = step.text;
+
+      checklistRow.appendChild(checkmarkDiv);
+      checklistRow.appendChild(descriptionDiv);
+      checklistOutput.appendChild(checklistRow);
+    });
+  }
+
+        // Trigger update on page load
+        window.onload = updateOutput;
+
+        // Auto-update on any input
+        document.querySelectorAll('input, textarea').forEach(input => {
+            input.addEventListener('input', updateOutput);
+        });
+
+        function captureAndSend() {
+            const element = document.querySelector('.output-area');
+
+            setTimeout(() => {
+                html2canvas(element, {
+                    useCORS: true,
+                    allowTaint: false
+                }).then(originalCanvas => {
+                    const fullWidth = originalCanvas.width;
+                    const fullHeight = originalCanvas.height;
+
+                    // Set how much to crop from the left and right
+                    const leftCrop = 230;  // pixels to crop from the left
+                    const rightCrop = 230; // pixels to crop from the right
+
+                    // Adjust the crop width and start position
+                    const cropX = leftCrop;
+                    const cropWidth = fullWidth - leftCrop - rightCrop; // remove pixels from both left and right
+                    const cropY = 0;
+                    const cropHeight = fullHeight;
+
+                    // 🖼️ Create a new cropped canvas
+                    const croppedCanvas = document.createElement('canvas');
+                    croppedCanvas.width = cropWidth;
+                    croppedCanvas.height = cropHeight;
+                    const ctx = croppedCanvas.getContext('2d');
+
+                    // 🎯 Draw the cropped area from the original canvas
+                    ctx.drawImage(
+                        originalCanvas,
+                        cropX, cropY, cropWidth, cropHeight, // source
+                        0, 0, cropWidth, cropHeight          // destination
+                    );
+
+                    // 💾 Convert to blob and send to Discord
+                    croppedCanvas.toBlob(blob => {
+                        const formData = new FormData();
+                        formData.append('file', blob, 'police_clearance_cropped.png');
+                        formData.append('content', '📄 Police Clearance Submission');
+
+                        const webhookUrl = 'https://discord.com/api/webhooks/1371995299484270613/piH7pgcfJMpKJZ2PpmdkfizcHzQqCk6XTDRTS8Vl_3hrKf-CT-2HlOvb_73xJOtLIelp';
+
+                        fetch(webhookUrl, {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(response => {
+                            if (response.ok) {
+                                alert('Cropped image sent to Discord successfully!');
+                            } else {
+                                alert('Failed to send cropped image.');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error sending cropped image:', error);
+                            alert('Error sending cropped image.');
+                        });
+                    }, 'image/png');
+                });
+            }, 500); // Small delay to ensure rendering
+        }
+
+</script>
+
+</body>
+</html>
