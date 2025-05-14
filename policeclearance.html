@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Police Clearance Form</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
+  <!-- Arial Font -->
+  <style>
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #e0e0e0;
+      overflow: hidden;
+      font-size: 12px;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+      overflow: visible;
+    }
+
+    .form-section {
+      width: 40%;
+      padding: 20px;
+      background-color: #f4f4f4;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .form-section h2 {
+      margin-bottom: 20px;
+    }
+
+    .form-section label {
+      display: block;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    .form-section input,
+    .form-section textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      resize: vertical;
+    }
+
+    .display-section {
+      width: 60%;
+      background-color: #fff;
+    }
+
+    .output-area {
+      position: relative;
+      width: 1000px;
+      height: 750px;
+      background-image: url('https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Police%20Clearance%20Form/CriminalRecordsTemplate2.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .output {
+      position: absolute;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      font-weight: bold;
+      color: #000;
+      cursor: move;
+    }
+
+    #displayDate     { top: 98px; left: 659px; }
+    #displayName     { top: 148px; left: 250px; }
+    #displayId       { top: 191px; left: 250px; }
+    #displayPlaceOfBirth { top: 235px; left: 250px; }
+    #displayComments { top: 290px; left: 250px; height: 200px; width: 500px; line-height: 1.6; white-space: pre-wrap; word-wrap: break-word; }
+    #displayOfficerContainer { top: 645px; left: 230px; }
+    #displayOfficer, #displayRank, #displayBadgeNumber { margin-bottom: 5px; }
+    #displayDepartment { top: 345px; left: 50px; font-size: 13px; margin-top: 8px; }
+
+    /* Checklist Section */
+    #checklistDisplay {
+      top: 450px;
+      left: 50px;
+      width: 500px;
+      max-height: 500px;
+      overflow-y: auto;
+      line-height: 1.2;
+      font-size: 12px;
+      padding-right: 10px;
+    }
+
+    #checklistOutputContainer {
+      position: absolute;
+      font-size: 9px;
+      line-height: 1.4;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      top: 155px;
+      left: 480px;
+      width: 300px;
+      height: 500px;
+      overflow-y: auto;
+    }
+
+    .checklist-row {
+      display: flex;
+      align-items: center;
+    }
+
+    .checkmark-column {
+      flex: 0 0 20px;
+      text-align: center;
+    }
+
+    .description-column {
+      flex: 1;
+      padding-left: 10px;
+    }
+
+    #checklistOutput {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    #checklistOutput > div {
+      display: flex;
+      width: 100%;
+      margin-bottom: 5px;
+    }
+
+    #checklistDisplay ul {
+      padding-left: 0;
+      margin: 5px 0;
+      list-style-type: none;
+    }
+
+    #checklistDisplay li {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    #checklistDisplay .checkmark {
+      flex: 0 0 20px;
+      text-align: center;
+      margin-right: 10px;
+      width: 200px;
+    }
+
+    #checklistDisplay .description {
+      flex: 1;
+      text-align: left;
+      justify-content: flex-start;
+      width: 500px;
+    }
+
+    /* Styling for cursor on draggable elements */
+    .output {
+      cursor: move;
+    }
+
+    /* Placeholder-like style for output */
+    .placeholder {
+      color: rgb(65, 40, 40);
+    }
+
+    #displayComments {
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      border: none;
+      padding: 5px;
+      border-radius: 4px;
+    }
+
+    .checklist-item-box {
+      border: none;
+      padding: 15px;
+      width: 300px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .checkmark, .description {
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-section">
+      <h2>Fill Out Information</h2>
+      <form>
+        <label>Date:
+          <input type="date" id="date" />
+        </label>
+        <label>Name of Applicant:
+          <input type="text" id="applicantName" />
+        </label>
+        <label>Citizen ID Number:
+          <input type="text" id="citizenId" />
+        </label>
+        <label>Place of Birth:
+          <input type="text" id="placeOfBirth" />
+        </label>
+        <label>Comments:
+          <textarea id="comments" rows="4"></textarea>
+        </label>
+        <label>Issuing Officer:
+          <input type="text" id="officer" />
+        </label>
+
+        <label>Rank:
+          <input type="text" id="rank" />
+        </label>
+
+        <label>Badge Number:
+          <input type="text" id="badgeNumber" />
+        </label>
+
+        <label>Signature:
+          <input type="text" id="signature" />
+        </label>
+
+        <label>Font Size:
+          <input type="number" id="fontSizeInput" value="12" min="10" max="40" />
+        </label>
+
+        <label>Checklist:</label>
+        <div id="checklistDisplay">
+          <ul>
+            <li>
+              <div class="checkmark"><input type="checkbox" id="consentCheckbox" onclick="updateOutput()" /></div>
+              <div class="description">Acquired consent from the individual to do background check</div>
+            </li>
+            <li>
+              <div class="checkmark"><input type="checkbox" id="verificationCheckbox" onclick="updateOutput()" /></div>
+              <div class="description">Verified Identification (Citizen ID, Driver's License)</div>
+            </li>
+            <li>
+              <div class="checkmark"><input type="checkbox" id="fingerprintCheckbox" onclick="updateOutput()" /></div>
+              <div class="description">Collect fingerprints for cross-checking in criminal databases</div>
+            </li>
+            <li>
+              <div class="checkmark"><input type="checkbox" id="crossReferenceCheckbox" onclick="updateOutput()" /></div>
+              <div class="description">Cross-reference fingerprint data to identify any previous criminal records</div>
+            </li>
+            <li>
+              <div class="checkmark"><input type="checkbox" id="searchCheckbox" onclick="updateOutput()" /></div>
+              <div class="description">Search databases (e.g., State Databases) for any active warrants, arrests, or criminal history</div>
+            </li>
+            <li>
+              <div class="checkmark"><input type="checkbox" id="warrantCheckbox" onclick="updateOutput()" /></div>
+              <div class="description">Verify if there are any active warrants in the system</div>
+            </li>
+          </ul>
+        </div>
+      </form>
+    </div>
+
+    <div class="display-section">
+      <div class="output-area">
+        <div class="output placeholder" id="displayDate">[Enter Date]</div>
+        <div class="output placeholder" id="displayName">[Enter Name]</div>
+        <div class="output placeholder" id="displayId">[Enter Citizen ID]</div>
+        <div class="output placeholder" id="displayPlaceOfBirth">[Enter Place of Birth]</div>
+        <div class="output placeholder" id="displayComments">[Enter Comments]</div>
+
+        <!-- Officer, Rank, Badge Number and Department Output -->
+        <div class="output placeholder" id="displayOfficerContainer">
+          <div id="displayOfficer">[Enter Officer Name]</div>
+          <div id="displayRank">[Enter Rank]</div>
+          <div id="displayBadgeNumber">[Enter Badge Number]</div>
+
+          <!-- Department info below Officer, Rank, and Badge Number -->
+          <div id="displayDepartment">
+            <div id="missionRowPoliceDept">Mission Row Police Department</div>
+            <div id="losSantosSanAndreas">Los Santos, San Andreas</div>
+          </div>
+        </div>
+
+        <!-- Checklist Output Area -->
+        <div class="checklist-output-container" id="checklistOutputContainer">
+          <!-- This container will be dynamically adjusted -->
+          <div id="checklistOutput">
+            <div class="checklist-row"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <script>
+  // Update all display fields
+    function updateOutput() {
+      const date = document.getElementById('date').value || '[Enter Date]';
+      const name = document.getElementById('applicantName').value || '[Enter Name]';
+      const id = document.getElementById('citizenId').value || '[Enter Citizen ID]';
+      const placeOfBirth = document.getElementById('placeOfBirth').value || '[Enter Place of Birth]';
+      const comments = document.getElementById('comments').value || '[Enter Comments]';
+      const officer = document.getElementById('officer').value || '[Enter Officer Name]';
+      const rank = document.getElementById('rank').value || '[Enter Rank]';
+      const badge = document.getElementById('badgeNumber').value || '[Enter Badge Number]';
+      const fontSize = document.getElementById('fontSizeInput').value;
+
+      document.getElementById('displayDate').textContent = date;
+      document.getElementById('displayName').textContent = name;
+      document.getElementById('displayId').textContent = id;
+      document.getElementById('displayPlaceOfBirth').textContent = placeOfBirth;
+      document.getElementById('displayComments').textContent = comments;
+      document.getElementById('displayOfficer').textContent = officer;
+      document.getElementById('displayRank').textContent = rank;
+      document.getElementById('displayBadgeNumber').textContent = badge;
+
+      // Update font size across all output elements
+      document.querySelectorAll('.output').forEach(el => {
+        el.style.fontSize = fontSize + 'px';
+      });
+
+      // Update checklist output
+      updateChecklistOutput();
+    }
+
+    // Dynamically update checklist section
+    function updateChecklistOutput() {
+      const checklistOutput = document.getElementById('checklistOutput');
+      const steps = [
+        { id: 'consentCheckbox', text: 'Acquired consent from the individual to do background check' },
+        { id: 'verificationCheckbox', text: 'Verified Identification (Citizen ID, Driver\'s License)' },
+        { id: 'fingerprintCheckbox', text: 'Collect fingerprints for cross-checking in criminal databases' },
+        { id: 'crossReferenceCheckbox', text: 'Cross-reference fingerprint data to identify any previous criminal records' },
+        { id: 'searchCheckbox', text: 'Search databases (e.g., State Databases) for any active warrants, arrests, or criminal history' },
+        { id: 'warrantCheckbox', text: 'Verify if there are any active warrants in the system' }
+      ];
+
+      checklistOutput.innerHTML = ''; // Clear previous output
+
+      steps.forEach(step => {
+        const checkbox = document.getElementById(step.id);
+        const checkmark = checkbox.checked ? '✔' : '✘';
+
+        const checklistRow = document.createElement('div');
+        checklistRow.className = 'checklist-row';
+
+        const checkmarkDiv = document.createElement('div');
+        checkmarkDiv.className = 'checkmark-column';
+        checkmarkDiv.textContent = checkmark;
+
+        const descriptionDiv = document.createElement('div');
+        descriptionDiv.className = 'description-column';
+        descriptionDiv.textContent = step.text;
+
+        checklistRow.appendChild(checkmarkDiv);
+        checklistRow.appendChild(descriptionDiv);
+        checklistOutput.appendChild(checklistRow);
+      });
+    }
+
+    // Trigger initial update on page load
+    window.onload = updateOutput;
+
+    // Optionally add input listeners to auto-update
+    document.querySelectorAll('input, textarea').forEach(input => {
+      input.addEventListener('input', updateOutput);
+    });
+
+    document.getElementById('fontSizeInput').addEventListener('input', updateOutput);
+
+</script>
+</body>
+</html>
