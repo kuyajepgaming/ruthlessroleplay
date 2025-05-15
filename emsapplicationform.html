@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EMS Application Form</title>
+  <style>
+    body {
+      background-color: #fdf5e6;
+      color: #222;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 2rem;
+      font-size: 12px;
+    }
+
+    .form-container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      display: block;
+      margin: 0 auto 1.5rem;
+      max-width: 150px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 16px;
+      margin-bottom: 1.5rem;
+    }
+
+    fieldset {
+      border: none;
+      margin-bottom: 1.5rem;
+      padding: 0;
+    }
+
+    legend {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      font-size: 13px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    label span {
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 12px;
+      resize: none;
+      background-color: #fdfdfd;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #0059ff;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    button:hover {
+      background-color: #0047cc;
+    }
+
+    .response-message {
+      text-align: center;
+      margin-top: 1rem;
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    .success {
+      color: #4CAF50;
+    }
+
+    .error {
+      color: #f44336;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Website%20Photos/PillboxLogo.png" alt="EMS Logo" class="logo" />
+    <h1>Pillbox Hill Medical Center Application</h1>
+    <form id="emsForm">
+      
+      <fieldset>
+        <legend>Personal Information</legend>
+        <label><span>Full Name:</span><input type="text" name="name" required></label>
+        <label><span>Phone Number:</span><input type="tel" name="phone" required></label>
+        <label><span>Email Address:</span><input type="email" name="email" placeholder="e.g. name@ruthless.com" required></label>
+        <label><span>Availability (Duty Hours):</span><input type="text" name="availability" placeholder="e.g. 5PM to 10PM" required></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Basic Information</legend>
+        <label>
+          <span>Why are you interested in working in EMS?</span>
+          <textarea name="interest_reason" rows="3" required></textarea>
+        </label>
+
+        <label>
+          <span>Have you worked with an EMS team before?</span>
+          <select name="ems_experience" required>
+            <option value="" disabled selected>Select one</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Describe your experience:</span>
+          <textarea name="experience_description" rows="3"></textarea>
+        </label>
+
+        <label>
+          <span>What position are you applying for?</span>
+          <select name="position_applied" required>
+            <option value="" disabled selected>Select one</option>
+            <option value="Attending Physician">Attending Physician</option>
+            <option value="Surgeon">Surgeon</option>
+            <option value="Resident Doctor">Resident Doctor</option>
+            <option value="Medical Doctor">Medical Doctor</option>
+            <option value="Registered Nurse">Registered Nurse</option>
+            <option value="EMT">EMT</option>
+            <option value="Medical Trainee">Medical Trainee</option>
+          </select>
+        </label>
+
+        <label>
+          <span>List down all of your trainings and certifications</span>
+          <textarea name="certifications" rows="3" required></textarea>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Situational Questions</legend>
+        <label><span>1. You arrive at a major car accident scene. What steps do you take to triage and assist the injured?</span><textarea name="situational_q1" rows="3" required></textarea></label>
+        <label><span>2. A patient becomes verbally aggressive while under your care. How do you de-escalate the situation?</span><textarea name="situational_q2" rows="3" required></textarea></label>
+        <label><span>3. You are called to assist a child with an unknown illness. What actions do you take while awaiting further information?</span><textarea name="situational_q3" rows="3" required></textarea></label>
+      </fieldset>
+
+      <button type="submit">Submit</button>
+    </form>
+    <div id="response" class="response-message"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('emsForm');
+    const responseDiv = document.getElementById('response');
+    const webhookURL = "https://discord.com/api/webhooks/1372480298796978257/kLydclWqWZVLFMutArh5Or7XXaLPEd8i9dAQPcJd93nSMfiopBHxLrIud-JX_CHVDQC4";
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      responseDiv.textContent = '';
+      responseDiv.className = 'response-message';
+
+      const formData = new FormData(form);
+      const data = {};
+      formData.forEach((value, key) => data[key] = value.trim());
+
+      const embedFields = [
+        { name: "Full Name", value: data.name },
+        { name: "Phone Number", value: data.phone },
+        { name: "Email", value: data.email },
+        { name: "Availability", value: data.availability },
+        { name: "Reason for Joining EMS", value: data.interest_reason },
+        { name: "Worked in EMS Before?", value: data.ems_experience },
+        { name: "Experience Description", value: data.experience_description || "None" },
+        { name: "Position Applied", value: data.position_applied },
+        { name: "Certifications", value: data.certifications },
+        { name: "1. You arrive at a major car accident scene. What steps do you take to triage and assist the injured?", value: data.situational_q1 },
+        { name: "2. A patient becomes verbally aggressive while under your care. How do you de-escalate the situation?", value: data.situational_q2 },
+        { name: "3. You are called to assist a child with an unknown illness. What actions do you take while awaiting further information?", value: data.situational_q3 },
+      ];
+
+      const payload = {
+        username: "EMS Application Bot",
+        embeds: [{
+          title: "New EMS Application Submitted",
+          color: 15158332,
+          fields: embedFields,
+          timestamp: new Date().toISOString(),
+          footer: {
+            text: "Ruthless Roleplay - Pillbox Applications"
+          }
+        }]
+      };
+
+      try {
+        const res = await fetch(webhookURL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+          responseDiv.textContent = 'Thank you for submitting your application. An authorized medical officer will review your submission and contact you with the results and interview schedule. Please keep an eye on your phone and your ruthless.com email for updates.';
+          responseDiv.classList.add('success');
+          form.reset();
+        } else {
+          throw new Error(`Discord webhook error: ${res.statusText}`);
+        }
+      } catch (err) {
+        responseDiv.textContent = 'Failed to submit application. Please try again later.';
+        responseDiv.classList.add('error');
+        console.error('Error sending to Discord:', err);
+      }
+    });
+  </script>
+</body>
+</html>
