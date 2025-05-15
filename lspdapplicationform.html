@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LSPD Application - Personal Information</title>
+  <style>
+body {
+  background-color: #0e1a24;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 2rem;
+  margin: 0;
+  font-size: 12px; /* updated */
+}
+
+.form-container {
+  max-width: 700px;
+  margin: auto;
+  background-color: #16232e;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  font-size: 12px; /* added to ensure container text also small */
+}
+
+.logo {
+  display: block;
+  margin: 0 auto 1rem;
+  max-width: 120px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 12px; /* updated from 1.8rem */
+}
+
+form fieldset {
+  border: 1px solid #444;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  font-size: 12px; /* ensure smaller text */
+}
+
+form legend {
+  font-weight: bold;
+  padding: 0 10px;
+  font-size: 12px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 1.5rem;
+  font-size: 12px;
+}
+
+form label span {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 12px;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+textarea,
+select {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #1f2d3a;
+  color: #fff;
+  font-size: 12px;
+}
+
+textarea {
+  resize: none; /* Disable resizing */
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  background-color: #0059ff;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #0047cc;
+}
+
+.response-message {
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.success {
+  color: #4CAF50;
+}
+
+.error {
+  color: #f44336;
+}
+
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Website%20Photos/lspd.png" alt="LSPD Logo" class="logo" />
+    <h1>LSPD Application Form</h1>
+    <form id="lspdForm">
+      <!-- Personal Information -->
+      <fieldset>
+        <legend>Personal Information</legend>
+
+        <label>
+          <span>Name:</span>
+          <input type="text" name="name" required />
+        </label>
+
+        <label>
+          <span>Phone Number:</span>
+          <input type="tel" name="phone" required />
+        </label>
+
+        <label>
+          <span>Email Address:</span>
+          <input type="email" name="email" placeholder="e.g. name@ruthless.com" required />
+        </label>
+
+        <label>
+          <span>Availability (Duty Hours):</span>
+          <input type="text" name="availability" placeholder="e.g. 5PM to 10PM" required />
+        </label>
+      </fieldset>
+
+      <!-- Background & Intentions -->
+      <fieldset>
+        <legend>Background & Intentions</legend>
+
+        <label>
+          <span>Why are you interested in joining the LSPD?</span>
+          <textarea name="interest_reason" rows="4" required></textarea>
+        </label>
+
+        <label>
+          <span>Do you have any prior experience in law enforcement?</span>
+          <select name="prior_experience" required>
+            <option value="" disabled selected>Select one</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Are you applying as a new recruit or a transfer?</span>
+          <select name="recruit_or_transfer" required>
+            <option value="" disabled selected>Select one</option>
+            <option value="New Recruit">New Recruit</option>
+            <option value="Transfer">Transfer</option>
+          </select>
+        </label>
+
+        <label>
+          <span>If transferring, do you have your transfer papers?</span>
+          <select name="transfer_papers">
+            <option value="" disabled selected>Select one</option>
+            <option value="Yes - papers ready">Yes - papers ready</option>
+            <option value="No - will submit within 48 hours">No - will submit within 48 hours</option>
+            <option value="Not Applicable">Not Applicable</option>
+          </select>
+        </label>
+
+        <label>
+          <span>If referred, who referred you?</span>
+          <input type="text" name="referral" placeholder="e.g. Officer Smith (if applicable)" />
+        </label>
+
+        <label>
+          <span>What was your previous rank in law enforcement?</span>
+          <input type="text" name="previous_rank" placeholder="e.g. Sergeant, Deputy, etc." />
+        </label>
+      </fieldset>
+
+      <!-- Situational Questions -->
+      <fieldset>
+        <legend>Situational Questions</legend>
+        <p style="color:#bbb; font-style: italic; margin-bottom: 1rem;">
+          Take time to read and understand the questions carefully before answering.
+        </p>
+
+        <label>
+          <span>1. You respond to a call where a suspect is resisting arrest but is not armed. The suspect is yelling and physically struggling but not causing serious harm. How would you handle this situation?</span>
+          <textarea name="situational_q1" rows="4" required></textarea>
+        </label>
+
+        <label>
+          <span>2. You arrive at a domestic disturbance where emotions are high, and both parties are yelling. How do you approach the situation to calm it down and prevent violence?</span>
+          <textarea name="situational_q2" rows="4" required></textarea>
+        </label>
+
+        <label>
+          <span>3. You witness a fellow officer taking a questionable action that might violate department policy but could also potentially prevent a crime. What steps do you take?</span>
+          <textarea name="situational_q3" rows="4" required></textarea>
+        </label>
+
+        <label>
+          <span>4. You notice a group of teenagers hanging out in a park where some neighbors have complained about loitering. How do you engage with the group while maintaining positive community relations?</span>
+          <textarea name="situational_q4" rows="4" required></textarea>
+        </label>
+
+        <label>
+          <span>5. An upset citizen approaches you complaining about being treated unfairly during a traffic stop. How do you handle the conversation?</span>
+          <textarea name="situational_q5" rows="4" required></textarea>
+        </label>
+
+        <label>
+          <span>6. You receive multiple calls simultaneously—one for a minor traffic accident with no injuries, and another for a possible burglary in progress. How do you prioritize your response?</span>
+          <textarea name="situational_q6" rows="4" required></textarea>
+        </label>
+
+        <label>
+          <span>7. You are working with a partner who is less experienced and makes a procedural mistake during a call. How do you handle the situation both during and after the incident?</span>
+          <textarea name="situational_q7" rows="4" required></textarea>
+        </label>
+      </fieldset>
+
+      <button type="submit">Submit</button>
+    </form>
+    <div id="response" class="response-message"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('lspdForm');
+    const responseDiv = document.getElementById('response');
+    const webhookURL = "https://discord.com/api/webhooks/1369187385111478313/djhnjmFno5CyXYg8LAiLy0LGdbHSqhLzw6BXRsdgl_fplJrYuoHrwWjfp4XBKIIW4rug";
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Clear previous message
+      responseDiv.textContent = '';
+      responseDiv.className = 'response-message';
+
+      // Collect form data
+      const formData = new FormData(form);
+      const data = {};
+      formData.forEach((value, key) => {
+        data[key] = value.trim();
+      });
+
+      // Build Discord embed fields
+      const embedFields = [
+        { name: "Name", value: data.name || "N/A" },
+        { name: "Phone Number", value: data.phone || "N/A" },
+        { name: "Email Address", value: data.email || "N/A" },
+        { name: "Availability (Duty Hours)", value: data.availability || "N/A" },
+
+        { name: "Why join LSPD?", value: data.interest_reason || "N/A" },
+        { name: "Prior Law Enforcement Experience?", value: data.prior_experience || "N/A" },
+        { name: "New Recruit or Transfer?", value: data.recruit_or_transfer || "N/A" },
+        { name: "Transfer Papers Status", value: data.transfer_papers || "N/A" },
+        { name: "Referral", value: data.referral || "None" },
+        { name: "Previous Rank", value: data.previous_rank || "None" },
+
+        { name: "1. You respond to a call where a suspect is resisting arrest but is not armed. The suspect is yelling and physically struggling but not causing serious harm. How would you handle this situation?", value: data.situational_q1 || "N/A" },
+        { name: "2. You arrive at a domestic disturbance where emotions are high, and both parties are yelling. How do you approach the situation to calm it down and prevent violence?", value: data.situational_q2 || "N/A" },
+        { name: "3. You witness a fellow officer taking a questionable action that might violate department policy but could also potentially prevent a crime. What steps do you take?", value: data.situational_q3 || "N/A" },
+        { name: "4. You notice a group of teenagers hanging out in a park where some neighbors have complained about loitering. How do you engage with the group while maintaining positive community relations?", value: data.situational_q4 || "N/A" },
+        { name: "5. An upset citizen approaches you complaining about being treated unfairly during a traffic stop. How do you handle the conversation?", value: data.situational_q5 || "N/A" },
+        { name: "6. You receive multiple calls simultaneously—one for a minor traffic accident with no injuries, and another for a possible burglary in progress. How do you prioritize your response?", value: data.situational_q6 || "N/A" },
+        { name: "7. You are working with a partner who is less experienced and makes a procedural mistake during a call. How do you handle the situation both during and after the incident?", value: data.situational_q7 || "N/A" },
+      ];
+
+      // Prepare the Discord webhook payload
+      const payload = {
+        username: "LSPD Application Bot",
+        embeds: [{
+          title: "New LSPD Application Submitted",
+          color: 3447003, // blue color
+          fields: embedFields,
+          timestamp: new Date().toISOString(),
+          footer: {
+            text: "Ruthless Roleplay - LSPD Applications"
+          }
+        }]
+      };
+
+      try {
+        const res = await fetch(webhookURL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+          responseDiv.textContent = 'Application submitted successfully! Thank you.';
+          responseDiv.classList.add('success');
+          form.reset();
+        } else {
+          throw new Error(`Discord webhook error: ${res.statusText}`);
+        }
+      } catch (error) {
+        responseDiv.textContent = 'Failed to submit application. Please try again later.';
+        responseDiv.classList.add('error');
+        console.error('Error sending Discord webhook:', error);
+      }
+    });
+  </script>
+</body>
+</html>
