@@ -1,1 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Medical Clearance Form</title>
 
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #e0e0e0;
+      overflow: hidden;
+      font-size: 12px;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+      overflow: visible;
+    }
+
+    .form-section {
+      width: 40%;
+      padding: 20px;
+      background-color: #f4f4f4;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .form-section h2 {
+      margin-bottom: 20px;
+    }
+
+    .form-section label {
+      display: block;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    .form-section input,
+    .form-section textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      resize: vertical;
+      font-size: 14px;
+    }
+
+    .display-section {
+      width: 60%;
+      background-color: #fff;
+      overflow-y: auto;
+      padding: 10px 20px;
+    }
+
+    .output-area {
+      position: relative;
+      width: 1000px;
+      height: 750px;
+      max-width: 600px;         /* max width */
+      aspect-ratio: 1280 / 1720;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+      margin-bottom: 20px;
+      background-origin: content-box;
+      background-clip: content-box;
+    }
+
+    .output {
+      position: absolute;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      color: #000;
+      cursor: move;
+      user-select: none;
+    }
+
+    #displayDate { top: 140px; left: 375px; font-size: 12px; }
+    #displayName { top: 125px; left: 30px; font-size: 12px; }
+    #displayId { top: 143px; left: 30px; font-size: 12px; }
+    #displayPlaceOfBirth { top: 129px; left: 375px; font-size: 12px; }
+    #displayComments { 
+        top: 187px;
+        left: 20px;
+        padding: 4px;
+        height: 130px;
+        width: 560px;
+        line-height: 1.6;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        font-size: 12px;
+          border: 2px solid #28a74600; /* Green border */
+  box-sizing: border-box;
+  border-radius: 4px;
+      }
+    
+      #displayAdditionalMedicalComments { 
+      top: 295px;
+      left: 20px;
+      padding: 4px;
+      height: 125px;
+      width: 560px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      border: 2px solid #28a74600; /* Green border */
+      box-sizing: border-box;
+      border-radius: 4px;
+    }
+    
+    #displayMedicalExaminerContainer { top: 345px; left: 20px; font-size: 12px; }
+    
+    #displayOfficer, #displayRank, #displaylicenseNumber { margin-bottom: 2px; }
+    
+    #displaySignature { 
+      top: 270px;
+      left: 20px;
+      font-size: 25px;
+      margin-top: 8px; 
+      font-family: 'Dancing Script', cursive; 
+      color: black; 
+      height: 40px;           /* Fixed height */
+      white-space: nowrap;    /* Keeps signature in a single line */
+      z-index: 2;
+    }
+
+    .placeholder {
+      color: rgb(65, 40, 40);
+    }
+
+    /* Checklist in the form */
+    .checklist-section {
+      margin-top: 5px;
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+
+    .checklist-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin: 0 10px 0 0;
+      cursor: pointer;
+      vertical-align: middle;
+    }
+
+    .checklist-item span {
+      line-height: 1.2;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* Checklist output */
+        #checklistOutput {
+        position: absolute;
+        top: -15px;
+        left: 55px;
+        width: 555px;
+        padding: 5px;
+        min-height: 100px;
+        max-height: 200px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        }
+
+        #checklistOutput h3 {
+        margin-top: 0;
+        font-weight: bold;
+        }
+
+        /* Two-column list */
+        #checklistOutput ul {
+        list-style: none;
+        padding-left: 5px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5px 20px; /* vertical and horizontal spacing */
+        margin: 0;
+        }
+
+        #checklistOutput ul li {
+        display: flex;
+        align-items: center;
+        margin: 2.5px 0; /* 5px total vertical gap */
+        }
+
+        #checklistOutput ul li.checked::before {
+        content: "✔";
+        color: green;
+        margin-right: 6px;
+        }
+
+        #checklistOutput ul li:not(.checked)::before {
+        content: "⬜";
+        color: #ccc;
+        margin-right: 6px;
+        }
+
+  </style>
+
+</head>
+<body>
+  <div class="container">
+    <div class="form-section">
+      <h2>Fill Out Information</h2>
+      <form id="medicalClearanceForm">
+        <label>Date:
+          <input type="date" id="date" />
+          Font Size: <input type="number" id="fontSizeDate" value="12" min="10" max="40" />
+        </label>
+        <label>Name of Applicant:
+          <input type="text" id="applicantName" />
+          Font Size: <input type="number" id="fontSizeName" value="12" min="10" max="40" />
+        </label>
+        <label>Citizen ID Number:
+          <input type="text" id="citizenId" />
+          Font Size: <input type="number" id="fontSizeId" value="12" min="10" max="40" />
+        </label>
+        <label>Purpose:
+          <input type="text" id="purpose" />
+          Font Size: <input type="number" id="fontsizepurpose" value="12" min="10" max="40" />
+        </label>
+        <label>Comments:
+          <textarea id="comments" rows="4"></textarea>
+          Font Size: <input type="number" id="fontSizeComments" value="12" min="10" max="40" />
+        </label>
+        <label>Additional Medical Comments:
+          <textarea id="AdditionalMedicalComments" rows="4"></textarea>
+          Font Size: <input type="number" id="fontSizeAdditionalComments" value="12" min="10" max="40" />
+        </label>
+        <div class="checklist-section">
+          <label class="checklist-item">
+            <input type="checkbox" class="medical-checkbox" data-label="Vital Signs Within Normal Range" />
+            <span>Vital Signs Within Normal Range</span>
+          </label>
+          <label class="checklist-item">
+            <input type="checkbox" class="medical-checkbox" data-label="Vision and Hearing Normal" />
+            <span>Vision and Hearing Normal</span>
+          </label>
+          <label class="checklist-item">
+            <input type="checkbox" class="medical-checkbox" data-label="No Signs of Infectious Disease" />
+            <span>No Signs of Infectious Disease</span>
+          </label>
+          <label class="checklist-item">
+            <input type="checkbox" class="medical-checkbox" data-label="No Substance Abuse Detected" />
+            <span>No Substance Abuse Detected</span>
+          </label>
+          <label class="checklist-item">
+            <input type="checkbox" class="medical-checkbox" data-label="Fit for Physical Duties" />
+            <span>Fit for Physical Duties</span>
+          </label>
+          <label class="checklist-item">
+            <input type="checkbox" class="medical-checkbox" data-label="Mentally Oriented and Stable" />
+            <span>Mentally Oriented and Stable</span>
+          </label>
+        </div>
+        <label>Medical Examiner:
+          <input type="text" id="medicalexaminer" />
+          Font Size: <input type="number" id="fontSizemedicalexaminer" value="12" min="10" max="40" />
+        </label>
+        <label>Rank:
+          <input type="text" id="rank" />
+          Font Size: <input type="number" id="fontSizeRank" value="12" min="10" max="40" />
+        </label>
+        <label>License Number:
+          <input type="text" id="licenseNumber" />
+          Font Size: <input type="number" id="fontSizeLicense" value="12" min="10" max="40" />
+        </label>
+        <label>Signature:
+          <input type="text" id="signature" />
+          Font Size: <input type="number" id="fontSizeSignature" value="20" min="10" max="40" />
+        </label>
+        <button type="button" id="sendWebhookBtn" style="margin-top: 20px; padding: 8px 12px; cursor: pointer;">
+        Print
+        </button>
+        <div id="sendStatus" style="margin-top:10px; font-weight: bold;"></div>
+
+      </form>
+    </div>
+
+    <div class="display-section">
+    <div class="output-area" id="outputArea" style="position: relative;">
+        <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Medical%20Clearance.png" 
+            alt="Medical Clearance Background" 
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; z-index: 0; pointer-events: none; user-select: none;">
+            
+        <div id="displayDate" class="output placeholder" style="position: relative; z-index: 1;">DATE</div>
+        <div id="displayName" class="output placeholder" style="position: relative; z-index: 1;">APPLICANT NAME</div>
+        <div id="displayId" class="output placeholder" style="position: relative; z-index: 1;">CITIZEN ID</div>
+        <div id="displayPlaceOfBirth" class="output placeholder" style="position: relative; z-index: 1;">PURPOSE</div>
+        <div id="displayComments" class="output placeholder" style="position: relative; z-index: 1;"></div>
+        <div id="displayAdditionalMedicalComments" class="output placeholder" style="position: relative; z-index: 1;"></div>
+
+        <div id="displayMedicalExaminerContainer" class="output placeholder" style="line-height:1.2; max-width: 600px; position: relative; z-index: 1;">
+        <div id="displayOfficer">MEDICAL EXAMINER</div>
+        <div id="displayRank">RANK</div>
+        <div id="displaylicenseNumber">LICENSE NUMBER</div>
+        </div>
+
+        <div id="displaySignature" class="output placeholder" style="position: relative; z-index: 1;"></div>
+
+        <!-- Move checklist here -->
+        <div id="checklistOutput" style="position: relative; z-index: 1;">
+        <ul id="checklistSummary"></ul>
+        </div>
+    </div>
+    </div>
+
+
+    <script>
+      const form = document.getElementById('medicalClearanceForm');
+
+      const outputDate = document.getElementById('displayDate');
+      const outputName = document.getElementById('displayName');
+      const outputId = document.getElementById('displayId');
+      const outputPlace = document.getElementById('displayPlaceOfBirth');  // Check this matches your HTML
+      const outputComments = document.getElementById('displayComments');
+      const outputAdditionalComments = document.getElementById('displayAdditionalMedicalComments');
+
+      const outputMedicalExaminer = document.getElementById('displayOfficer');
+      const outputRank = document.getElementById('displayRank');
+      const outputLicense = document.getElementById('displaylicenseNumber');
+      const outputSignature = document.getElementById('displaySignature');
+
+      // Font size inputs
+      const fontDate = document.getElementById('fontSizeDate');
+      const fontName = document.getElementById('fontSizeName');
+      const fontId = document.getElementById('fontSizeId');
+      const fontPurpose = document.getElementById('fontsizepurpose');
+      const fontComments = document.getElementById('fontSizeComments');
+      const fontAdditionalComments = document.getElementById('fontSizeAdditionalComments');
+      const fontMedicalExaminer = document.getElementById('fontSizemedicalexaminer');
+      const fontRank = document.getElementById('fontSizeRank');
+      const fontLicense = document.getElementById('fontSizeLicense');
+      const fontSignature = document.getElementById('fontSizeSignature');
+
+      // Checklist
+      const checklistSummary = document.getElementById('checklistSummary');
+      const medicalCheckboxes = document.querySelectorAll('.medical-checkbox');
+
+      function updateChecklist() {
+        checklistSummary.innerHTML = ""; // Clear previous content
+
+        medicalCheckboxes.forEach(checkbox => {
+          const li = document.createElement("li");
+          li.textContent = checkbox.dataset.label || checkbox.nextElementSibling?.textContent || "Checklist item";
+
+          if (checkbox.checked) {
+            li.classList.add("checked");
+          }
+
+          checklistSummary.appendChild(li);
+        });
+      }
+
+      // Update output text and font sizes dynamically
+      function updateOutput() {
+        // Date
+        if (form.date.value) {
+          outputDate.textContent = form.date.value;
+          outputDate.classList.remove('placeholder');
+        } else {
+          outputDate.textContent = "DATE";
+          outputDate.classList.add('placeholder');
+        }
+        outputDate.style.fontSize = fontDate.value + 'px';
+
+        // Name
+        if (form.applicantName.value.trim()) {
+          outputName.textContent = form.applicantName.value.trim();
+          outputName.classList.remove('placeholder');
+        } else {
+          outputName.textContent = "APPLICANT NAME";
+          outputName.classList.add('placeholder');
+        }
+        outputName.style.fontSize = fontName.value + 'px';
+
+        // Citizen ID
+        if (form.citizenId.value.trim()) {
+          outputId.textContent = form.citizenId.value.trim();
+          outputId.classList.remove('placeholder');
+        } else {
+          outputId.textContent = "CITIZEN ID";
+          outputId.classList.add('placeholder');
+        }
+        outputId.style.fontSize = fontId.value + 'px';
+
+        // Purpose (you called outputPlace for this - make sure it matches your HTML)
+        if (form.purpose.value.trim()) {
+          outputPlace.textContent = form.purpose.value.trim();
+          outputPlace.classList.remove('placeholder');
+        } else {
+          outputPlace.textContent = "PURPOSE";
+          outputPlace.classList.add('placeholder');
+        }
+        outputPlace.style.fontSize = fontPurpose.value + 'px';
+
+        // Comments
+        if (form.comments.value.trim()) {
+          outputComments.textContent = form.comments.value.trim();
+          outputComments.classList.remove('placeholder');
+        } else {
+          outputComments.textContent = "";
+          outputComments.classList.add('placeholder');
+        }
+        outputComments.style.fontSize = fontComments.value + 'px';
+
+        // Additional Medical Comments
+        if (form.AdditionalMedicalComments.value.trim()) {
+          outputAdditionalComments.textContent = form.AdditionalMedicalComments.value.trim();
+          outputAdditionalComments.classList.remove('placeholder');
+        } else {
+          outputAdditionalComments.textContent = "";
+          outputAdditionalComments.classList.add('placeholder');
+        }
+        outputAdditionalComments.style.fontSize = fontAdditionalComments.value + 'px';
+
+        // Medical Examiner
+        if (form.medicalexaminer.value.trim()) {
+          outputMedicalExaminer.textContent = form.medicalexaminer.value.trim();
+          outputMedicalExaminer.classList.remove('placeholder');
+        } else {
+          outputMedicalExaminer.textContent = "MEDICAL EXAMINER";
+          outputMedicalExaminer.classList.add('placeholder');
+        }
+        outputMedicalExaminer.style.fontSize = fontMedicalExaminer.value + 'px';
+
+        // Rank
+        if (form.rank.value.trim()) {
+          outputRank.textContent = form.rank.value.trim();
+          outputRank.classList.remove('placeholder');
+        } else {
+          outputRank.textContent = "RANK";
+          outputRank.classList.add('placeholder');
+        }
+        outputRank.style.fontSize = fontRank.value + 'px';
+
+        // License Number
+        if (form.licenseNumber.value.trim()) {
+          outputLicense.textContent = form.licenseNumber.value.trim();
+          outputLicense.classList.remove('placeholder');
+        } else {
+          outputLicense.textContent = "LICENSE NUMBER";
+          outputLicense.classList.add('placeholder');
+        }
+        outputLicense.style.fontSize = fontLicense.value + 'px';
+
+        // Signature
+        if (form.signature.value.trim()) {
+          outputSignature.textContent = form.signature.value.trim();
+          outputSignature.classList.remove('placeholder');
+        } else {
+          outputSignature.textContent = "";
+          outputSignature.classList.add('placeholder');
+        }
+        outputSignature.style.fontSize = fontSignature.value + 'px';
+
+        // Update checklist summary
+        updateChecklist();
+      }
+
+      // Initial call to display placeholders and checklist
+      updateOutput();
+
+      // Add event listeners for inputs and checkboxes to update output on change
+      form.querySelectorAll('input, textarea').forEach(input => {
+        input.addEventListener('input', updateOutput);
+      });
+
+      medicalCheckboxes.forEach(cb => {
+        cb.addEventListener('change', updateChecklist);
+      });
+
+      // Webhook sending logic
+      document.getElementById('sendWebhookBtn').addEventListener('click', () => {
+        const webhookURL = "https://discord.com/api/webhooks/1372357377923485826/khsUHRhTbobdcgFiU63hoFPecViuo8CjGSA1nQo3fzD30j8utdYd7SovkwfWe76d8IjF";
+        const sendStatus = document.getElementById('sendStatus');
+        const outputArea = document.getElementById('outputArea');
+
+        sendStatus.textContent = "Capturing screenshot...";
+
+        html2canvas(outputArea, { useCORS: true, backgroundColor: null }).then(canvas => {
+          canvas.toBlob(blob => {
+            if (!blob) {
+              sendStatus.textContent = "Failed to capture image.";
+              return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', blob, 'medical_clearance.png');
+
+            sendStatus.textContent = "Sending to Discord...";
+
+            fetch(webhookURL, {
+              method: 'POST',
+              body: formData,
+            })
+            .then(response => {
+              if (response.ok) {
+                sendStatus.textContent = 'Screenshot sent successfully!';
+              } else {
+                sendStatus.textContent = 'Failed to send screenshot.';
+              }
+            })
+            .catch(error => {
+              sendStatus.textContent = 'Error sending screenshot.';
+              console.error(error);
+            });
+
+          }, 'image/png');
+        }).catch(err => {
+          sendStatus.textContent = 'Error capturing screenshot.';
+          console.error(err);
+        });
+      });
+    </script>
+
+</body>
+</html>
