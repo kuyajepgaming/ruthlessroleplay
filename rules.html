@@ -3,25 +3,29 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>New Page Title</title>
+    <title>Ruthless Roleplay Rules</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
     <style>
         :root {
             --header-height: 50px;
             --pink: #ff69b4;
             --announcement-height: 400px;
+            --background-color: rgba(0, 0, 0, 0.8);
+            --header-background: linear-gradient(to bottom, #4d0847, #15151a);
+            --text-color: white;
+            --font-family: 'Poppins', sans-serif;
         }
 
         body {
             margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background: rgba(0, 0, 0, 0.8)
+            font-family: var(--font-family);
+            background: var(--background-color)
                 url('https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/backgroundimage_mainpage/background%20image.png')
                 no-repeat center top 10px;
             background-size: cover;
             background-attachment: fixed;
             background-blend-mode: multiply;
-            color: white;
+            color: var(--text-color);
             position: relative;
             padding-top: var(--header-height);
             padding-bottom: 25px;
@@ -33,7 +37,7 @@
             left: 0;
             right: 0;
             height: var(--header-height);
-            background: linear-gradient(to bottom, #4d0847, #15151a);
+            background: var(--header-background);
             border-bottom: 1px solid var(--pink);
             box-shadow: 0 10px 20px -10px var(--pink);
             display: flex;
@@ -46,10 +50,10 @@
         main {
             width: 60%;
             max-width: 900px;
-            margin: calc(var(--header-height) + 15px) auto 20px; /* Adjusted top margin */
+            margin: 20px auto 20px;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Center content within main */
+            align-items: center;
             min-height: auto;
         }
 
@@ -58,34 +62,33 @@
             flex-direction: column;
             align-items: center;
             margin-top: 20px;
-            margin-bottom: 20px; /* Spacing before the iframe */
-            width: 100%; /* Make welcome section take full width of main */
-            color: var(--welcome-font-color); /* Apply font color variable */
-            text-align: center; /* Default justification */
+            margin-bottom: 20px;
+            width: 100%;
+            text-align: center;
         }
 
         .welcome-section img {
-            max-width: 200px; /* Adjust as needed */
-            max-height: 100px; /* Adjust as needed */
+            max-width: 200px;
+            max-height: 100px;
         }
 
         .welcome-section h1 {
-            font-size: 2em; /* Default heading size */
-            color: rgb(245, 43, 127);
+            font-size: 2em;
+            color: var(--pink);
             margin-bottom: 10px;
         }
 
         .welcome-section p {
-            font-size: 1em; /* Default paragraph size */
+            font-size: 1em;
             line-height: 1.6;
-            text-align: center; /* Default paragraph justification */
         }
 
         iframe {
-            width: 95%; /* Make iframe take full width of main */
-            height: 600px; /* Adjust iframe height as needed */
+            width: 95%;
+            height: 390px;
             border: none;
-            
+            overflow: auto; /* Ensure scrolling is still possible */
+            scrollbar-width: none; /* Hide the scrollbar in Firefox */
         }
 
         .logo-container {
@@ -102,8 +105,14 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
         }
 
         .logo-container img {
@@ -132,11 +141,13 @@
         }
 
         @keyframes pulseGlow {
-            0%, 100% {
+            0%,
+            100% {
                 opacity: 0.4;
                 transform: scale(1);
                 box-shadow: 0 0 8px var(--pink);
             }
+
             50% {
                 opacity: 1;
                 transform: scale(1.1);
@@ -171,17 +182,19 @@
         }
 
         .announcement-section {
+            /* position: static;  Try this to see if it behaves differently */
+            /* display: none;  Try this to completely remove it and see if it changes anything */
             max-width: 1200px;
             width: 1000px;
             height: var(--announcement-height);
             margin: 25px auto;
-            padding: 10px 10px;
+            padding: 10px;
             border: 1px solid var(--pink);
             border-radius: 5px;
-            background: linear-gradient(to bottom, #4d0847, #15151a);
+            background: var(--header-background);
             box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
             text-align: center;
-            color: white;
+            color: var(--text-color);
             position: fixed;
             bottom: 0;
             left: 50%;
@@ -206,16 +219,6 @@
             line-height: 1.6;
         }
 
-        @media (max-width: 700px) {
-            header {
-                padding: 0 20px;
-            }
-
-            .announcement-section {
-                width: 95%;
-            }
-        }
-
         .announcement-tab {
             position: absolute;
             top: -20px;
@@ -228,30 +231,53 @@
             font-weight: bold;
             color: black;
         }
+
+        @media (max-width: 700px) {
+            header {
+                padding: 0 20px;
+            }
+
+            .announcement-section {
+                width: 95%;
+            }
+        }
     </style>
 </head>
+
 <body>
     <header>
-        <div class="logo-container" aria-label="Ruthless RP Logo">
-            <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/logo_header_small/RUTHLESS%20RP%20ICON%20BIG.svg" alt="Ruthless RP Logo" />
+        <a href="http://ruthlessroleplay.online/" class="logo-container" aria-label="Ruthless RP Logo"
+            target="_blank" rel="noopener noreferrer">
+            <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/logo_header_small/RUTHLESS%20RP%20ICON%20BIG.svg"
+                alt="Ruthless RP Logo" />
             <div class="pulse"></div>
-        </div>
-        <a href="https://discord.gg/eVXQb6Utxg" class="discord-button" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord">
-            <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/logo_header_small/discordicon_inactive.png" alt="Discord Icon" />
+        </a>
+        <a href="https://discord.gg/eVXQb6Utxg" class="discord-button" target="_blank" rel="noopener noreferrer"
+            aria-label="Join our Discord">
+            <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/logo_header_small/discordicon_inactive.png"
+                alt="Discord Icon" />
         </a>
     </header>
 
     <main>
         <div class="welcome-section">
-            <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/logo_header_small/RUTHLESS%20RP%20ICON%20BIG.svg" alt="Welcome Logo" />
+            <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/logo_header_small/RUTHLESS%20RP%20ICON%20BIG.svg"
+                alt="Welcome Logo" />
             <h1>Welcome to Ruthless Roleplay!</h1>
 
-            <p>We are thrilled to have you join our community. At Ruthless Roleplay, we strive to create an immersive and high-quality roleplaying experience that brings our world to life. The rules outlined below are in place to ensure that our culture, values, and goals are upheld. These guidelines help maintain an environment where everyone can enjoy authentic and meaningful roleplay, free from disruption.</p>
+            <p>We are thrilled to have you join our community. At Ruthless Roleplay, we strive to create an immersive and
+                high-quality roleplaying experience that brings our world to life. The rules outlined below are in place to
+                ensure that our culture, values, and goals are upheld. These guidelines help maintain an environment where
+                everyone can enjoy authentic and meaningful roleplay, free from disruption.</p>
 
-            <p>By following these rules, we can all contribute to the success of our community and ensure that every member has the opportunity to engage in the best possible roleplay experience.</p>
+            <p>By following these rules, we can all contribute to the success of our community and ensure that every member
+                has the opportunity to engage in the best possible roleplay experience.</p>
+
+            <h2>PLEASE SEE BELOW</h2>
         </div>
 
-        <iframe src="https://docs.google.com/document/d/e/2PACX-1vR-XJ1A0kIjVmsTNwOEtPljg7qabiI6koH5x6GbG0lL1DEfgPP2wPtqaTrPyJgVz6YCcnA2ESeAg-A2/pub?embedded=true"></iframe>
+        <iframe
+            src="https://docs.google.com/document/d/e/2PACX-1vR-XJ1A0kIjVmsTNwOEtPljg7qabiI6koH5x6GbG0lL1DEfgPP2wPtqaTrPyJgVz6YCcnA2ESeAg-A2/pub?embedded=true"></iframe>
     </main>
 
     <div class="announcement-section">
@@ -260,6 +286,5 @@
         <p>Stay tuned for the latest news and updates about the Ruthless Roleplay server!</p>
     </div>
 </body>
+
 </html>
-
-
