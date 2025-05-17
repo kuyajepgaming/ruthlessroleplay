@@ -1,1053 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ruthless Roleplay - Rules</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-  <style>
-    :root {
-      --logo-margin-left: -7.5px;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      padding-top: 90px;
-      font-family: Arial, sans-serif;
-      background-color: #19181c;
-      background-image: url('https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/backgroundimage.png?raw=true');
-      background-size: 45% auto;
-      background-position: 700px 20px;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
-      color: white;
-      padding-bottom: 100px;
-    }
-
-    header {
-      position: fixed;
-      top: 18.75px; /* Adjust this to position the header */
-      left: 50%;
-      transform: translateX(-50%); /* Center the header */
-      width: 1200px; /* Ensure this matches the width of your footer */
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 22.5px;
-      background: linear-gradient(to bottom, #181717 25%, #19181c 50%, #0e0d0d 75%);
-      border: 1px solid #f51fa3;
-      border-radius: 9px;
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4), 0 10px 6px rgba(0, 0, 0, 0.2);
-      z-index: 1000;
-    }
-
-    
-    footer {
-      position: fixed;
-      bottom: 18.75px;
-      left: 50%;
-      transform: translateX(-50%); /* Center the footer */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 11.25px 22.5px;
-      width: 1200px; /* Ensure this matches the width of your header */
-      background: linear-gradient(to bottom, #181717 25%, #19181c 50%, #0e0d0d 75%);
-      border: 1px solid #f51fa3;
-      border-radius: 9px;
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.733), 0 4px 6px rgba(15, 5, 5, 0.89);
-      z-index: 1000;
-    }
-    .footer-text {
-      color: white;
-      font-size: 0.75rem;
-      white-space: nowrap;
-    }
-
-    header .logo {
-      height: 45px;
-      margin-left: var(--logo-margin-left);
-    }
-
-    .discord-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
-
-    .discord-circle {
-      width: 37px;
-      height: 37px;
-      border-radius: 50%;
-      background: linear-gradient(to bottom left, #b0005b, #ff66cc);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 0 10px rgba(255, 0, 119, 0.6);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .discord-icon {
-      width: 22.5px;
-      height: 22.5px;
-      transition: transform 0.3s ease;
-    }
-
-    .discord-circle:hover {
-      transform: scale(1.4);
-      box-shadow: 0 0 30px rgba(255, 0, 119, 1);
-    }
-
-    .discord-circle:hover .discord-icon {
-      transform: rotate(360deg);
-    }
-
-    .rules-wrapper {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 30px 20px;
-      position: relative;
-    }
-
-    .rule-section {
-      width: 100%;
-      text-align: center;
-      margin-bottom: 15px; /* Reduced from 20px to 15px spacing between rule sections */
-    }
-
-    .rules-wrapper > .rule-section:first-child {
-      margin-top: 15px; /* Adds consistent spacing at the top */
-    }
-
-    .rule-text {
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(45deg, #19181c, #2b292f);
-      border: 1px solid #f51fa3;
-      border-radius: 8px;
-      padding: 15px 30px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-      font-size: 1.6rem;
-      font-weight: bold;
-      color: #ff66cc;
-      cursor: pointer;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 0;
-      width: 40%; /* Set width to match content */
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .rule-text::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 102, 204, 0.2), transparent);
-      transition: left 0.5s ease;
-    }
-
-    .rule-text:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 20px rgba(255, 102, 204, 0.4);
-      background: linear-gradient(45deg, #2b292f, #19181c);
-    }
-
-    .rule-text:hover::after {
-      left: 100%;
-    }
-
-    .rule-text.active {
-      background: linear-gradient(45deg, #3a383d, #2b292f);
-      box-shadow: 0 6px 20px rgba(255, 102, 204, 0.6);
-    }
-
-    .rule-icon {
-      font-size: 1.2rem;
-      color: #ff66cc;
-    }
-
-    .rule-arrow {
-      transition: transform 0.3s ease;
-      font-size: 1rem;
-      color: #ff66cc;
-    }
-
-    .rule-text.active .rule-arrow {
-      transform: rotate(180deg);
-    }
-
-    .rule-content {
-      font-size: 0.95rem;
-      line-height: 1.4;
-      text-align: justify;
-      width: 40%; /* Same width as rule-text */
-      margin: 5px auto 15px auto;
-      background-color: rgba(43, 41, 47, 0.8);
-      backdrop-filter: blur(5px);
-      border: 1px solid #f51fa3;
-      border-radius: 5px;
-      padding: 20px 15px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-      display: block;
-      height: 0;
-      opacity: 0;
-      overflow: hidden;
-      transition: height 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.4s ease;
-      
-      /* Add background image when the content is expanded */
-      background-image: url('https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/logo_header_small/RuthlessRPIcon%2025%25.png?raw=true');
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: 90%;
-    }
-    
-    .rule-content.show {
-      height: auto;
-      opacity: 1;
-      box-shadow: 0 8px 25px rgba(255, 102, 204, 0.3);
-      margin-top: 5px; /* Ensure spacing when shown */
-    }
-
-    .rule-section {
-      width: 100%;
-      text-align: center;
-      margin-bottom: 20px; /* Increased spacing between rule sections */
-    }
-
-    .two-column {
-      display: grid;
-      grid-template-columns: 4fr 4fr;
-      gap: 12px 15px; /* Increased gap between columns and rows */
-      justify-content: center;
-      align-items: start;
-      max-width: 95%; /* Make it relative to container */
-      margin: 0 auto;
-      margin-bottom: 10px;
-      padding-top: 20px;
-      padding-bottom: 10px;
-      text-align: left;
-      font-size: 0.85rem;
-    }
-
-    .rule-row {
-      display: contents;
-      position: relative;
-      transition: transform 0.2s ease;
-      margin-bottom: 5px; /* Added spacing between rows */
-    }
-
-
-    .rule-row:hover {
-      transform: translateX(5px);
-    }
-
-    .column-title, .column-desc {
-      padding: 10px; /* Increased padding */
-      border: 1px solid transparent;
-      transition: all 0.3s ease;
-      margin-bottom: 5px; /* Added spacing */
-    }
-
-    .column-title {
-      font-weight: bold;
-      color: #ff66cc;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-    }
-
-    .column-desc {
-      color: #ffffff;
-      margin-bottom: 20px;
-      font-size: 0.85rem;
-      line-height: 1.6;
-    }
-
-    .rule-row:hover .column-title,
-    .rule-row:hover .column-desc {
-      background-color: rgba(255, 0, 119, 0.08);
-      border: 1px solid #ff66cc;
-      border-radius: 6px;
-      padding: 8px;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 15px rgba(255, 102, 204, 0.3);
-      transform: translateY(-3px);
-    }
-
-    .additional-logo {
-      text-align: center;
-      margin-top: 30px;
-    }
-
-    .additional-logo img {
-      max-width: 200px; /* Adjust size */
-      width: 100%;
-      height: auto;
-      transition: transform 0.5s ease, filter 0.5s ease;
-      filter: drop-shadow(0 0 5px rgba(255, 102, 204, 0.4));
-    }
-
-    .additional-logo img:hover {
-      transform: scale(1.1) rotate(5deg);
-      filter: drop-shadow(0 0 20px rgba(255, 102, 204, 0.8));
-    }
-
-    /* New section for text below the logo */
-    .text-container {
-      max-width: 800px; /* Set to desired width */
-      margin: 20px auto; /* Center the text container */
-      padding: 0 10px;
-    }
-
-    /* New section for text below the logo */
-    .welcome-text {
-      text-align: center;
-      font-size: 15px;
-      line-height: 1.6;
-      margin-top: 20px;
-      color: #fff; /* Adjust color as needed */
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .welcome-text p {
-      animation: fadeInUp 0.8s ease forwards;
-      opacity: 0;
-    }
-
-    .welcome-text p:nth-child(1) {
-      animation-delay: 0.3s;
-    }
-
-    .welcome-text p:nth-child(2) {
-      animation-delay: 0.6s;
-    }
-
-    .welcome-text p:nth-child(3) {
-      animation-delay: 0.9s;
-    }
-
-    /* Section indicator */
-    .section-indicator {
-      position: fixed;
-      right: 30px;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      z-index: 100;
-    }
-
-    .indicator-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background-color: #2b292f;
-      border: 2px solid #f51fa3;
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-
-    .indicator-dot.active {
-      background-color: #f51fa3;
-      transform: scale(1.3);
-      box-shadow: 0 0 15px rgba(255, 102, 204, 0.8);
-    }
-
-    /* Particles container */
-    #particles-js {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: #19181c;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: linear-gradient(45deg, #b0005b, #ff66cc);
-      border-radius: 5px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: linear-gradient(45deg, #ff66cc, #b0005b);
-    }
-  </style>
-</head>
-
-<body>
-  <!-- Particles background -->
-  <div id="particles-js"></div>
-
-  <header>
-    <a href="/" target="_self">
-      <img class="logo" src="https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/logo_header_small/RUTHLESS%20RP%20ICON%20BIG.svg?raw=true" alt="Ruthless RP Logo">
-    </a>
-    <a href="https://discord.gg/3JrSpwRVYV" target="_blank" class="discord-container">
-      <div class="discord-circle">
-        <img class="discord-icon" src="https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/logo_header_small/discordicon_inactive.png?raw=true" alt="Discord Icon">
-      </div>
-    </a>
-  </header>
-  
-  <!-- New additional logo below header -->
-  <div class="additional-logo">
-    <img src="https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/logo_header_small/RUTHLESS%20RP%20ICON%20BIG.svg?raw=true" alt="Additional Logo">
-  </div>
-
-  <!-- Welcome Text Below the Logo -->
-  <div class="text-container">
-    <div class="welcome-text">
-      <p>Welcome to Ruthless Roleplay!</p>
-      <p>We are thrilled to have you join our community. At Ruthless Roleplay, we strive to create an immersive and high-quality roleplaying experience that brings our world to life. The rules outlined below are in place to ensure that our culture, values, and goals are upheld. These guidelines help maintain an environment where everyone can enjoy authentic and meaningful roleplay, free from disruption.</p>
-      <p>By following these rules, we can all contribute to the success of our community and ensure that every member has the opportunity to engage in the best possible roleplay experience.</p>
-    </div>
-  </div>
-
-  <main>
-    <div class="rules-wrapper">
-      <div class="rule-section">
-        <div class="rule-text" onclick="toggleContent(this)">
-          <i class="rule-icon fas fa-compass"></i>
-          <span>Goals and Philosophy</span>
-          <i class="fas fa-chevron-down rule-arrow"></i>
-        </div>
-  
-        <div class="rule-content">
-          <div class="two-column">
-  
-            <div class="rule-row">
-              <div class="column-title">Our Goals</div>
-              <div class="column-desc">Provide a welcoming and respectful space for all roleplayers.</div>
-            </div>
-  
-            <div class="rule-row">
-              <div class="column-title">Immersive Storytelling</div>
-              <div class="column-desc">Foster in-depth narratives and engaging storylines.</div>
-            </div>
-  
-            <div class="rule-row">
-              <div class="column-title">Character Development</div>
-              <div class="column-desc">Encourage meaningful character progression.</div>
-            </div>
-  
-            <div class="rule-row">
-              <div class="column-title">Creative Collaboration</div>
-              <div class="column-desc">Promote teamwork and shared storytelling.</div>
-            </div>
-  
-            <div class="rule-row">
-              <div class="column-title">Dynamic and Engaging World</div>
-              <div class="column-desc">Build a vibrant environment for player-driven stories.</div>
-            </div>
-  
-            <div class="rule-row">
-              <div class="column-title">Framework for Quality RP</div>
-              <div class="column-desc">Guide storytelling and ensure fair interactions.</div>
-            </div>
-  
-            <div class="rule-row">
-              <div class="column-title">Promote Immersive, Respectful, and Realistic RP</div>
-              <div class="column-desc">Create an environment where players can thrive.</div>
-            </div>
-  
-            <div class="rule-row">
-              <div class="column-title">Impact-Based Consequences</div>
-              <div class="column-desc">Staff assess rule breaks based on the incident's impact.</div>
-            </div>
-  
-            <div class="rule-row">
-              <div class="column-title">Support Fun and Fair Environment</div>
-              <div class="column-desc">Minimize intervention in positive and engaging RP.</div>
-            </div>
-  
-            <div class="rule-row">
-              <div class="column-title">Protect Meaningful Roleplay</div>
-              <div class="column-desc">Safeguard every player's right to in-depth RP.</div>
-            </div>
-  
-            <div class="rule-row">
-              <div class="column-title">Encourage Creativity</div>
-              <div class="column-desc">Inspire imagination within the ruleset.</div>
-            </div>
-  
-          </div>
-        </div>
-      </div>
-  
-      <!-- Community Rules Section -->
-      <div class="rule-section">
-        <div class="rule-text" onclick="toggleContent(this)">
-          <i class="rule-icon fas fa-users"></i>
-          <span>Community Rules</span>
-          <i class="fas fa-chevron-down rule-arrow"></i>
-        </div>
-  
-        <div class="rule-content">
-          <div class="two-column">
-  
-            <div class="rule-row">
-              <div class="column-title">Respect One Another</div>
-              <div class="column-desc">Treat all members of the server community with dignity, kindness, and respect, regardless of their in-game characters or backgrounds. Handle any disagreements in a civil and mature manner, focusing on constructive communication rather than personal attacks.</div>
-            </div>
-  
-            <div class="rule-row">
-              <div class="column-title">Respect Everyone's Roleplay</div>
-              <div class="column-desc">Value the unique roleplaying style of each player. Contribute positively to the server's overall narrative by engaging respectfully with others' storylines and avoiding actions that diminish their roleplay experience.</div>
-            </div>
-  
-            <div class="rule-row">
-              <div class="column-title">No Roleplay Evading</div>
-              <div class="column-desc">When you are involved in a roleplay scenario, you are expected to engage with it meaningfully and accept the consequences of your character's actions. Avoid logging off or finding ways to circumvent ongoing roleplay. If you are unable to participate fully for OOC reasons, communicate this respectfully in an appropriate OOC manner (e.g., using a designated OOC chat or a ticket).</div>
-            </div>
-  
-            <div class="rule-row">
-              <div class="column-title">No Hate Speech</div>
-              <div class="column-desc">Absolutely no discriminatory language targeting individuals or groups based on race, ethnicity, religion, gender, sexual orientation, disability, or any other protected characteristic will be tolerated. Violations of this rule will result in severe consequences.</div>
-            </div>
-  
-            <div class="rule-row">
-              <div class="column-title">No Harassment</div>
-              <div class="column-desc">Harassment of any kind, including but not limited to personal attacks, stalking, threats, and unwanted attention, is strictly prohibited both in-game and in community spaces like Discord. Report any instances of harassment to the staff immediately.</div>
-            </div>
-  
-            <div class="rule-row">
-              <div class="column-title">No Off-Server Misconduct</div>
-              <div class="column-desc">Maintain respectful and positive behavior in all online interactions related to the server, including in Discord and other community platforms. Actions taken outside the game that significantly impact the server community may be subject to staff review.</div>
-            </div>
-  
-            <div class="rule-row">
-              <div class="column-title">Zero Tolerance for Toxic Behavior</div>
-              <div class="column-desc">Any disruptive actions that negatively impact the enjoyment of the community as a whole, such as excessive negativity, constant complaining, or creating unnecessary drama, will not be tolerated.</div>
-            </div>
-  
-            <div class="rule-row">
-              <div class="column-title">No Promoting Other Servers</div>
-              <div class="column-desc">Do not advertise or recruit for other FiveM communities or servers without explicit permission from the server staff.</div>
-            </div>
-  
-            <div class="rule-row">
-              <div class="column-title">Adult Server (18+ Only)</div>
-              <div class="column-desc">This server contains mature themes and content that may not be suitable for minors. Participation is restricted to individuals who are 18 years of age or older.</div>
-            </div>
-  
-            <div class="rule-row">
-              <div class="column-title">Bans</div>
-              <div class="column-desc">Bans are issued at the discretion of the server staff based on the severity and impact of the rule violation. Staff decisions regarding bans are considered final.</div>
-            </div>
-  
-            <div class="rule-row">
-              <div class="column-title">No Backseat Admins</div>
-              <div class="column-desc">Players who are not staff members should not attempt to enforce server rules or give administrative directions to other players. If you believe a rule has been broken, report it to the staff through the proper channels.</div>
-            </div>
-  
-            <div class="rule-row">
-              <div class="column-title">Ban Appeals</div>
-              <div class="column-desc">If you believe you have been unfairly banned, follow the designated ban appeal procedure outlined by the server. Staff will review appeals, but their final decision remains binding.</div>
-            </div>
-  
-            <div class="rule-row">
-              <div class="column-title">Ban Evasion</div>
-              <div class="column-desc">Attempting to bypass a server ban by using alternative accounts or methods will result in permanent and potentially more severe consequences.</div>
-            </div>
-  
-            <div class="rule-row">
-              <div class="column-title">Leave Drama Outside</div>
-              <div class="column-desc">Keep personal conflicts and issues that originate outside of the server's roleplay environment out of in-game interactions and community communication channels.</div>
-            </div>
-  
-            <div class="rule-row">
-              <div class="column-title">No Bug Exploits</div>
-              <div class="column-desc">Intentionally using glitches, bugs, or unintended game mechanics to gain an unfair advantage is strictly prohibited. If you discover a bug, report it to the staff immediately rather than exploiting it.</div>
-            </div>
-  
-            <div class="rule-row">
-              <div class="column-title">Report Offenses</div>
-              <div class="column-desc">If you witness another player breaking a server rule, do not attempt to intervene yourself. Instead, report the incident to the server staff through the appropriate channels (e.g., in-game tickets, Discord reports) so they can handle it effectively.</div>
-            </div>
-  
-            <div class="rule-row">
-              <div class="column-title">Leave Beefs from Previous Servers</div>
-              <div class="column-desc">Do not bring conflicts, grudges, or negative history from other FiveM servers into this community. Treat everyone within this server as a new interaction.</div>
-            </div>
-  
-            <div class="rule-row">
-              <div class="column-title">No Excessive Sexual Verbal Content</div>
-              <div class="column-desc">Avoid making inappropriate or overly explicit sexual comments in public chat or voice channels that may make other players uncomfortable. While mature themes are present, focus on roleplay rather than explicit verbal content.</div>
-            </div>
-  
-          </div>
-        </div>
-      </div>
-          
-      <!-- General Rules Section -->
-      <div class="rule-section">
-        <div class="rule-text" onclick="toggleContent(this)">
-          <i class="rule-icon fas fa-book"></i>
-          <span>General Rules</span>
-          <i class="fas fa-chevron-down rule-arrow"></i>
-        </div>
-
-        <div class="rule-content">
-          <div class="two-column">
-            <!-- Rule 1 -->
-            <div class="rule-row">
-              <div class="column-title">Roleplay First</div>
-              <div class="column-desc">In every situation, your primary focus should be on creating and engaging in immersive roleplay. Respond to roleplay initiated by others and prioritize storytelling over other game mechanics.</div>
-            </div>
-
-            <!-- Rule 2 -->
-            <div class="rule-row">
-              <div class="column-title">In-Game Harassment</div>
-              <div class="column-desc">While intense conflict is a part of roleplay, it should never be used as an excuse for personal attacks or OOC harassment. All intense roleplay scenarios require mutual respect and a level of implied or explicit consent between the involved players.</div>
-            </div>
-
-            <!-- Rule 3 -->
-            <div class="rule-row">
-              <div class="column-title">No "Cry Baby" / "Iyakin" Mentality</div>
-              <div class="column-desc">Embrace the outcomes of your roleplay, both positive and negative. Avoid complaining excessively about in-game events. If you have a legitimate Out-Of-Character (OOC) issue or believe a rule has been broken, report it via the ticket system rather than reacting negatively in character.</div>
-            </div>
-
-            <!-- Rule 4 -->
-            <div class="rule-row">
-              <div class="column-title">Don't Turn Things Into a Ticket War</div>
-              <div class="column-desc">Use the ticket system constructively to report rule violations or seek staff assistance with legitimate issues. Avoid creating multiple unnecessary tickets or arguing excessively with staff decisions within the ticket system.</div>
-            </div>
-
-            <!-- Rule 5 -->
-            <div class="rule-row">
-              <div class="column-title">No Breaking Character (OOC in RP)</div>
-              <div class="column-desc">During roleplay scenes, you should remain in character at all times. Avoid using Out-Of-Character (OOC) information or speaking about OOC matters in a way that breaks immersion for yourself and others. Exceptions are typically made only for severe rule violations or when explicitly communicating with staff.</div>
-            </div>
-
-            <!-- Rule 6 -->
-            <div class="rule-row">
-              <div class="column-title">No Exploiting</div>
-              <div class="column-desc">Abusing any game mechanics, glitches, or loopholes to gain an unfair advantage over other players or to circumvent intended gameplay is strictly prohibited. This includes but is not limited to exploiting server scripts, animations, or game physics.</div>
-            </div>
-
-            <!-- Rule 7 -->
-            <div class="rule-row">
-              <div class="column-title">Value Your Life (NVL)</div>
-              <div class="column-desc">Roleplay your character with a realistic sense of self-preservation. Avoid engaging in actions that would realistically lead to serious injury or death without a valid in-character reason and demonstrating appropriate fear for your character's well-being.</div>
-            </div>
-
-            <!-- Rule 8 -->
-            <div class="rule-row">
-              <div class="column-title">No Metagaming</div>
-              <div class="column-desc">Do not use Out-Of-Character (OOC) information that your character has not learned in-character. This includes information gained from streams, Discord, or other OOC sources. All In-Character (IC) communication and knowledge must be obtained through in-game interactions.</div>
-            </div>
-
-            <!-- Rule 9 -->
-            <div class="rule-row">
-              <div class="column-title">No Stream Sniping or Using Stream Information IC</div>
-              <div class="column-desc">Watching another player's stream and using information you gain from it in your own roleplay is strictly prohibited as it constitutes metagaming and can severely impact the fairness and immersion of the roleplay environment.</div>
-            </div>
-
-            <!-- Rule 10 -->
-            <div class="rule-row">
-              <div class="column-title">No Powergaming</div>
-              <div class="column-desc">Do not perform actions that force outcomes on other characters without giving them a reasonable opportunity to react or roleplay the situation. This includes actions that are unrealistic or god-like in nature. For example, instantly knowing someone's thoughts or performing actions that are physically impossible for your character.</div>
-            </div>
-
-            <!-- Rule 11 -->
-            <div class="rule-row">
-              <div class="column-title">Fail RP (Failure to Roleplay)</div>
-              <div class="column-desc">Any actions that break the immersion of the roleplay environment, disrespect the established rules, or demonstrate a lack of understanding of basic roleplaying principles may be considered Fail RP. This can include unrealistic actions, illogical behavior, or a general disregard for the roleplay experience of others. Such actions may lead to removal from the scene or other consequences.</div>
-            </div>
-
-            <!-- Rule 12 -->
-            <div class="rule-row">
-              <div class="column-title">No "Dirty Whitelisted" RP</div>
-              <div class="column-desc">Players in whitelisted roles (e.g., law enforcement, EMS) must not abuse their access to resources, information, or abilities for personal gain in illegal activities or to unfairly benefit their criminal characters or associates without a strong and justifiable in-character reason that is appropriately roleplayed.</div>
-            </div>
-
-            <!-- Rule 13 -->
-            <div class="rule-row">
-              <div class="column-title">Roleplay Over Gunplay / Unnecessary Low-Quality Violence</div>
-              <div class="column-desc">Prioritize engaging in meaningful roleplay and dialogue over resorting to violence. Gunplay and other violent actions should only be a last resort and must be preceded by significant in-character reasoning and narrative buildup. Attempt to de-escalate situations through communication whenever possible.</div>
-            </div>
-
-            <!-- Rule 14 -->
-            <div class="rule-row">
-              <div class="column-title">Violence Must Have Meaning</div>
-              <div class="column-desc">Any act of violence should be driven by a compelling in-character story or motivation, not based on petty reasons, impulsiveness, or a desire for random conflict.</div>
-            </div>
-
-            <!-- Rule 15 -->
-            <div class="rule-row">
-              <div class="column-title">No Body Dumping, Forcing Respawn, or Forced Character Kills (CKs)</div>
-              <div class="column-desc">To avoid the consequences of roleplay or to end a character without proper justification, players are prohibited from actions such as disposing of bodies in unrealistic ways, intentionally forcing their character to respawn, or unilaterally deciding to permanently kill another player's character. Character Kills (CKs) require explicit staff approval and must be supported by significant and well-developed roleplay.</div>
-            </div>
-
-            <!-- Rule 16 -->
-            <div class="rule-row">
-              <div class="column-title">Revenge RP</div>
-              <div class="column-desc">Seeking immediate retaliation for negative roleplay outcomes (e.g., being robbed, arrested, or injured) without allowing for meaningful in-character development and planning is discouraged. Revenge roleplay should be approached with a focus on creating a compelling story rather than immediate, impulsive action.</div>
-            </div>
-
-            <!-- Rule 17 -->
-            <div class="rule-row">
-              <div class="column-title">No Random Deathmatching (RDM)</div>
-              <div class="column-desc">Attacking or killing another player without any prior meaningful roleplay interaction or a valid in-character reason is strictly prohibited. There must be a clear and logical in-character justification for initiating violence against another individual.</div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      <!-- Conflicts Section -->
-      <div class="rule-section">
-        <div class="rule-text" onclick="toggleContent(this)">
-          <i class="rule-icon fas fa-fist-raised"></i>
-          <span>Conflicts</span>
-          <i class="fas fa-chevron-down rule-arrow"></i>
-        </div>
-
-        <div class="rule-content">
-          <div class="two-column">
-            <!-- Rule 1 -->
-            <div class="rule-row">
-              <div class="column-title">In-Game Harassment</div>
-              <div class="column-desc">While intense conflict is a part of roleplay, it should never be used as an excuse for personal attacks or repeated discomfort towards another player. All intense roleplay scenarios require mutual respect and a level of implied or explicit consent between the involved players. Staff will investigate any claims of Out-Of-Character (OOC) driven harassment that occurs under the guise of in-character conflict.</div>
-            </div>
-
-            <!-- Rule 2 -->
-            <div class="rule-row">
-              <div class="column-title">Roleplay Over Gunplay / Unnecessary Low-Quality Violence</div>
-              <div class="column-desc">Even in conflict situations, prioritize engaging in meaningful roleplay and dialogue over resorting to violence. Gunplay and other violent actions should only be a last resort and must be preceded by significant in-character reasoning and narrative buildup. Attempt to de-escalate situations through communication whenever possible. Violence should not be based on petty or impulsive reasons.</div>
-            </div>
-
-            <!-- Rule 3 -->
-            <div class="rule-row">
-              <div class="column-title">Revenge RP</div>
-              <div class="column-desc">Seeking immediate retaliation for negative conflict outcomes without allowing for meaningful in-character development and planning is discouraged. Revenge roleplay should be approached with a focus on creating a compelling story rather than immediate, impulsive action.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Illegal Activities Section -->
-      <div class="rule-section">
-        <div class="rule-text" onclick="toggleContent(this)">
-          <i class="rule-icon fas fa-balance-scale"></i>
-          <span>Illegal Activities</span>
-          <i class="fas fa-chevron-down rule-arrow"></i>
-        </div>
-
-        <div class="rule-content">
-          <div class="two-column">
-            <!-- Rule 1 -->
-            <div class="rule-row">
-              <div class="column-title">Criminal Mindset</div>
-              <div class="column-desc">When roleplaying a criminal character, you are expected to act in a manner consistent with that role. This includes being discreet in your actions and understanding that a primary goal of criminal activity is to avoid detection and apprehension by law enforcement.</div>
-            </div>
-
-            <!-- Rule 2 -->
-            <div class="rule-row">
-              <div class="column-title">No Exploiting</div>
-              <div class="column-desc">Prohibited for any advantage, including in illegal activities. Examples include combat logging (quitting during a conflict or illegal activity), glitch abuse, camping respawn points, initiating major crimes immediately before or after a server restart to avoid consequences, emote abuse to gain an unfair advantage, illegal item transfers between characters outside of legitimate roleplay, and respawn abuse to avoid capture or other consequences.</div>
-            </div>
-
-            <!-- Rule 3 -->
-            <div class="rule-row">
-              <div class="column-title">No "Dirty Whitelisted" RP</div>
-              <div class="column-desc">Players in whitelisted roles (e.g., law enforcement, EMS) must not abuse their access to resources, information, or abilities to aid their own or others' illegal activities or to gain unfair advantages in conflicts without a strong and justifiable in-character reason that is appropriately roleplayed and consistent with their faction's guidelines.</div>
-            </div>
-
-            <!-- Rule 4 -->
-            <div class="rule-row">
-              <div class="column-title">No Body Dumping, Forcing Respawn, or Forced Character Kills (CKs)</div>
-              <div class="column-desc">To avoid the consequences of illegal actions, players are prohibited from disposing of bodies in unrealistic ways, intentionally forcing their character to respawn after being incapacitated, or unilaterally deciding to permanently kill another player's character involved in the illegal activity. Character Kills (CKs) related to illegal activities require explicit staff approval and must be supported by significant and well-developed roleplay.</div>
-            </div>
-
-            <!-- Rule 5 -->
-            <div class="rule-row">
-              <div class="column-title">Major Crimes Near Restart</div>
-              <div class="column-desc">Initiating major illegal activities (e.g., store robberies, bank heists) within 30 minutes before or after a scheduled server restart is prohibited to prevent using the restart as a means of escaping consequences or disrupting server stability. Furthermore, upon receiving a server restart notification, players involved in ongoing crimes should make reasonable efforts to conclude the scenario through roleplay before the restart occurs, and any rewards or consequences from illegal activities that are not completed prior to server restart will be voided at staff discretion.</div>
-            </div>
-
-            <!-- Rule 6 -->
-            <div class="rule-row">
-              <div class="column-title">No "Palit Ulo" (No Trading Heads/Scapegoating)</div>
-              <div class="column-desc">Players who are directly involved in committing a crime must face the in-character consequences of their actions. Attempting to shift blame onto another individual or having someone else take responsibility for your crimes without legitimate in-character legal proceedings (such as utilizing Department of Justice roleplay for defense or plea bargains) is prohibited. The principle is: if your character did the crime, your character faces the consequences.</div>
-            </div>
-
-            <!-- Rule 7 -->
-            <div class="rule-row">
-              <div class="column-title">Heists and Robberies - Focus on Escape</div>
-              <div class="column-desc">The primary roleplay concept for heists and robberies should center around the planning and execution of a viable escape plan. Unnecessary casualties or killings during these scenarios should be avoided unless they arise from legitimate self-defense or as a last resort within the established roleplay to ensure the survival of the involved criminals.</div>
-            </div>
-
-            <!-- Rule 8 -->
-            <div class="rule-row">
-              <div class="column-title">Robbery Participant Limits</div>
-              <div class="column-desc">Generally, expect limits such as 2-4 criminals for small-scale robberies (e.g., convenience stores, ATMs), 3-5 criminals for medium-scale robberies (e.g., jewelry stores, smaller banks), and 4-6 or potentially more for large-scale robberies (e.g., major banks, heists, as defined by server rules).</div>
-            </div>
-
-            <!-- Rule 9 -->
-            <div class="rule-row">
-              <div class="column-title">Small-Time Illegal Activity Limit</div>
-              <div class="column-desc">For smaller-scale illegal activities such as house robberies and the sale of drugs, the maximum number of criminal participants allowed is 4. This is to encourage more discreet and manageable scenarios.</div>
-            </div>
-
-            <!-- Rule 10 -->
-            <div class="rule-row">
-              <div class="column-title">Hostage-Taking Rules</div>
-              <div class="column-desc">In robbery roleplay scenarios, such as ATM and store robberies, taking a person hostage is permitted. However, outside of these direct robbery situations, hostage-taking is not allowed for any other reason.</div>
-            </div>
-
-            <!-- Rule 11 -->
-            <div class="rule-row">
-              <div class="column-title">Demand Limitations</div>
-              <div class="column-desc">
-                <ul>
-                  <li>1 hostage = 2 demands</li>
-                  <li>2 hostages = 3 demands</li>
-                  <li>3 or more hostages = 3 demands (maximum)</li>
-                  <li>Any demand that is considered "stupid" or "unfair" will not be honored. Valid demands are limited to the following:
-                    <ul>
-                      <li>No motorcycle unit</li>
-                      <li>No helicopter unit</li>
-                      <li>Free Passage</li>
-                      <li>No Pitting</li>
-                      <li>No Spikes</li>
-                      <li>Cash Demand: Up to $1000 per hostage, regardless of who they are.</li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Rule 12 -->
-            <div class="rule-row">
-              <div class="column-title">All demands will be voided under the following conditions</div>
-              <div class="column-desc">
-                <ul>
-                  <li>The robbers perform more than 3 "strats" or "jumps."</li>
-                  <li>The robbers perform more than 2 vehicle switches.</li>
-                  <li>The chase exceeds 15 minutes.</li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Rule 13 -->
-            <div class="rule-row">
-              <div class="column-title">Law Enforcement Response</div>
-              <div class="column-desc">The number of law enforcement officers responding to any criminal activity will be determined by the internal policies, staffing levels, and dispatch procedures of the law enforcement department within the server. Police officers will not open fire unless they are directly threatened with lethal force or if the situation realistically calls for the use of deadly force to protect themselves or others (e.g., an active shooter scenario).</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <!-- Section indicator dots -->
-  <div class="section-indicator">
-    <!-- These will be generated by JS -->
-  </div>
-
-  <footer>
-    <div class="footer-text">
-      © 2025 Ruthless Roleplay | All Rights Reserved
-    </div>
-  </footer>
-  
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script>
-    // Toggle rule content function
-    function toggleContent(element) {
-      // First, close any open rule content
-      document.querySelectorAll('.rule-text.active').forEach(activeElem => {
-        if (activeElem !== element) {
-          const activeContent = activeElem.nextElementSibling;
-          activeElem.classList.remove('active');
-          activeContent.style.height = activeContent.scrollHeight + "px";
-          requestAnimationFrame(() => {
-            activeContent.style.height = "0";
-            activeContent.style.opacity = "0";
-            activeContent.classList.remove("show");
-          });
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>New Page Title</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --header-height: 50px;
+            --pink: #ff69b4;
+            --announcement-height: 400px;
         }
-      });
 
-      const content = element.nextElementSibling;
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: rgba(0, 0, 0, 0.8)
+                url('https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/backgroundimage_mainpage/background%20image.png')
+                no-repeat center top 10px;
+            background-size: cover;
+            background-attachment: fixed;
+            background-blend-mode: multiply;
+            color: white;
+            position: relative;
+            padding-top: var(--header-height);
+            padding-bottom: 25px;
+        }
 
-      if (content.classList.contains("show")) {
-        element.classList.remove('active');
-        content.style.height = content.scrollHeight + "px";
-        requestAnimationFrame(() => {
-          content.style.height = "0";
-          content.style.opacity = "0";
-          content.classList.remove("show");
-        });
-      } else {
-        element.classList.add('active');
-        content.style.height = content.scrollHeight + "px";
-        content.style.opacity = "1";
-        content.classList.add("show");
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: linear-gradient(to bottom, #4d0847, #15151a);
+            border-bottom: 1px solid var(--pink);
+            box-shadow: 0 10px 20px -10px var(--pink);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 500px;
+            z-index: 1000;
+        }
 
-        // After transition ends, remove inline height to allow responsiveness
-        content.addEventListener("transitionend", function handler() {
-          if (content.classList.contains("show")) {
-            content.style.height = "auto";
-          }
-          content.removeEventListener("transitionend", handler);
-        });
-        
-        // Scroll into view with offset
-        const headerOffset = 100;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-        
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth"
-        });
-      }
-    }
-    
-    // Particles background
-    document.addEventListener('DOMContentLoaded', function() {
-      particlesJS('particles-js', {
-        "particles": {
-          "number": {
-            "value": 50,
-            "density": {
-              "enable": true,
-              "value_area": 800
+        main {
+            width: 60%;
+            max-width: 900px;
+            margin: calc(var(--header-height) + 15px) auto 20px; /* Adjusted top margin */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center content within main */
+            min-height: auto;
+        }
+
+        .welcome-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            margin-bottom: 20px; /* Spacing before the iframe */
+            width: 100%; /* Make welcome section take full width of main */
+            color: var(--welcome-font-color); /* Apply font color variable */
+            text-align: center; /* Default justification */
+        }
+
+        .welcome-section img {
+            max-width: 200px; /* Adjust as needed */
+            max-height: 100px; /* Adjust as needed */
+        }
+
+        .welcome-section h1 {
+            font-size: 2em; /* Default heading size */
+            color: rgb(245, 43, 127);
+            margin-bottom: 10px;
+        }
+
+        .welcome-section p {
+            font-size: 1em; /* Default paragraph size */
+            line-height: 1.6;
+            text-align: center; /* Default paragraph justification */
+        }
+
+        iframe {
+            width: 95%; /* Make iframe take full width of main */
+            height: 600px; /* Adjust iframe height as needed */
+            border: none;
+            
+        }
+
+        .logo-container {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-container:hover {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .pulse {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            background-color: var(--pink);
+            -webkit-mask-image: url('https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/logo_header_small/RUTHLESS%20RP%20ICON%20BIG.svg');
+            mask-repeat: no-repeat;
+            mask-position: center;
+            mask-size: contain;
+            filter: drop-shadow(0 0 8px var(--pink));
+        }
+
+        .logo-container:hover .pulse {
+            opacity: 1;
+            animation: pulseGlow 2s infinite ease-in-out;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% {
+                opacity: 0.4;
+                transform: scale(1);
+                box-shadow: 0 0 8px var(--pink);
             }
-          },
-          "color": {
-            "value": "#f51fa3"
-          },
-          "shape": {
-            "type": "circle",
-            "stroke": {
-              "width": 0,
-              "color": "#000000"
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+                box-shadow: 0 0 14px var(--pink);
             }
-          },
-          "opacity": {
-            "value": 0.5,
-            "random": true,
-            "anim": {
-              "enable": true,
-              "speed": 1,
-              "opacity_min": 0.1,
-              "sync": false
+        }
+
+        .discord-button {
+            background-color: #262730;
+            border: 1px solid var(--pink);
+            border-radius: 8px;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .discord-button img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .discord-button:hover {
+            box-shadow: 0 0 12px 3px var(--pink);
+            background-color: var(--pink);
+        }
+
+        .discord-button:hover img {
+            filter: brightness(0) invert(1);
+        }
+
+        .announcement-section {
+            max-width: 1200px;
+            width: 1000px;
+            height: var(--announcement-height);
+            margin: 25px auto;
+            padding: 10px 10px;
+            border: 1px solid var(--pink);
+            border-radius: 5px;
+            background: linear-gradient(to bottom, #4d0847, #15151a);
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+            text-align: center;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 104%);
+            transition: transform 0.4s ease-in-out;
+            z-index: 999;
+        }
+
+        .announcement-section:hover {
+            transform: translate(-50%, 20%);
+        }
+
+        .announcement-section h2 {
+            color: var(--pink);
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .announcement-section p {
+            font-size: 15px;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 700px) {
+            header {
+                padding: 0 20px;
             }
-          },
-          "size": {
-            "value": 3,
-            "random": true
-          },
-          "line_linked": {
-            "enable": true,
-            "distance": 150,
-            "color": "#ff66cc",
-            "opacity": 0.4,
-            "width": 1
-          },
-          "move": {
-            "enable": true,
-            "speed": 2,
-            "direction": "none",
-            "random": true,
-            "straight": false,
-            "out_mode": "out",
-            "bounce": false
-          }
-        },
-        "interactivity": {
-          "detect_on": "canvas",
-          "events": {
-            "onhover": {
-              "enable": true,
-              "mode": "repulse"
-            },
-            "onclick": {
-              "enable": true,
-              "mode": "push"
-            },
-            "resize": true
-          }
-        },
-        "retina_detect": true
-      });
-      
-      // Create section indicators
-      const sectionIndicator = document.querySelector('.section-indicator');
-      const ruleSections = document.querySelectorAll('.rule-section');
-      
-      // Create indicators
-      ruleSections.forEach((section, index) => {
-        const dot = document.createElement('div');
-        dot.classList.add('indicator-dot');
-        dot.dataset.index = index;
-        dot.addEventListener('click', () => {
-          const ruleText = section.querySelector('.rule-text');
-          ruleText.scrollIntoView({ behavior: 'smooth' });
-        });
-        sectionIndicator.appendChild(dot);
-      });
-      
-      // Update active indicator on scroll
-      window.addEventListener('scroll', () => {
-        let currentSectionIndex = 0;
-        
-        ruleSections.forEach((section, index) => {
-          const rect = section.getBoundingClientRect();
-          if (rect.top <= 200) {
-            currentSectionIndex = index;
-          }
-        });
-        
-        document.querySelectorAll('.indicator-dot').forEach((dot, index) => {
-          if (index === currentSectionIndex) {
-            dot.classList.add('active');
-          } else {
-            dot.classList.remove('active');
-          }
-        });
-      });
-    });
-  </script>
+
+            .announcement-section {
+                width: 95%;
+            }
+        }
+
+        .announcement-tab {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--pink);
+            padding: 4px 12px;
+            border-radius: 10px 10px 0 0;
+            font-size: 12px;
+            font-weight: bold;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container" aria-label="Ruthless RP Logo">
+            <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/logo_header_small/RUTHLESS%20RP%20ICON%20BIG.svg" alt="Ruthless RP Logo" />
+            <div class="pulse"></div>
+        </div>
+        <a href="https://discord.gg/eVXQb6Utxg" class="discord-button" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord">
+            <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/logo_header_small/discordicon_inactive.png" alt="Discord Icon" />
+        </a>
+    </header>
+
+    <main>
+        <div class="welcome-section">
+            <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/logo_header_small/RUTHLESS%20RP%20ICON%20BIG.svg" alt="Welcome Logo" />
+            <h1>Welcome to Ruthless Roleplay!</h1>
+
+            <p>We are thrilled to have you join our community. At Ruthless Roleplay, we strive to create an immersive and high-quality roleplaying experience that brings our world to life. The rules outlined below are in place to ensure that our culture, values, and goals are upheld. These guidelines help maintain an environment where everyone can enjoy authentic and meaningful roleplay, free from disruption.</p>
+
+            <p>By following these rules, we can all contribute to the success of our community and ensure that every member has the opportunity to engage in the best possible roleplay experience.</p>
+        </div>
+
+        <iframe src="https://docs.google.com/document/d/e/2PACX-1vR-XJ1A0kIjVmsTNwOEtPljg7qabiI6koH5x6GbG0lL1DEfgPP2wPtqaTrPyJgVz6YCcnA2ESeAg-A2/pub?embedded=true"></iframe>
+    </main>
+
+    <div class="announcement-section">
+        <div class="announcement-tab">ANNOUNCEMENTS</div>
+        <h2>Server Updates & News</h2>
+        <p>Stay tuned for the latest news and updates about the Ruthless Roleplay server!</p>
+    </div>
 </body>
 </html>
+
+
