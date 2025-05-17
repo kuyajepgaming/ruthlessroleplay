@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -87,8 +88,15 @@
             width: 95%;
             height: 390px;
             border: none;
-            overflow: auto; /* Ensure scrolling is still possible */
-            scrollbar-width: none; /* Hide the scrollbar in Firefox */
+            overflow: auto;
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        /* WebKit (Chrome, Safari) Scrollbar Styling - As a separate rule */
+        /* This can help some linters */
+        iframe::-webkit-scrollbar {
+            width: 0;
+            height: 0; /* For good measure - some browsers might use height */
         }
 
         .logo-container {
@@ -128,10 +136,14 @@
             height: 100%;
             opacity: 0;
             background-color: var(--pink);
-            -webkit-mask-image: url('https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/logo_header_small/RUTHLESS%20RP%20ICON%20BIG.svg');
+            mask-image: url('https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/logo_header_small/RUTHLESS%20RP%20ICON%20BIG.svg'); /* Standard */
+            -webkit-mask-image: url('https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/logo_header_small/RUTHLESS%20RP%20ICON%20BIG.svg'); /* WebKit */
             mask-repeat: no-repeat;
+            -webkit-mask-repeat: no-repeat; /* For older Safari versions */
             mask-position: center;
+            -webkit-mask-position: center; /* For older Safari versions */
             mask-size: contain;
+            -webkit-mask-size: contain; /* For older Safari versions */
             filter: drop-shadow(0 0 8px var(--pink));
         }
 
@@ -182,8 +194,6 @@
         }
 
         .announcement-section {
-            /* position: static;  Try this to see if it behaves differently */
-            /* display: none;  Try this to completely remove it and see if it changes anything */
             max-width: 1200px;
             width: 1000px;
             height: var(--announcement-height);
@@ -272,8 +282,6 @@
 
             <p>By following these rules, we can all contribute to the success of our community and ensure that every member
                 has the opportunity to engage in the best possible roleplay experience.</p>
-
-            <h2>PLEASE SEE BELOW</h2>
         </div>
 
         <iframe
