@@ -1,1145 +1,861 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ruthless RP - Server Status</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --header-height: 50px;
+      --pink: #ff69b4;
+    }
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: rgba(0, 0, 0, 0.8)
+        url('https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/backgroundimage_mainpage/background%20image.png')
+        no-repeat center top 10px;
+      background-size: cover;
+      background-attachment: fixed;
+      background-blend-mode: multiply;
+      color: white;
+    }
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ruthless Roleplay - Home</title>
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--header-height);
+      background: linear-gradient(to bottom, #4d0847, #15151a);
+      border-bottom: 1px solid var(--pink);
+      box-shadow: 0 10px 20px -10px var(--pink);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 500px;
+      z-index: 1000;
+    }
 
-    <style>
-        :root {
-            --header-gap: 900px;
-            --logo-margin-left: -7.5px;
-            --footer-gap: 30px;
-            --footer-padding: 15px;
-            --playerbox-top: 150px;
-        }
-    
-        /* Global body styles */
-        body {
-            margin: 0;
-            padding-top: 67.5px;
-            font-family: Arial, sans-serif;
-            background-color: #19181c;
-            background-image: url('https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/backgroundimage.png?raw=true');
-            background-size: 45% auto;
-            background-position: 700px 20px;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-        }
-    
-        /* Header box */
-        header {
-            position: fixed;
-            top: 18.75px;
-            left: 50%;
-            margin-left: -600px;  /* Offset to center the header */
-            display: flex;
-            width: 1200px;
-            align-items: center;
-            justify-content: space-between;  /* Align items to the left and right edges */
-            padding: 12px 22.5px;
-            background: linear-gradient(to bottom, #181717 25%, #19181c 50%, #0e0d0d 75%); /* Dark gray edges with wider background color */
-            border: 1px solid #f51fa3;
-            border-radius: 9px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4), 0 10px 6px rgba(0, 0, 0, 0.2); /* Creates the folded paper effect */
-            z-index: 1000;
-        }
-    
-        /* Text Section Between Header and Status Box */
-        .text-section {
-            text-align: center;
-            font-family: 'Special Gothic Condensed One', sans-serif;
-            color: white;
-            margin-top: 45px;
-        }
-    
-        /* Header Text Style */
-        .text-section h2 {
-            font-size: 2.5rem; /* Adjust the font size */
-            background: linear-gradient(to bottom right, #b0005b, #ff66cc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: transparent;
-            text-transform: uppercase; /* Make it uppercase */
-            margin-bottom: 5px; /* Adjusted space between title and paragraph */
-        }
-    
-        /* Paragraph Text Style */
-        .text-section p {
-            font-size: 1.0rem;
-            color: white;
-            font-weight: 400; /* Lighter weight for readability */
-            text-shadow: 0 0 8px rgba(0, 0, 0, 0.7); /* Subtle shadow for contrast */
-            margin-top: 0; /* Ensure there's no extra space above the paragraph */
-        }
-    
-        /* Footer Box */
-        footer {
-            position: fixed;
-            bottom: 18.75px;
-            left: 50%;
-            transform: translateX(-50%);  /* Centers the footer */
-            display: flex;
-            align-items: center;
-            justify-content: center;  /* Centers the content inside the footer */
-            padding: 11.25px 22.5px;
-            width: 1200px;
-            background: linear-gradient(to bottom, #181717 25%, #19181c 50%, #0e0d0d 75%); /* Dark gray edges with wider background color */
-            border: 1px solid #f51fa3;
-            border-radius: 9px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.733), 0 4px 6px rgba(15, 5, 5, 0.89); /* Same folded shadow effect */
-            z-index: 1000;
-        }
-    
-        /* Footer Text */
-        .footer-text {
-            color: white;
-            font-size: 0.75rem;
-            white-space: nowrap;
-        }
-    
-        /* Logo */
-        header .logo {
-            height: 45px;
-            margin-left: var(--logo-margin-left);
-        }
-    
-        /* Discord icon container (circular button) */
-        .discord-container {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            margin-left: auto;  /* Push the container to the right */
-            margin-right: 0px;  /* Equal spacing on the right side of the Discord button */
-        }
-    
-        /* Discord icon container (circular button) */
-        .discord-circle {
-            position: relative;
-            width: 37px;
-            height: 37px;
-            border-radius: 50%;
-            background: linear-gradient(to bottom left, #b0005b, #ff66cc);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 0 10px rgba(255, 0, 119, 0.6);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-            overflow: hidden; /* Prevent text from spilling out of the circle */
-        }
-    
-        /* Discord icon */
-        .discord-icon {
-            width: 22.5px;
-            height: 22.5px;
-            transition: transform 0.3s ease;
-        }
-    
-        /* Hover effect for Discord icon */
-        .discord-circle:hover {
-            transform: scale(1.4);
-            box-shadow: 0 0 30px rgba(255, 0, 119, 1);
-        }
-    
-        .discord-circle:hover .discord-icon {
-            transform: rotate(360deg);
-        }
-    
-        /* Text for "JOIN DISCORD" */
-        .join-discord-text {
-            position: absolute;
-            top: 100%; 
-            left: 50%; 
-            transform: translateX(-50%) translateY(10px); 
-            color: white;
-            font-size: 0.75rem; 
-            font-weight: bold;
-            opacity: 0;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            text-align: center; 
-            display: block; 
-            white-space: nowrap;
-        }
-    
-        /* Show the text when hovering over the circle */
-        .discord-circle:hover + .join-discord-text {
-            opacity: 1;
-            transform: translateX(-50%) translateY(20px); 
-        }
-    
-        /* Wrapper for entire status section */
-        .status-wrapper {
-            width: 225px;
-            margin: 67.5px auto;
-            padding-top: 11.25px;
-            padding-bottom: 15px;
-            text-align: center;
-            font-family: 'Open Sans', sans-serif;
-            background: linear-gradient(to bottom, #181717 25%, #19181c 50%, #0e0d0d 75%); /* Dark gray edges with wider background color */
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.733), 0 4px 6px rgba(15, 5, 5, 0.89); /* Same folded shadow effect */
-            margin-top: 25px;
-            border: 1px solid #f51fa3;
-            border-radius: 9px;
-        }
-    
-        /* Server Status Text */
-        .status-wrapper .status-text {
-            color: white; /* Change text color to white */
-            font-weight: bold; /* Make the text bold */
-            font-size: 1rem; /* Optional: Adjust font size if needed */
-            margin-bottom: 7.5px; /* Maintain space between text and box */
-        }
-    
-        /* Status Box and Indicator */
-        .status-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 7.5px;
-            font-size: 12px;
-            font-weight: bold;
-            color: #ffffff;
-            text-align: center;
-        }
-    
-        /* Player Count and "PLAYERS ONLINE" Text */
-        #playerCountText {
-            font-family: 'Open Sans', sans-serif;
-            font-size: 0.7rem;
-            font-weight: bold;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    
-        /* Player Count Number */
-        .player-count-number {
-            color: #ff66cc;
-            font-weight: 700;
-            font-size: .9rem;
-            margin-right: 3.75px;
-        }
-    
-        /* Status Indicator (Pink Circle) */
-        .status-indicator {
-            width: 10.5px;
-            height: 10.5px;
-            border-radius: 50%;
-            background: radial-gradient(circle at center, #ff69b4, #ff1493);
-            animation: pulse 2s infinite;  /* Slower pulse for a subtle effect */
-            box-shadow: 0 0 8px #ffb6c1;  /* Subtle glow effect */
-            margin-top: -0.75px;
-        }
-    
-        /* Pulse animation */
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 0.8;
-                box-shadow: 0 0 8px #ffb6c1;  /* Subtle glow */
-            }
-    
-            50% {
-                transform: scale(1.2);
-                opacity: 1;
-                box-shadow: 0 0 15px #ffb6c1;  /* Slightly stronger glow */
-            }
-    
-            100% {
-                transform: scale(1);
-                opacity: 0.8;
-                box-shadow: 0 0 8px #ffb6c1;  /* Subtle glow */
-            }
-        }
-    
-        /* K Image Section - Modified for animation */
-        .image-section {
-            text-align: center;
-            margin-top: 30px;
-            margin-bottom: 50px;
-            position: relative;
-            width: 40%;
-            float: left;
-            opacity: 0; /* Start invisible */
-            transform: translateX(-100px); /* Start from left */
-            animation: fadeInLeft 1.5s ease forwards;
-            animation-delay: 0.5s; /* Small delay before starting */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 450px; /* Increased height to prevent content from being cut off */
-        }
-    
-        /* Animation for image fading in from left */
-        @keyframes fadeInLeft {
-            0% {
-                opacity: 0;
-                transform: translateX(-100px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-    
-        /* Shadow that follows the shape of the image */
-        .image-section img {
-            width: 75%;
-            height: auto;
-            max-width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
-            position: relative;
-            clip-path: inset(0% round 20px);
-        }
-    
-        /* About Us Box - Modified for animation */
-        .about-us-wrapper {
-            width: 35%;
-            position: relative;
-            float: right;
-            margin-top: 30px;
-            padding: 15px 30px 30px 30px;
-            background: linear-gradient(to bottom, #181717 25%, #19181c 50%, #0e0d0d 75%);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.733), 0 4px 6px rgba(15, 5, 5, 0.89);
-            border: 1px solid #f51fa3;
-            border-radius: 9px;
-            z-index: 1000;
-            opacity: 0; /* Start invisible */
-            transform: translateX(100px); /* Start from right */
-            animation: fadeInRight 1.5s ease forwards;
-            animation-delay: 0.5s; /* Small delay before starting */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 320px;
-            
-            /* Add background image when the content is expanded */
-            background-image: url('https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/logo_header_small/RuthlessRPIcon%2025%25.png?raw=true');
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: 90%;
-            background-blend-mode: overlay;
-            background-color: rgba(43, 41, 47, 0.9);
-            overflow: auto; /* Add scrolling if content overflows */
-        }
-    
-        /* Animation for about us box fading in from right */
-        @keyframes fadeInRight {
-            0% {
-                opacity: 0;
-                transform: translateX(100px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-    
-        /* About Us Text - Make sure it fits properly */
-        .about-us-wrapper .about-us-text {
-            text-align: center;
-            font-family: 'Special Gothic Condensed One', sans-serif;
-            color: white;
-            width: 100%;
-            padding: 15px 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-    
-        .about-us-wrapper h2 {
-            font-size: 2.5rem;
-            background: linear-gradient(to bottom right, #b0005b, #ff66cc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: transparent;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-    
-        .about-us-wrapper p {
-            font-size: .88rem;
-            color: white;
-            font-weight: 400;
-            text-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
-            margin-top: 0;
-        }
-    
-        /* Add a container to hold both elements centered */
-        .content-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 70px auto;
-            width: 85%;
-            max-width: 1100px;
-            clear: both;
-            overflow: visible;
-            height: 320px;
-            position: relative;
-        }
-    
-        .rules-button {
-            display: inline-block;
-            margin-top: 15px;
-            margin-bottom: 15px; /* Added bottom margin */
-            padding: 10px 20px;
-            font-size: 0.9rem;
-            font-family: 'Special Gothic Condensed One', sans-serif;
-            text-transform: uppercase;
-            text-decoration: none;
-            color: white;
-            background: linear-gradient(to right, #b0005b, #ff66cc);
-            border: 1px solid #f51fa3;
-            border-radius: 5px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-            transition: all 0.3s ease;
-        }
-    
-        .rules-button:hover {
-            background: linear-gradient(to right, #ff66cc, #b0005b);
-            transform: scale(1.05);
-            box-shadow: 0 6px 14px rgba(255, 102, 204, 0.6);
-        }
-    
-        /* Responsive adjustments */
-        @media screen and (max-width: 768px) {
-            .content-container {
-                flex-direction: column;
-                align-items: center;
-                height: auto;
-                margin: 30px auto;
-            }
-            
-            .image-section, .about-us-wrapper {
-                width: 85%;
-                float: none;
-                margin: 15px auto;
-                height: auto;
-                min-height: 320px;
-            }
-            
-            .image-section img {
-                width: 70%;
-            }
-            
-            .about-us-wrapper {
-                padding: 15px;
-                overflow: visible;
-            }
-            
-            .about-us-wrapper .about-us-text {
-                padding: 10px 5px;
-            }
-        }
-    
-        /* Particles container */
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            pointer-events: none;
-        }
-    
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-    
-        ::-webkit-scrollbar-track {
-            background: #19181c;
-        }
-    
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(45deg, #b0005b, #ff66cc);
-            border-radius: 5px;
-        }
-    
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(45deg, #ff66cc, #b0005b);
-        }
-    
-        /* Fixed Position for the Player */
-        .audio-player-container {
-            position: fixed;
-            top: 50px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            width: 450px;
-            height: 120px;
-            background-color: rgba(25, 24, 28, 0.8);
-            border: 1px solid #f51fa3;
-            border-radius: 10px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
-            overflow: hidden;
-            z-index: 1000;
-            backdrop-filter: blur(15px);
-        }
-    
-        /* Drag Handle */
-        .drag-handle {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 20px;
-            background-color: transparent;
-            cursor: move;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #888;
-            font-size: 0.6rem;
-            z-index: 1;
-        }
-    
-        /* Left Container for CD Image */
-        .left-container {
-            flex: 0 0 auto;
-            width: 120px;
-            height: 120px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-    
-        /* Spinning CD Image */
-        .cd-image {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            object-fit: cover;
-            animation: spin 10s linear infinite;
-            animation-play-state: paused;
-            box-shadow: 0 0 10px rgba(255, 0, 119, 0.6);
-            transition: transform 0.3s ease;
-        }
-    
-        /* CD Image spinning animation */
-        @keyframes spin {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-    
-        /* Right Container for Song Info and Controls */
-        .right-container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            padding: 10px 15px;
-            justify-content: space-between;
-            max-width: calc(100% - 120px);
-        }
-    
-        /* Song Info (Title and Artist) */
-        .song-info {
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-            margin-bottom: 10px;
-            color: white;
-            max-width: 100%;
-        }
-    
-        .song-title {
-            font-size: 0.95rem;
-            font-weight: bold;
-            margin: 0;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-    
-        .song-artist {
-            font-size: 0.75rem;
-            color: #f1a9ca;
-            margin: 0;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-    
-        /* Progress/Seekbar Container */
-        .progress-container {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            width: 100%;
-            margin-bottom: 10px;
-        }
-    
-        /* Time Display */
-        .time {
-            font-size: 0.65rem;
-            color: #f1a9ca;
-            min-width: 35px;
-        }
-    
-        .current-time {
-            text-align: right;
-        }
-    
-        .duration {
-            text-align: left;
-        }
-    
-        /* Seekbar Container */
-        .seekbar-container {
-            flex: 1;
-            position: relative;
-        }
-    
-        /* Seekbar Slider Styling */
-        .seekbar {
-            -webkit-appearance: none;
-            width: 100%;
-            height: 4px;
-            background: #3a383f;
-            border-radius: 2px;
-            outline: none;
-            transition: background 0.3s;
-        }
-    
-        .seekbar::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #f51fa3;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-    
-        .seekbar::-webkit-slider-thumb:hover {
-            transform: scale(1.2);
-            box-shadow: 0 0 10px #f51fa3;
-        }
-    
-        /* Player Controls Container */
-        .player-controls {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-    
-        /* Control Buttons */
-        .control-btn {
-            background-color: transparent;
-            border: none;
-            color: white;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            padding: 5px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            outline: none;
-        }
-    
-        .control-btn:hover {
-            color: #f51fa3;
-            transform: scale(1.2);
-        }
-    
-        /* Play/Pause Button (Larger) */
-        .play-pause-btn {
-            font-size: 1rem;
-            background-color: rgba(245, 31, 163, 0.2);
-            width: 25px;
-            height: 25px;
-        }
-    
-        .play-pause-btn:hover {
-            background-color: rgba(245, 31, 163, 0.4);
-        }
-    
-        /* Volume Container */
-        .volume-container {
-            flex: 1;
-            max-width: 80px;
-            display: flex;
-            align-items: center;
-        }
-    
-        /* Volume Slider Styling */
-        .volume-control {
-            -webkit-appearance: none;
-            width: 100%;
-            height: 4px;
-            background: #3a383f;
-            border-radius: 2px;
-            outline: none;
-        }
-    
-        .volume-control::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #f51fa3;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-    
-        .volume-control::-webkit-slider-thumb:hover {
-            transform: scale(1.2);
-            box-shadow: 0 0 10px #f51fa3;
-        }
-    
-        /* Active button style */
-        .control-btn.active {
-            color: #f51fa3;
-            text-shadow: 0 0 10px rgba(245, 31, 163, 0.7);
-        }
-    </style>
+    .logo-container {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
+    .logo-container:hover {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .logo-container img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .pulse {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      background-color: var(--pink);
+      -webkit-mask-image: url('https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/logo_header_small/RUTHLESS%20RP%20ICON%20BIG.svg');
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: contain;
+      filter: drop-shadow(0 0 8px var(--pink));
+    }
+
+    .logo-container:hover .pulse {
+      opacity: 1;
+      animation: pulseGlow 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        opacity: 0.4;
+        transform: scale(1);
+        box-shadow: 0 0 8px var(--pink);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.1);
+        box-shadow: 0 0 14px var(--pink);
+      }
+    }
+
+    .discord-button {
+      background-color: #262730;
+      border: 1px solid var(--pink);
+      border-radius: 8px;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .discord-button img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .discord-button:hover {
+      box-shadow: 0 0 12px 3px var(--pink);
+      background-color: var(--pink);
+    }
+
+    .discord-button:hover img {
+      filter: brightness(0) invert(1);
+    }
+
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      max-width: 925px;
+      margin: 50px auto 100px;
+      padding: 0 40px;
+      gap: 40px;
+    }
+
+    .intro-section {
+      flex: 1;
+      min-width: 300px;
+      max-width: 640px;
+    }
+
+    .intro-section h1 {
+      font-size: 72px;
+      font-weight: 700;
+      color: var(--pink);
+      margin-bottom: 0px;
+      -webkit-text-stroke: 0.25px #ea00ff;
+      text-shadow: 0 0 12px rgba(255, 105, 180, 0.6);
+      line-height: 1;
+    }
+
+    .intro-section p {
+      font-size: 18px;
+      font-weight: 300;
+      color: #fff;
+      opacity: 0.85;
+      margin-top: 0;
+      max-width: 420px;
+    }
+
+    .status-wrapper {
+      display: flex;
+      flex-shrink: 0;
+      flex-direction: column;
+      align-items: center;
+      width: 260px;
+      margin-right: 20px;
+      margin-top: 75px;
+    }
+
+    .status-wrapper .status-title {
+      font-weight: 600;
+      font-size: 24px;
+      margin-bottom: 5px;
+      color: var(--pink);
+      text-align: center;
+    }
+
+    .status-container {
+      width: 200px;
+      border: 1px solid var(--pink);
+      border-radius: 8px;
+      background: linear-gradient(to bottom, #4d0847, #15151a);
+      box-shadow: 0 0 12px rgba(255, 105, 180, 0.7);
+      padding: 7px 10px;
+      color: white;
+      text-align: center;
+    }
+
+    .player-count-box {
+      display: flex;
+      align-items: center;
+      margin-left: 20px;
+      justify-content: center;
+      position: relative;
+      top: -1.25px;
+      font-size: 13px;
+      font-weight: 600;
+      gap: 35px;
+    }
+
+    .glow-circle {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      position: relative;
+      top: 1px;
+      margin-left: -22px;
+      background-color: var(--pink);
+      box-shadow: 0 0 20px var(--pink);
+      animation: pulseGlow 2s infinite ease-in-out;
+    }
+
+    .announcement-section {
+      max-width: 1200px;
+      width: 1000px;
+      height: 400px;
+      margin: 25px auto;
+      padding: 10px 10px;
+      border: 1px solid var(--pink);
+      border-radius: 5px;
+      background: linear-gradient(to bottom, #4d0847, #15151a);
+      box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+      text-align: center;
+      color: white;
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 104%);
+      transition: transform 0.4s ease-in-out;
+      z-index: 999;
+    }
+
+    .announcement-section:hover {
+      transform: translate(-50%, 20%);
+    }
+
+    .announcement-section h2 {
+      color: var(--pink);
+      margin-bottom: 15px;
+      font-size: 24px;
+    }
+
+    .announcement-section p {
+      font-size: 15px;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 700px) {
+      main {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 40px;
+      }
+
+      .intro-section,
+      .status-wrapper {
+        width: 100%;
+        max-width: 500px;
+      }
+    }
+
+    .announcement-tab {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--pink);
+      padding: 4px 12px;
+      border-radius: 10px 10px 0 0;
+      font-size: 12px;
+      font-weight: bold;
+      color: black;
+    }
+
+    /* Image Banner */
+      
+    .image-banner {
+      position: relative;
+      width: 980px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 290px; /* ↓ Reduced from 400px */
+      overflow: visible;
+      border-radius: 20px;
+      margin: 0 auto; /* Center horizontally */
+
+      }
+
+    .image-banner img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto; /* Center horizontally */
+
+    }
+
+    .carousel-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      text-decoration: none; /* Removes underline */
+      width: 100%;
+      height: 150%;
+      display: flex;
+      align-items: center;       /* Center vertically */
+      justify-content: center;   /* Center horizontally */
+      flex-direction: column;    /* Stack text above button */
+      line-height: 1.6; /* ← adjust this number as needed */
+      color: white;
+      pointer-events: none;
+      user-select: none;
+      padding: 0 20px;            /* Prevents overflow cutoff */
+      box-sizing: border-box;    /* Ensures padding doesn't mess up size */
+    }
+
+    .carousel-slide h2,
+    .carousel-slide a {
+    margin: 10px 0;
+    }
+
+    .carousel-slide {
+      display: none;
+      pointer-events: auto;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .carousel-slide.active {
+      display: block;
+    }
+
+    .carousel-button {
+      background-color: #2627304b;
+      border: 1px solid var(--pink);
+      border-radius: 8px;
+      width: 130px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: rgb(255, 255, 255);
+      text-decoration: none; /* Removes underline */
+      font-size: 18px;
+      margin-top: 50px; /* increase or decrease as needed */
+      padding: 5;
+    }
+
+    .carousel-button:hover {
+      box-shadow: 0 0 8px 3px var(--pink);
+      background-color: var(--pink);
+      color: rgb(255, 255, 255);
+    }
+
+    .carousel-slide h2,
+    .carousel-slide .carousel-button {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .carousel-nav {
+      position: absolute;
+      top: 45%;
+      font-size: 1.5rem;
+      background: rgba(0, 0, 0, 0.4);
+      border: none;
+      color: white;
+      cursor: pointer;
+      pointer-events: auto;
+      padding: 1px 3px;
+      border-radius: 5px; 
+      display: flex;
+      align-items: center; /* push content toward top */
+      justify-content: center; /* center horizontally */
+      padding: 10px;
+    }
+
+    .carousel-nav.prev {
+      left: 20px;
+      
+    }
+
+    .carousel-nav.next {
+      right: 20px;
+    }
+
+    .arrow {
+      position: relative;
+      top: 5px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    } 
+
+    /* ABOUT US */
+
+    .about-us-section {
+      padding: 120px 20px;
+      color: #eee;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+    }
+
+    .about-us-section .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .about-us-section h2 {
+      font-size: 2.5rem;
+      color: var(--pink);
+      margin-bottom: 0px;
+      -webkit-text-stroke: 0.25px #ea00ff;
+      text-shadow: 0 0 12px rgba(255, 105, 180, 0.6);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .about-us-section p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+      /* SUPPORT US */
+
+      .support-server-section {
+        padding: 80px 20px;
+        color: #eee;
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.03);
+        margin-top: 0px;
+      }
+
+      .support-server-section h2 {
+        font-size: 2.5rem;
+        color: var(--pink);
+        text-shadow: 0 0 12px rgba(255, 105, 180, 0.6);
+        margin-bottom: 10px;
+      }
+
+      .support-server-section p {
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .support-options {
+        display: flex !important;       /* FIXED: must be flex, not wrap */
+        flex-direction: row !important; /* ensures horizontal layout */
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+      }
+
+      .support-options img {
+        width: 350px;
+        height: auto;
+        border-radius: 10px;
+      }
+
+      .support-options img:hover {
+        transform: scale(1.05);
+      }
+
+      .support-card {
+        position: relative;
+        width: 350px;
+        height: auto;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+      }
+
+      .support-card img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .support-overlay {
+        position: absolute;
+        bottom: 50px;
+        color: white;
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        text-align: center;
+        transition: transform 0.3s ease;
+      }
+
+      .support-overlay h3 {
+        margin: 0 0 10px;
+        color: white;
+      }
+
+      .support-overlay p {
+        font-size: 0.95rem;
+        margin-bottom: 10px;
+      }
+
+      .support-btn {
+        display: inline-block;
+        background-color: var(--pink);
+        color: white;
+        padding: 8px 18px;
+        border-radius: 20px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .support-btn:hover {
+        background-color: #ff4fa3;
+        box-shadow: 0 0 10px var(--pink);
+      }
+
+    /* STREAMERS */
+
+    .streamers-section {
+      max-width: 1000px;
+      margin: 100px auto;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .streamers-section h2 {
+      font-size: 2.5rem;
+      color: #fff;
+      text-shadow: 2px 2px 5px rgba(255, 0, 153, 0.5);
+      margin-bottom: 10px;
+    }
+
+    .streamers-info {
+      color: #ddd;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      font-size: 1.1rem;
+    }
+
+    .streamer-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .streamer-card {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 20px;
+      width: 250px;
+      box-shadow: 0 0 15px rgba(255, 0, 153, 0.2);
+      backdrop-filter: blur(8px);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .streamer-card:hover {
+      transform: scale(1.05);
+    }
+
+    .streamer-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+
+    .streamer-card h3 {
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .streamer-btn {
+      display: inline-block;
+      background-color: #ff007f;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .streamer-btn:hover {
+      box-shadow: 0 0 20px 5px rgba(255, 0, 153, 0.8);
+      transform: translateY(-3px);
+    }
+
+  
+
+  </style>
 </head>
-
 <body>
+  <header>
+    <div class="logo-container" aria-label="Ruthless RP Logo">
+      <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/logo_header_small/RUTHLESS%20RP%20ICON%20BIG.svg" alt="Ruthless RP Logo" />
+      <div class="pulse"></div>
+    </div>
+    <a href="https://discord.gg/eVXQb6Utxg" class="discord-button" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord">
+      <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/logo_header_small/discordicon_inactive.png" alt="Discord Icon" />
+    </a>
+  </header>
 
-    <div id="particles-js"></div>
+  <!-- Announcement -->
+  <section class="announcement-section" aria-label="Announcement">
+    <div class="announcement-tab">Announcements</div>
+    <h2>May 16, 2025 Update</h2>
+    <p>We're almost there—the wait will soon be over. Hop into our official Discord by clicking the Discord button at the top right to join!</p>
+  </section>
 
-    <header>
-        <!-- Logo wrapped in an anchor tag to redirect to the homepage -->
-        <a href="/" target="_self">
-            <img class="logo" src="https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/logo_header_small/RUTHLESS%20RP%20ICON%20BIG.svg?raw=true" alt="Ruthless RP Logo">
-        </a>
-        <!-- Discord logo wrapped in an anchor tag to make it clickable -->
-        <a href="https://discord.gg/3JrSpwRVYV" target="_blank" class="discord-container">
-            <div class="discord-circle">
-                <img class="discord-icon" src="https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/logo_header_small/discordicon_inactive.png?raw=true" alt="Discord Icon">
-            </div>
-        </a>
-    </header>
-    
-    <!-- Text Section Between Header and Status Box -->
-    <div class="text-section">
-        <h2>Where Limitless Stories Begin</h2>
-        <p>A story-driven Philippine FiveM server where every choice shapes your immersive journey.</p>
-    </div>  
-
-    <!-- Status Container with the text above the box -->
-    <div class="status-wrapper">
-        <div class="status-text">Server Status</div>
-        <div class="status-box">
-            <span id="playerCountText">
-                <span class="player-count-number">0/0</span> PLAYERS ONLINE
-            </span>
-            <div class="status-indicator"></div>
+  <!-- Main Content -->
+  <main>
+    <section class="intro-section" aria-label="Introduction">
+      <h1>Ruthless RP</h1>
+      <p>A story-driven Philippine FiveM server where every choice shapes your immersive journey.</p>
+    </section>
+    <section class="status-wrapper" aria-label="Server Status">
+      <div class="status-title">Server Status</div>
+      <div class="status-container">
+        <div class="player-count-box">
+          <div class="glow-circle" aria-hidden="true"></div>
+          <div><strong>Players Online:</strong> <span id="player-count">Loading...</span></div>
         </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Image Banner -->
+  <section class="image-banner" aria-label="Promotional Banner">
+    <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/backgroundimage_mainpage/2.png" alt="Ruthless RP Banner Image" />
+
+    <div class="carousel-overlay" aria-label="Promotional Carousel">
+      
+      <div class="carousel-slide active" role="group" aria-roledescription="slide" aria-label="Slide 1 of 3">
+        <h2>Join our Discord</h2>
+          <div style="text-align: center; max-width: 700px; color: #fff; font-family: Arial, sans-serif; text-shadow: 0px 0px 4px rgb(0, 0, 0);">
+            Be the first to know about the latest updates, events, and exclusive content. Connect with fellow members, share ideas, and get support anytime.
+          </div>
+        <a href="https://discord.gg/eVXQb6Utxg" class="carousel-button" target="_blank" rel="noopener noreferrer">Join Now</a>
+      </div>
+
+      <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="Slide 2 of 3">
+        <h2>Read our Rules</h2>
+          <div style="text-align: center; max-width: 700px; color: #fff; font-family: Arial, sans-serif; text-shadow: 0px 0px 4px rgb(0, 0, 0);">
+            Please read and follow our rules to keep the community safe and enjoyable for everyone. Respect others, stay positive, and have fun!
+          </div>
+
+        <a href="http://ruthlessroleplay.online/rules.html" class="carousel-button">View Rules</a>
+      </div>
+
+      <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="Slide 3 of 3">
+        <h2>Apply Now for Whitelisted Jobs</h2>
+          <div style="text-align: center; max-width: 700px; color: #fff; font-family: Arial, sans-serif; text-shadow: 0px 0px 4px rgb(0, 0, 0);">
+            Interested in joining specialized roles? Submit your application and become part of our whitelisted teams for a unique roleplay experience.
+          </div>
+        <a href="#applications" class="carousel-button">Apply Here</a>
+      </div>
+
+      <!-- Navigation Buttons -->
+      <button class="carousel-nav prev" aria-label="Previous Slide" role="button">&#10094;</button>
+      <button class="carousel-nav next" aria-label="Next Slide" role="button">&#10095;</button>
+    </div>
+  </section>
+
+
+    <!-- ABOUT US -->
+
+    <section id="about-us" class="about-us-section">
+      <div class="container">
+        <h2>About Us</h2>
+        <p>
+          Welcome to Ruthless Roleplay, a dedicated Philippine FiveM story-driven roleplay community. 
+          Our mission is to provide an immersive, respectful, and engaging roleplay experience where players can connect and create unforgettable stories.
+        </p>
+        <p>
+          Founded by passionate gamers and roleplayers, Ruthless Roleplay values creativity, fairness, and community spirit.
+          Join us and become part of a growing family committed to quality RP.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- SUPPORT US -->
+
+  <!-- Image Banner -->
+  <section class="support-server-section">
+    <div class="container">
+      <h2>SUPPORT THE SERVER</h2>
+      <p>If you enjoy playing on Ruthless RP and want to help keep the community thriving, consider supporting us. Choose the option below that best suits you!</p>
+      
+      <div class="support-options">
+        <div class="support-card">
+          <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Website%20Photos/silver.png" alt="Silver Support Tier" />
+          <div class="support-overlay">
+            <h3>Silver Tier</h3>
+            <p>COMING SOON!</p>
+            <a href="https://discord.com/channels/1361212610661580830/1363329434941132972" target="_blank" class="support-btn">Support Now</a>
+          </div>
+        </div>
+
+        <div class="support-card">
+          <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Website%20Photos/gold.png" alt="Gold Support Tier" />
+          <div class="support-overlay">
+            <h3>Gold Tier</h3>
+            <p>COMING SOON!</p>
+            <a href="https://discord.com/channels/1361212610661580830/1363329434941132972" target="_blank" class="support-btn">Support Now</a>
+          </div>
+        </div>
+
+        <div class="support-card">
+          <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Website%20Photos/rose.png" alt="Rose Support Tier" />
+          <div class="support-overlay">
+            <h3>Rose Tier</h3>
+            <p>COMING SOON!</p>
+            <a href="https://discord.com/channels/1361212610661580830/1363329434941132972" target="_blank" class="support-btn">Support Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+    <!-- STREAMERS -->
+
+<section class="streamers-section">
+  <h2>Official Ruthless RP Streamers</h2>
+  <p class="streamers-info">
+    Support our amazing content creators who showcase the best of Ruthless RP. Follow them and join the experience live!
+  </p>
+  
+  <div class="streamer-cards">
+    <div class="streamer-card">
+      <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/backgroundimage_mainpage/lala.png" alt="Streamer 1">
+      <h3>@its_me_lalayue</h3>
+      <a href="https://www.tiktok.com/@its_me_lalayue" target="_blank" class="streamer-btn">Follow on TikTok</a>
     </div>
 
-<!-- Content Container for Image and About Us -->
-<div class="content-container">
-    <!-- K Image -->
-    <div class="image-section">
-        <img src="https://github.com/kuyajepgaming/ruthlessroleplay/blob/main/K_Website_Image.png?raw=true" alt="K Monkey Mask">
-    </div>
-    <!-- About Us Box -->
-    <div class="about-us-wrapper">
-        <div class="about-us-text">
-            <h2>About Us</h2>
-            <p>Ruthless RP is a story-driven roleplay community that puts quality and immersion at the forefront. We use scripts specifically selected to enhance the RP experience without compromising in-game performance. We work hand-in-hand with our players to shape the future of the server—creating features, stories, and experiences we can all be proud of.</p>
-         
-            <!-- View Rules Button -->
-            <a href="rules.html" class="rules-button">View Rules</a>        
-        </div>
-    </div>
-</div>
-
- <!-- Custom Audio Player -->
-<div class="audio-player-container" id="audioPlayerContainer">
-
-    <!-- Drag Handle -->
-    <div class="drag-handle" id="dragHandle">
-        <i class="fas fa-grip-lines"></i>
+  <div class="streamer-card">
+    <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/backgroundimage_mainpage/jay.png" alt="Streamer 2">
+      <h3>@KuyaJepGaming</h3>
+      <a href="https://twitch.tv/kuyajepgaming" target="_blank" class="streamer-btn">Follow on Twitch</a>
     </div>
 
-    <!-- Left Container for Spinning CD Image -->
-    <div class="left-container">
-        <!-- Spinning CD Image -->
-        <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/ruthless%20cd.png" alt="Spinning CD" class="cd-image">
+    <div class="streamer-card">
+      <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/backgroundimage_mainpage/anghel.png" alt="Streamer 3">
+      <h3>@AnghellSebastian</h3>
+      <a href="https://twitch.tv/anghellsebastian" target="_blank" class="streamer-btn">Follow on Twitch</a>
     </div>
 
-    <!-- Right Container for Song Info and Controls -->
-    <div class="right-container">
-        <!-- Song Info -->
-        <div class="song-info">
-            <div class="song-title">Ruthless Roleplay OST</div>
-            <div class="song-artist">by Latrelle</div>
-        </div>
+     <div class="streamer-card">
+      <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/backgroundimage_mainpage/doms.png" alt="Streamer 3">
+      <h3>@misterfriza</h3>
+      <a href="https://twitch.tv/misterfriza" target="_blank" class="streamer-btn">Follow on Twitch</a>
+     </div>
 
-        <!-- Progress Bar -->
-        <div class="progress-container">
-            <span id="currentTime" class="time current-time">00:00</span>
-            <div class="seekbar-container">
-                <input type="range" id="seekbar" class="seekbar" value="0" max="100" aria-label="Seek bar">
-            </div>
-            <span id="duration" class="time duration">00:00</span>
-        </div>
+     
+     <div class="streamer-card">
+      <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/backgroundimage_mainpage/gab.png" alt="Streamer 3">
+      <h3>@gabinoo17</h3>
+      <a href="https://twitch.tv/gabinoo17" target="_blank" class="streamer-btn">Follow on Twitch</a>
+     </div>
 
-        <!-- Player Controls -->
-        <div class="player-controls">
-            <button id="prevBtn" class="control-btn" aria-label="Previous">
-                <i class="fas fa-step-backward"></i>
-            </button>
-            <button id="playPauseBtn" class="control-btn play-pause-btn" aria-label="Play or Pause">
-                <i class="fas fa-play"></i>
-            </button>
-            <button id="nextBtn" class="control-btn" aria-label="Next">
-                <i class="fas fa-step-forward"></i>
-            </button>
-            <button id="shuffleBtn" class="control-btn" aria-label="Shuffle">
-                <i class="fas fa-random"></i>
-            </button>
-            <button id="repeatBtn" class="control-btn" aria-label="Repeat">
-                <i class="fas fa-redo"></i>
-            </button>
-            <button id="muteBtn" class="control-btn" aria-label="Mute or Unmute">
-                <i class="fas fa-volume-up"></i>
-            </button>
-            <div class="volume-container">
-                <input type="range" id="volumeControl" class="volume-control" value="30" min="0" max="100" aria-label="Volume control">
-            </div>
-        </div>
-    </div>
+     
+     <div class="streamer-card">
+      <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/backgroundimage_mainpage/trish.png" alt="Streamer 3">
+      <h3>@Trish_G4ming</h3>
+      <a href="https://twitch.tv/Trish_G4ming" target="_blank" class="streamer-btn">Follow on Twitch</a>
+     </div>
 
-    <audio id="audioPlayer" src="https://cdn.jsdelivr.net/gh/kuyajepgaming/ruthlessroleplay/Ruthless%20OST.mp3" preload="auto" autoplay></audio>
-</div>
+    <!-- SCRIPTS / JS -->
 
-    <footer>
-        <div class="footer-text">
-            © 2025 Ruthless Roleplay | All Rights Reserved
-        </div>
-    </footer>
-    
-    <!-- Player Count Fetch and Update -->
-    <script>
-        function updatePlayerCount() {
-            fetch("https://servers-frontend.fivem.net/api/servers/single/ovbzrj")
-                .then(res => res.json())
-                .then(data => {
-                    const playerCount = data.Data?.clients || 0;
-                    const maxPlayers = data.Data?.sv_maxclients || '?';
-                    const playerCountElement = document.querySelector(".player-count-number");
-                    playerCountElement.textContent = `${playerCount}/${maxPlayers}`;
-                })
-                .catch(err => {
-                    console.error('Error fetching player count:', err);
-                });
-        }
-        setInterval(updatePlayerCount, 5000); // Update every 5 seconds
-        updatePlayerCount(); // Initial call
-        
-    </script>
-    
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        particlesJS('particles-js', {
-          "particles": {
-            "number": {
-              "value": 50,
-              "density": {
-                "enable": true,
-                "value_area": 800
-              }
-            },
-            "color": {
-              "value": "#f51fa3"
-            },
-            "shape": {
-              "type": "circle",
-              "stroke": {
-                "width": 0,
-                "color": "#000000"
-              }
-            },
-            "opacity": {
-              "value": 0.5,
-              "random": true,
-              "anim": {
-                "enable": true,
-                "speed": 1,
-                "opacity_min": 0.1,
-                "sync": false
-              }
-            },
-            "size": {
-              "value": 3,
-              "random": true
-            },
-            "line_linked": {
-              "enable": true,
-              "distance": 150,
-              "color": "#ff66cc",
-              "opacity": 0.4,
-              "width": 1
-            },
-            "move": {
-              "enable": true,
-              "speed": 2,
-              "direction": "none",
-              "random": true,
-              "straight": false,
-              "out_mode": "out",
-              "bounce": false
-            }
-          },
-          "interactivity": {
-            "detect_on": "canvas",
-            "events": {
-              "onhover": {
-                "enable": true,
-                "mode": "repulse"
-              },
-              "onclick": {
-                "enable": true,
-                "mode": "push"
-              },
-              "resize": true
-            }
-          },
-          "retina_detect": true
-        });
-      });
-    </script>
+  <script>
+    async function fetchPlayerCount() {
+      try {
+        const response = await fetch('https://servers-frontend.fivem.net/api/servers/single/ovbzrj');
+        if (!response.ok) throw new Error('Failed to fetch server data');
+        const data = await response.json();
+        const players = data.Data.clients ?? 0;
+        const maxPlayers = data.Data.sv_maxclients ?? 0;
+        document.getElementById('player-count').textContent = `${players} / ${maxPlayers}`;
+      } catch (error) {
+        console.warn('Error fetching player count:', error);
+        document.getElementById('player-count').textContent = 'Unavailable';
+      }
+    }
 
-   <!-- Font Awesome CDN -->
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- Font Awesome CDN -->
+    fetchPlayerCount();
+    setInterval(fetchPlayerCount, 5000);
+  </script>
 
-    <script>
-        // Script for the player controls functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const playPauseBtn = document.getElementById("playPauseBtn");
-            const prevBtn = document.getElementById("prevBtn");
-            const nextBtn = document.getElementById("nextBtn");
-            const shuffleBtn = document.getElementById("shuffleBtn");
-            const repeatBtn = document.getElementById("repeatBtn");
-            const muteBtn = document.getElementById("muteBtn");
-            const audioPlayer = document.getElementById("audioPlayer");
-            const volumeControl = document.getElementById("volumeControl");
-            const seekbar = document.getElementById("seekbar");
-            const currentTimeDisplay = document.getElementById("currentTime");
-            const durationDisplay = document.getElementById("duration");
-            const playerContainer = document.getElementById('audioPlayerContainer');
-            const dragHandle = document.getElementById('dragHandle');
-            const cdImage = document.querySelector('.cd-image');
-    
-            let isPlaying = false;
-            let isMuted = false;
-            let isDragging = false;
-            let offsetX, offsetY;
-    
-            // Set initial volume to 30%
-            audioPlayer.volume = 0.3;
-            volumeControl.value = 30;
-    
-            // Set initial position
-            playerContainer.style.left = '50%';
-            playerContainer.style.transform = 'translateX(-50%)';
-    
-            // Mouse down event on drag handle
-            dragHandle.addEventListener('mousedown', function(e) {
-                isDragging = true;
-    
-                // Calculate the offset of the mouse relative to the player container
-                const rect = playerContainer.getBoundingClientRect();
-                offsetX = e.clientX - rect.left;
-                offsetY = e.clientY - rect.top;
-                
-                // Remove the centering transform
-                playerContainer.style.transform = 'none';
-                
-                // Update position to keep it in the same place visually
-                playerContainer.style.left = rect.left + 'px';
-                playerContainer.style.top = rect.top + 'px';
-                
-                // Prevent text selection during drag
-                e.preventDefault();
-            });
-    
-            // Mouse move event (on document to allow dragging outside the element)
-            document.addEventListener('mousemove', function(e) {
-                if (!isDragging) return;
-                
-                // Update player position
-                playerContainer.style.left = (e.clientX - offsetX) + 'px';
-                playerContainer.style.top = (e.clientY - offsetY) + 'px';
-            });
-            
-            // Mouse up event to stop dragging
-            document.addEventListener('mouseup', function() {
-                isDragging = false;
-            });
-            
-            // Touch events for mobile support
-            dragHandle.addEventListener('touchstart', function(e) {
-                isDragging = true;
-                
-                const rect = playerContainer.getBoundingClientRect();
-                const touch = e.touches[0];
-                
-                offsetX = touch.clientX - rect.left;
-                offsetY = touch.clientY - rect.top;
-                
-                playerContainer.style.transform = 'none';
-                playerContainer.style.left = rect.left + 'px';
-                playerContainer.style.top = rect.top + 'px';
-                
-                e.preventDefault();
-            });
-            
-            document.addEventListener('touchmove', function(e) {
-                if (!isDragging) return;
-                
-                const touch = e.touches[0];
-                playerContainer.style.left = (touch.clientX - offsetX) + 'px';
-                playerContainer.style.top = (touch.clientY - offsetY) + 'px';
-            });
-            
-            document.addEventListener('touchend', function() {
-                isDragging = false;
-            });
-    
-            // Update duration once metadata is loaded
-            audioPlayer.addEventListener('loadedmetadata', function() {
-                durationDisplay.textContent = formatTime(audioPlayer.duration);
-            });
-    
-            function formatTime(seconds) {
-                const mins = Math.floor(seconds / 60);
-                const secs = Math.floor(seconds % 60);
-                return `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
-            }
-    
-            // Play/Pause button
-            playPauseBtn.addEventListener("click", () => {
-                if (isPlaying) {
-                    audioPlayer.pause();
-                    playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-                    cdImage.style.animationPlayState = 'paused'; // Pause CD spinning
-                } else {
-                    audioPlayer.play();
-                    playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                    cdImage.style.animationPlayState = 'running'; // Start CD spinning
+<script>
+  const slides = document.querySelectorAll('.carousel-slide');
+  const prevBtn = document.querySelector('.carousel-nav.prev');
+  const nextBtn = document.querySelector('.carousel-nav.next');
+  let currentIndex = 0;
+  let autoSlideInterval = null;
+  const slideIntervalTime = 10000; // 10 seconds
 
-                }
-                isPlaying = !isPlaying;
-            });
-    
-            // Previous button (placeholder functionality)
-            prevBtn.addEventListener("click", () => {
-                // For now, just restart the current track
-                audioPlayer.currentTime = 0;
-            });
-    
-            // Next button (placeholder functionality)
-            nextBtn.addEventListener("click", () => {
-                // For now, just go to the end of the track
-                audioPlayer.currentTime = audioPlayer.duration;
-            });
-    
-            // Shuffle button (placeholder functionality) 
-            shuffleBtn.addEventListener("click", () => {
-                shuffleBtn.classList.toggle('active');
-            });
-    
-            // Repeat button (placeholder functionality)
-            repeatBtn.addEventListener("click", () => {
-                repeatBtn.classList.toggle('active');
-                audioPlayer.loop = !audioPlayer.loop;
-            });
-    
-            // Mute/Unmute button
-            muteBtn.addEventListener("click", () => {
-                if (isMuted) {
-                    audioPlayer.muted = false;
-                    muteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
-                } else {
-                    audioPlayer.muted = true;
-                    muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
-                }
-                isMuted = !isMuted;
-            });
-    
-            // Volume control
-            volumeControl.addEventListener("input", (e) => {
-                audioPlayer.volume = e.target.value / 100;
-                if (audioPlayer.volume === 0) {
-                    muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
-                } else {
-                    muteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
-                }
-            });
-    
-            // Update progress bar and current time
-            audioPlayer.addEventListener("timeupdate", () => {
-                const currentTime = audioPlayer.currentTime;
-                const duration = audioPlayer.duration;
-                if (!isNaN(duration)) {
-                    seekbar.value = (currentTime / duration) * 100;
-                    // Update current time display
-                    currentTimeDisplay.textContent = formatTime(currentTime);
-                    
-                    // Update duration display as a countdown (time remaining)
-                    const timeRemaining = duration - currentTime;
-                    durationDisplay.textContent = "-" + formatTime(timeRemaining);
-                    
-                    // Check if ended and reset CD spinning
-                    if (audioPlayer.currentTime >= audioPlayer.duration) {
-                        cdImage.style.animationPlayState = 'paused';
-                    }
-                }
-            });
-    
-            // Seekbar functionality
-            seekbar.addEventListener("input", () => {
-                const duration = audioPlayer.duration;
-                const newTime = (seekbar.value / 100) * duration;
-                audioPlayer.currentTime = newTime;
-            });
-    
-            // Add an active class style for the active buttons
-            document.querySelectorAll('.control-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    if (this !== playPauseBtn && this !== muteBtn) {
-                        this.classList.toggle('active');
-                    }
-                });
-            });
-            
-            // Set initial state for autoplay if enabled
-            if (!audioPlayer.paused) {
-                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                isPlaying = true;
-                cdImage.style.animationPlayState = 'running'; // Start CD spinning if music is playing
-            }
-        });
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      if (i === index) {
+        slide.classList.add('active');
+        slide.style.display = 'block';
+      } else {
+        slide.classList.remove('active');
+        slide.style.display = 'none';
+        slide.style.transition = 'opacity 0.5s ease-in-out';
+
+      }
+    });
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % slides.length;
+    showSlide(currentIndex);
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    showSlide(currentIndex);
+  }
+
+  function startAutoSlide() {
+    autoSlideInterval = setInterval(nextSlide, slideIntervalTime);
+  }
+
+  function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+  }
+
+  prevBtn.addEventListener('click', () => {
+    prevSlide();
+    stopAutoSlide();
+    startAutoSlide();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    nextSlide();
+    stopAutoSlide();
+    startAutoSlide();
+  });
+
+  const carouselOverlay = document.querySelector('.carousel-overlay');
+  carouselOverlay.addEventListener('mouseenter', stopAutoSlide);
+  carouselOverlay.addEventListener('mouseleave', startAutoSlide);
+
+  // Initialize
+  showSlide(currentIndex);
+  startAutoSlide();
 </script>
-
 </body>
-
-
 </html>
