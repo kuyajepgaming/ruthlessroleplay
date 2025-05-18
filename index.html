@@ -21,6 +21,7 @@
       background-attachment: fixed;
       background-blend-mode: multiply;
       color: white;
+      
     }
 
     header {
@@ -468,14 +469,13 @@
         margin-bottom: 40px;
         }
 
-      .support-options {
-        display: flex !important;       /* FIXED: must be flex, not wrap */
-        flex-direction: row !important; /* ensures horizontal layout */
+        .support-options {
+        display: flex !important;
         justify-content: center;
         gap: 5px;
         flex-wrap: wrap;
-      }
-
+        }
+        
       .support-options img {
         width: 350px;
         height: auto;
@@ -613,7 +613,24 @@
       box-shadow: 0 0 20px 5px rgba(255, 0, 153, 0.8);
       transform: translateY(-3px);
     }
+    /* Logo Section */
+    .logo-section {
+        text-align: center; /* Center the content horizontally */
+        padding: 50px 10px; /* Add padding for spacing */
+        background-color: #18181800; /* Match background or choose a different color */
+        margin-top: 200px
+    
+    }
 
+    .logo-section .container {
+        display: flex; /* Enable flexbox for centering */
+        justify-content: center; /* Center content horizontally within the container */
+    }
+
+    .logo-section img {
+        max-width: 150px; /* Adjust the maximum width of the logo */
+        height: auto;
+    }
 
   </style>
     </head>
@@ -746,7 +763,7 @@
         </div>
         </div>
     </section>
-
+    
 
     <!-- STREAMERS -->
 
@@ -801,6 +818,14 @@
       <a href="https://twitch.tv/kawatskie" target="_blank" class="streamer-btn">Follow on Twitch</a>
      </div>
 
+</section>
+
+<section class="logo-section">
+    <div class="container">
+        <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/logo_header_small/RUTHLESS%20RP%20ICON%20BIG.svg" alt="Ruthless RP Logo">
+    </div>
+</section>
+
     <!-- SCRIPTS / JS -->
 
   <script>
@@ -820,28 +845,29 @@
 
     fetchPlayerCount();
     setInterval(fetchPlayerCount, 5000);
+    
   </script>
 
-<script>
-  const slides = document.querySelectorAll('.carousel-slide');
-  const prevBtn = document.querySelector('.carousel-nav.prev');
-  const nextBtn = document.querySelector('.carousel-nav.next');
-  let currentIndex = 0;
-  let autoSlideInterval = null;
-  const slideIntervalTime = 10000; // 10 seconds
+    <script>
+    const slides = document.querySelectorAll('.carousel-slide');
+    const prevBtn = document.querySelector('.carousel-nav.prev');
+    const nextBtn = document.querySelector('.carousel-nav.next');
+    let currentIndex = 0;
+    let autoSlideInterval = null;
+    const slideIntervalTime = 10000; // 10 seconds
 
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      if (i === index) {
-        slide.classList.add('active');
-        slide.style.display = 'block';
-      } else {
-        slide.classList.remove('active');
-        slide.style.display = 'none';
-        slide.style.transition = 'opacity 0.5s ease-in-out';
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+        if (i === index) {
+            slide.classList.add('active');
+            slide.style.display = 'block';
+        } else {
+            slide.classList.remove('active');
+            slide.style.display = 'none';
+            slide.style.transition = 'opacity 0.5s ease-in-out';
 
-      }
-    });
+        }
+        });
   }
 
   function nextSlide() {
