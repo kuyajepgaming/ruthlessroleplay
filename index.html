@@ -145,7 +145,7 @@
       margin-bottom: 0px;
       -webkit-text-stroke: 0.25px #ea00ff;
       text-shadow: 0 0 12px rgba(255, 105, 180, 0.6);
-      line-height: 1;
+      line-height: 1.6;
     }
 
     .intro-section p {
@@ -153,7 +153,7 @@
       font-weight: 300;
       color: #fff;
       opacity: 0.85;
-      margin-top: 0;
+      margin-top: -20px;
       max-width: 420px;
     }
 
@@ -261,202 +261,218 @@
       }
     }
 
-    .announcement-tab {
-      position: absolute;
-      top: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: var(--pink);
-      padding: 4px 12px;
-      border-radius: 10px 10px 0 0;
-      font-size: 12px;
-      font-weight: bold;
-      color: black;
-    }
+        .announcement-tab {
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--pink);
+        padding: 4px 12px;
+        border-radius: 10px 10px 0 0;
+        font-size: 12px;
+        font-weight: bold;
+        color: black;
+        }
 
-    /* Image Banner */
-      
-    .image-banner {
-      position: relative;
-      width: 980px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 290px; /* ↓ Reduced from 400px */
-      overflow: visible;
-      border-radius: 20px;
-      margin: 0 auto; /* Center horizontally */
+        /* Image Banner */
+        
+        .image-banner {
+        position: relative;
+        width: 980px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 290px; /* ↓ Reduced from 400px */
+        overflow: visible;
+        border-radius: 20px;
+        margin: 0 auto; /* Center horizontally */
 
-      }
+        }
 
-    .image-banner img {
-      width: 100%;
-      height: auto;
-      display: block;
-      margin: 0 auto; /* Center horizontally */
+        .image-banner img {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto; /* Center horizontally */
 
-    }
+        }
 
-    .carousel-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      text-decoration: none; /* Removes underline */
-      width: 100%;
-      height: 150%;
-      display: flex;
-      align-items: center;       /* Center vertically */
-      justify-content: center;   /* Center horizontally */
-      flex-direction: column;    /* Stack text above button */
-      line-height: 1.6; /* ← adjust this number as needed */
-      color: white;
-      pointer-events: none;
-      user-select: none;
-      padding: 0 20px;            /* Prevents overflow cutoff */
-      box-sizing: border-box;    /* Ensures padding doesn't mess up size */
-    }
+        .carousel-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        text-decoration: none; /* Removes underline */
+        width: 100%;
+        height: 150%;
+        display: flex;
+        align-items: center;       /* Center vertically */
+        justify-content: center;   /* Center horizontally */
+        flex-direction: column;    /* Stack text above button */
+        line-height: 1.6; /* ← adjust this number as needed */
+        color: white;
+        pointer-events: none;
+        user-select: none;
+        padding: 0 20px;            /* Prevents overflow cutoff */
+        box-sizing: border-box;    /* Ensures padding doesn't mess up size */
+        }
 
-    .carousel-slide h2,
-    .carousel-slide a {
-    margin: 10px 0;
-    }
+        .carousel-slide h2,
+        .carousel-slide a {
+        margin: 20px 0;
+        }
 
-    .carousel-slide {
-      display: none;
-      pointer-events: auto;
-      animation: fadeIn 0.5s ease-in-out;
-    }
+        .carousel-slide {
+        display: none;
+        pointer-events: auto;
+        animation: fadeIn 0.5s ease-in-out;
+        }
 
-    .carousel-slide.active {
-      display: block;
-    }
+        .carousel-slide.active {
+        display: block;
+        }
 
-    .carousel-button {
-      background-color: #2627304b;
-      border: 1px solid var(--pink);
-      border-radius: 8px;
-      width: 130px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      color: rgb(255, 255, 255);
-      text-decoration: none; /* Removes underline */
-      font-size: 18px;
-      margin-top: 50px; /* increase or decrease as needed */
-      padding: 5;
-    }
+        .carousel-button {
+        background-color: #2627304b;
+        border: 1px solid var(--pink);
+        border-radius: 8px;
+        width: 130px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: rgb(255, 255, 255);
+        text-decoration: none; /* Removes underline */
+        font-size: 18px;
+        margin-top: 50px; /* increase or decrease as needed */
+        padding: 15;
+        }
 
-    .carousel-button:hover {
-      box-shadow: 0 0 8px 3px var(--pink);
-      background-color: var(--pink);
-      color: rgb(255, 255, 255);
-    }
+        .carousel-button:hover {
+        box-shadow: 0 0 8px 3px var(--pink);
+        background-color: var(--pink);
+        color: rgb(255, 255, 255);
+        }
 
-    .carousel-slide h2,
-    .carousel-slide .carousel-button {
-      margin: 0 auto;
-      text-align: center;
-    }
+        .carousel-slide h2,
+        .carousel-slide .carousel-button {
+        margin: 0 auto;
+        text-align: center;
+        }
 
-    .carousel-nav {
-      position: absolute;
-      top: 45%;
-      font-size: 1.5rem;
-      background: rgba(0, 0, 0, 0.4);
-      border: none;
-      color: white;
-      cursor: pointer;
-      pointer-events: auto;
-      padding: 1px 3px;
-      border-radius: 5px; 
-      display: flex;
-      align-items: center; /* push content toward top */
-      justify-content: center; /* center horizontally */
-      padding: 10px;
-    }
+        .carousel-description {
+        text-align: center;
+        max-width: 700px;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        text-shadow: 0px 0px 4px rgb(0, 0, 0);
+        margin-bottom: 30px; /* Adjusted spacing */
+        }
 
-    .carousel-nav.prev {
-      left: 20px;
-      
-    }
+        .carousel-nav {
+        position: absolute;
+        top: 45%;
+        font-size: 1.5rem;
+        background: rgba(0, 0, 0, 0.4);
+        border: none;
+        color: white;
+        cursor: pointer;
+        pointer-events: auto;
+        padding: 1px 3px;
+        border-radius: 5px; 
+        display: flex;
+        align-items: center; /* push content toward top */
+        justify-content: center; /* center horizontally */
+        padding: 10px;
+        }
 
-    .carousel-nav.next {
-      right: 20px;
-    }
+        .carousel-nav.prev {
+        left: 20px;
+        
+        }
 
-    .arrow {
-      position: relative;
-      top: 5px;
-    }
+        .carousel-nav.next {
+        right: 20px;
+        }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    } 
+        .arrow {
+        position: relative;
+        top: 5px;
+        }
+
+        @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+        } 
 
     /* ABOUT US */
 
-    .about-us-section {
-      padding: 120px 20px;
-      color: #eee;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      text-align: center;
-    }
+        .section-heading {
+        font-size: 2.5rem;
+        color: var(--pink);
+        text-shadow: 0 0 12px rgba(255, 105, 180, 0.6);
+        }
 
-    .about-us-section .container {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
+        .section-paragraph {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 18px;
+        }
 
-    .about-us-section h2 {
-      font-size: 2.5rem;
-      color: var(--pink);
-      margin-bottom: 0px;
-      -webkit-text-stroke: 0.25px #ea00ff;
-      text-shadow: 0 0 12px rgba(255, 105, 180, 0.6);
-      line-height: 1;
-      margin-bottom: 20px;
-    }
+        /* ABOUT US */
 
-    .about-us-section p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      margin-bottom: 15px;
-    }
+        .about-us-section {
+        padding: 150px 20px;
+        color: #eee;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center;
+        }
+
+        .about-us-section .container {
+        max-width: 950px;
+        margin: 0 auto;
+        }
+
+        .about-us-section h2 {
+        margin-bottom: 25px;
+        -webkit-text-stroke: 0.25px #ea00ff;
+        margin-bottom: 20px;
+        }
+
+        .about-us-section p {
+        line-height: 1.6;
+        margin-bottom: 50px;
+        }
 
       /* SUPPORT US */
 
       .support-server-section {
-        padding: 80px 20px;
-        color: #eee;
         text-align: center;
-        background-color: rgba(255, 255, 255, 0.03);
-        margin-top: 0px;
+        position: relative;
+        top: -150px;
       }
 
       .support-server-section h2 {
         font-size: 2.5rem;
         color: var(--pink);
         text-shadow: 0 0 12px rgba(255, 105, 180, 0.6);
-        margin-bottom: 10px;
+        margin-bottom: -10px;
       }
 
-      .support-server-section p {
-        font-size: 1.1rem;
-        margin-bottom: 30px;
+        .support-server-section p {
+        /* Uses .section-paragraph */
         max-width: 800px;
         margin-left: auto;
         margin-right: auto;
-      }
+        margin-bottom: 40px;
+        }
 
       .support-options {
         display: flex !important;       /* FIXED: must be flex, not wrap */
         flex-direction: row !important; /* ensures horizontal layout */
         justify-content: center;
-        gap: 40px;
+        gap: 5px;
         flex-wrap: wrap;
       }
 
@@ -510,7 +526,7 @@
         display: inline-block;
         background-color: var(--pink);
         color: white;
-        padding: 8px 18px;
+        padding: 5px 5px;
         border-radius: 20px;
         text-decoration: none;
         font-weight: bold;
@@ -522,20 +538,20 @@
         box-shadow: 0 0 10px var(--pink);
       }
 
-    /* STREAMERS */
+/* STREAMERS */
 
     .streamers-section {
       max-width: 1000px;
-      margin: 100px auto;
+      margin: -150px auto;
       text-align: center;
-      padding: 40px 20px;
+      top:-100px;
     }
 
     .streamers-section h2 {
-      font-size: 2.5rem;
-      color: #fff;
-      text-shadow: 2px 2px 5px rgba(255, 0, 153, 0.5);
-      margin-bottom: 10px;
+        font-size: 2.5rem;
+        color: var(--pink);
+        text-shadow: 0 0 12px rgba(255, 105, 180, 0.6);
+        margin-bottom: -5px;
     }
 
     .streamers-info {
@@ -547,9 +563,10 @@
 
     .streamer-cards {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
       gap: 30px;
+      padding-bottom: 15px; /* Add some padding to account for potential scrollbar */
     }
 
     .streamer-card {
@@ -558,6 +575,8 @@
       border-radius: 20px;
       padding: 20px;
       width: 250px;
+      flex-shrink: 0; /* Prevent cards from shrinking */
+      scroll-snap-align: start;
       box-shadow: 0 0 15px rgba(255, 0, 153, 0.2);
       backdrop-filter: blur(8px);
       text-align: center;
@@ -595,138 +614,138 @@
       transform: translateY(-3px);
     }
 
-  
 
   </style>
-</head>
-<body>
-  <header>
-    <div class="logo-container" aria-label="Ruthless RP Logo">
-      <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/logo_header_small/RUTHLESS%20RP%20ICON%20BIG.svg" alt="Ruthless RP Logo" />
-      <div class="pulse"></div>
-    </div>
-    <a href="https://discord.gg/eVXQb6Utxg" class="discord-button" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord">
-      <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/logo_header_small/discordicon_inactive.png" alt="Discord Icon" />
-    </a>
-  </header>
+    </head>
+    <body>
+    <header>
+        <div class="logo-container" aria-label="Ruthless RP Logo">
+        <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/logo_header_small/RUTHLESS%20RP%20ICON%20BIG.svg" alt="Ruthless RP Logo" />
+        <div class="pulse"></div>
+        </div>
+        <a href="https://discord.gg/eVXQb6Utxg" class="discord-button" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord">
+        <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/logo_header_small/discordicon_inactive.png" alt="Discord Icon" />
+        </a>
+    </header>
 
-  <!-- Announcement -->
-  <section class="announcement-section" aria-label="Announcement">
-    <div class="announcement-tab">Announcements</div>
-    <h2>May 16, 2025 Update</h2>
-    <p>We're almost there—the wait will soon be over. Hop into our official Discord by clicking the Discord button at the top right to join!</p>
-  </section>
+    <!-- Announcement -->
+    <section class="announcement-section" aria-label="Announcement">
+        <div class="announcement-tab">Announcements</div>
+        <h2>May 16, 2025 Update</h2>
+        <p>We're almost there—the wait will soon be over. Hop into our official Discord by clicking the Discord button at the top right to join!</p>
+ </section>
 
   <!-- Main Content -->
-  <main>
-    <section class="intro-section" aria-label="Introduction">
-      <h1>Ruthless RP</h1>
-      <p>A story-driven Philippine FiveM server where every choice shapes your immersive journey.</p>
-    </section>
-    <section class="status-wrapper" aria-label="Server Status">
-      <div class="status-title">Server Status</div>
-      <div class="status-container">
-        <div class="player-count-box">
-          <div class="glow-circle" aria-hidden="true"></div>
-          <div><strong>Players Online:</strong> <span id="player-count">Loading...</span></div>
-        </div>
-      </div>
-    </section>
-  </main>
+
+        <main>
+            <section class="intro-section" aria-label="Introduction">
+            <h1>Ruthless RP</h1>
+            <p>A story-driven Philippine FiveM server where every choice shapes your immersive journey.</p>
+            </section>
+            <section class="status-wrapper" aria-label="Server Status">
+            <div class="status-title">Server Status</div>
+            <div class="status-container">
+                <div class="player-count-box">
+                <div class="glow-circle" aria-hidden="true"></div>
+                <div><strong>Players Online:</strong> <span id="player-count">Loading...</span></div>
+                </div>
+            </div>
+            </section>
+        </main>
 
   <!-- Image Banner -->
-  <section class="image-banner" aria-label="Promotional Banner">
-    <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/backgroundimage_mainpage/2.png" alt="Ruthless RP Banner Image" />
 
-    <div class="carousel-overlay" aria-label="Promotional Carousel">
-      
-      <div class="carousel-slide active" role="group" aria-roledescription="slide" aria-label="Slide 1 of 3">
-        <h2>Join our Discord</h2>
-          <div style="text-align: center; max-width: 700px; color: #fff; font-family: Arial, sans-serif; text-shadow: 0px 0px 4px rgb(0, 0, 0);">
-            Be the first to know about the latest updates, events, and exclusive content. Connect with fellow members, share ideas, and get support anytime.
-          </div>
-        <a href="https://discord.gg/eVXQb6Utxg" class="carousel-button" target="_blank" rel="noopener noreferrer">Join Now</a>
-      </div>
+        <section class="image-banner" aria-label="Promotional Banner">
+            <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/backgroundimage_mainpage/2.png" alt="Ruthless RP Banner Image" />
 
-      <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="Slide 2 of 3">
-        <h2>Read our Rules</h2>
-          <div style="text-align: center; max-width: 700px; color: #fff; font-family: Arial, sans-serif; text-shadow: 0px 0px 4px rgb(0, 0, 0);">
-            Please read and follow our rules to keep the community safe and enjoyable for everyone. Respect others, stay positive, and have fun!
-          </div>
+            <div class="carousel-overlay" aria-label="Promotional Carousel">
 
-        <a href="http://ruthlessroleplay.online/rules.html" class="carousel-button">View Rules</a>
-      </div>
+                <div class="carousel-slide active" role="group" aria-roledescription="slide" aria-label="Slide 1 of 3">
+                    <h2>Join our Discord</h2>
+                    <div class="carousel-description">
+                        Be the first to know about the latest updates, events, and exclusive content. Connect with fellow members, share ideas, and get support anytime.
+                    </div>
+                    <a href="https://discord.gg/eVXQb6Utxg" class="carousel-button" target="_blank" rel="noopener noreferrer">Join Now</a>
+                </div>
 
-      <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="Slide 3 of 3">
-        <h2>Apply Now for Whitelisted Jobs</h2>
-          <div style="text-align: center; max-width: 700px; color: #fff; font-family: Arial, sans-serif; text-shadow: 0px 0px 4px rgb(0, 0, 0);">
-            Interested in joining specialized roles? Submit your application and become part of our whitelisted teams for a unique roleplay experience.
-          </div>
-        <a href="#applications" class="carousel-button">Apply Here</a>
-      </div>
+                <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="Slide 2 of 3">
+                    <h2>Read our Rules</h2>
+                    <div class="carousel-description">
+                        Please read and follow our rules to keep the community safe and enjoyable for everyone. Respect others, stay positive, and have fun!
+                    </div>
 
-      <!-- Navigation Buttons -->
-      <button class="carousel-nav prev" aria-label="Previous Slide" role="button">&#10094;</button>
-      <button class="carousel-nav next" aria-label="Next Slide" role="button">&#10095;</button>
-    </div>
-  </section>
+                    <a href="http://ruthlessroleplay.online/rules.html" class="carousel-button">View Rules</a>
+                </div>
+
+                <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="Slide 3 of 3">
+                    <h2>Apply Now for Whitelisted Jobs</h2>
+                    <div class="carousel-description">
+                        Interested in joining specialized roles? Submit your application and become part of our whitelisted teams for a unique roleplay experience.
+                    </div>
+                    <a href="#applications" class="carousel-button">Apply Here</a>
+                </div>
+
+                <button class="carousel-nav prev" aria-label="Previous Slide" role="button">&#10094;</button>
+                <button class="carousel-nav next" aria-label="Next Slide" role="button">&#10095;</button>
+            </div>
+        </section>
 
 
     <!-- ABOUT US -->
 
-    <section id="about-us" class="about-us-section">
+<section class="about-us-section">
       <div class="container">
-        <h2>About Us</h2>
-        <p>
+        <h2 class="section-heading">About Us</h2>
+        <p class="section-paragraph">
           Welcome to Ruthless Roleplay, a dedicated Philippine FiveM story-driven roleplay community. 
           Our mission is to provide an immersive, respectful, and engaging roleplay experience where players can connect and create unforgettable stories.
         </p>
-        <p>
+        <p class="section-paragraph">
           Founded by passionate gamers and roleplayers, Ruthless Roleplay values creativity, fairness, and community spirit.
           Join us and become part of a growing family committed to quality RP.
         </p>
+        <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Website%20Photos/about%20us.png" alt="About Us Image" style="width: 100%; max-width: 1000px; display: block; margin: 20px auto;">
       </div>
     </section>
 
-
     <!-- SUPPORT US -->
 
-  <!-- Image Banner -->
-  <section class="support-server-section">
-    <div class="container">
-      <h2>SUPPORT THE SERVER</h2>
-      <p>If you enjoy playing on Ruthless RP and want to help keep the community thriving, consider supporting us. Choose the option below that best suits you!</p>
-      
-      <div class="support-options">
-        <div class="support-card">
-          <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Website%20Photos/silver.png" alt="Silver Support Tier" />
-          <div class="support-overlay">
-            <h3>Silver Tier</h3>
-            <p>COMING SOON!</p>
-            <a href="https://discord.com/channels/1361212610661580830/1363329434941132972" target="_blank" class="support-btn">Support Now</a>
-          </div>
-        </div>
+    <!-- Image Banner -->
+    <section class="support-server-section">
+        <div class="container">
+        <h2>SUPPORT THE SERVER</h2>
+        <p>If you enjoy playing on Ruthless RP and want to help keep the community thriving, consider supporting us. Choose the option below that best suits you!</p>
+        
+        <div class="support-options">
+            <div class="support-card">
+            <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Website%20Photos/silver.png" alt="Silver Support Tier" />
+            <div class="support-overlay">
+                <h3>Silver Tier</h3>
+                <p>COMING SOON!</p>
+                <a href="https://discord.com/channels/1361212610661580830/1363329434941132972" target="_blank" class="support-btn">Support Now</a>
+            </div>
+            </div>
 
-        <div class="support-card">
-          <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Website%20Photos/gold.png" alt="Gold Support Tier" />
-          <div class="support-overlay">
-            <h3>Gold Tier</h3>
-            <p>COMING SOON!</p>
-            <a href="https://discord.com/channels/1361212610661580830/1363329434941132972" target="_blank" class="support-btn">Support Now</a>
-          </div>
-        </div>
+            <div class="support-card">
+            <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Website%20Photos/gold.png" alt="Gold Support Tier" />
+            <div class="support-overlay">
+                <h3>Gold Tier</h3>
+                <p>COMING SOON!</p>
+                <a href="https://discord.com/channels/1361212610661580830/1363329434941132972" target="_blank" class="support-btn">Support Now</a>
+            </div>
+            </div>
 
-        <div class="support-card">
-          <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Website%20Photos/rose.png" alt="Rose Support Tier" />
-          <div class="support-overlay">
-            <h3>Rose Tier</h3>
-            <p>COMING SOON!</p>
-            <a href="https://discord.com/channels/1361212610661580830/1363329434941132972" target="_blank" class="support-btn">Support Now</a>
-          </div>
+            <div class="support-card">
+            <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Website%20Photos/rose.png" alt="Rose Support Tier" />
+            <div class="support-overlay">
+                <h3>Rose Tier</h3>
+                <p>COMING SOON!</p>
+                <a href="https://discord.com/channels/1361212610661580830/1363329434941132972" target="_blank" class="support-btn">Support Now</a>
+            </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+        </div>
+    </section>
 
 
     <!-- STREAMERS -->
