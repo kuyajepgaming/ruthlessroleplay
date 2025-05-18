@@ -86,10 +86,9 @@
 
         iframe {
             width: 95%;
-            height: 390px;
+            height: 800px;
             border: none;
             overflow: auto;
-            scrollbar-width: none;  /* Firefox */
         }
 
         /* WebKit (Chrome, Safari) Scrollbar Styling - As a separate rule */
@@ -251,6 +250,25 @@
                 width: 95%;
             }
         }
+
+            /* Logo Section */
+        .logo-section {
+            text-align: center; /* Center the content horizontally */
+            padding: 50px 10px; /* Add padding for spacing */
+            background-color: #18181800; /* Match background or choose a different color */
+            margin-top: 20px
+        
+        }
+
+        .logo-section .container {
+            display: flex; /* Enable flexbox for centering */
+            justify-content: center; /* Center content horizontally within the container */
+        }
+
+        .logo-section img {
+            max-width: 150px; /* Adjust the maximum width of the logo */
+            height: auto;
+        }
     </style>
 </head>
 
@@ -293,6 +311,13 @@
         <h2>Server Updates & News</h2>
         <p>Stay tuned for the latest news and updates about the Ruthless Roleplay server!</p>
     </div>
+
+    <section class="logo-section">
+    <div class="container">
+        <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/logo_header_small/RUTHLESS%20RP%20ICON%20BIG.svg" alt="Ruthless RP Logo">
+    </div>
+</section>
+
 </body>
 
 </html>
