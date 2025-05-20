@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 26.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 612 900" style="enable-background:new 0 0 612 900;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#BCBEC0;stroke:#000000;stroke-width:0.5;stroke-miterlimit:10;}
+	.st1{fill:none;stroke:#000000;stroke-width:0.5;stroke-miterlimit:10;}
+	.st2{font-family:'Poppins-SemiBold';}
+	.st3{font-size:12px;}
+	.st4{font-family:'Poppins-Regular';}
+	.st5{font-size:10.6726px;}
+	.st6{fill:#58595B;}
+	.st7{font-family:'Poppins-LightItalic';}
+	.st8{font-size:5.6347px;}
+	.st9{font-size:6.7472px;}
+	.st10{fill:none;}
+	.st11{font-size:7px;}
+	.st12{font-family:'Poppins-MediumItalic';}
+	.st13{letter-spacing:1;}
+	.st14{font-size:9.8646px;}
+</style>
+<rect x="33" y="100.3" class="st0" width="546.1" height="21"/>
+<rect x="33" y="121.4" class="st1" width="223.2" height="29.5"/>
+<g>
+	<text transform="matrix(1 0 0 1 147.4764 40.7702)" class="st2 st3">LOS SANTOS POLICE DEPARTMENT APPLICATION FORM</text>
+	<text transform="matrix(1 0 0 1 223.0003 52.3898)" class="st4 st5">Mission Row Police Department</text>
+	<text transform="matrix(1 0 0 1 205.295 64.3571)" class="st4 st5">Sinner Street, Los Santos, San Andreas</text>
+</g>
+<g>
+	<text transform="matrix(1 0 0 1 372.326 884.9363)" class="st6 st7 st8">LOS SANTOS POLICE DEPARTMENT APPLICATION FORM | Last Revised May 2025</text>
+</g>
+<g>
+	<text transform="matrix(1 0 0 1 40.1375 115.4095)" class="st2 st3">A. PERSONAL INFORMATION</text>
+</g>
+<rect x="33" y="209.9" class="st0" width="546.1" height="21"/>
+<rect x="33" y="230.9" class="st1" width="546.1" height="218.3"/>
+<g>
+	<text transform="matrix(1 0 0 1 40.1374 224.395)" class="st2 st3">B. BACKGROUND INFORMATION</text>
+</g>
+<image style="overflow:visible;" width="248" height="256" xlink:href="../../MRPD/lspd.png"  transform="matrix(0.3097 0 0 0.2998 530.9535 6.8904)">
+</image>
+<g>
+	<defs>
+		<circle id="SVGID_1_" cx="50" cy="45.3" r="35.2"/>
+	</defs>
+	<clipPath id="SVGID_00000101064293724909346620000017575082707819318952_">
+		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+	</clipPath>
+	<g style="clip-path:url(#SVGID_00000101064293724909346620000017575082707819318952_);">
+		
+			<image style="overflow:visible;" width="256" height="512" xlink:href="../../MRPD/vb04_policelogos2_dvb04_policelogos2_a.png"  transform="matrix(0.2812 0 0 0.2812 13.7717 9.2173)">
+		</image>
+	</g>
+</g>
+<text transform="matrix(1 0 0 1 35.9607 129.569)" class="st4 st9">LAST NAME:</text>
+<rect x="33" y="150.8" class="st1" width="154.7" height="29.5"/>
+<text transform="matrix(1 0 0 1 35.9607 159.0376)" class="st4 st9">PHONE NUMBER:</text>
+<rect x="33" y="180.4" class="st1" width="154.7" height="29.5"/>
+<text transform="matrix(1 0 0 1 35.9607 188.5657)" class="st4 st9">DATE OF BIRTH:</text>
+<text transform="matrix(1 0 0 1 35.9607 240.2588)" class="st4 st9">Do you have any previous Law Enforcement experience? (If yes, explain where and what your role was.)</text>
+<rect x="187.6" y="180.4" class="st1" width="68.5" height="29.5"/>
+<text transform="matrix(1 0 0 1 190.6236 188.5657)" class="st4 st9">SEX:</text>
+<rect x="256.1" y="180.4" class="st1" width="190.7" height="29.5"/>
+<text transform="matrix(1 0 0 1 259.118 188.5657)" class="st4 st9">CITIZEN ID NUMBER:</text>
+<rect x="446.8" y="180.4" class="st1" width="132.3" height="29.5"/>
+<text transform="matrix(1 0 0 1 449.7697 188.5657)" class="st4 st9">LOS SANTOS CITIZEN:</text>
+<rect x="187.6" y="150.8" class="st1" width="391.4" height="29.5"/>
+<text transform="matrix(1 0 0 1 190.6236 159.0376)" class="st4 st9">EMAIL ADDRESS:</text>
+<rect x="256.1" y="121.4" class="st1" width="223.2" height="29.5"/>
+<text transform="matrix(1 0 0 1 259.118 129.569)" class="st4 st9">FIRST NAME:</text>
+<rect x="479.3" y="121.4" class="st1" width="99.8" height="29.5"/>
+<text transform="matrix(1 0 0 1 482.2753 129.569)" class="st4 st9">MIDDLE INITIAL:</text>
+<g>
+	<text transform="matrix(1 0 0 1 500.1021 201.6499)" class="st4 st9">YES</text>
+	<rect x="487.5" y="194.9" class="st1" width="8.8" height="8.8"/>
+	<text transform="matrix(1 0 0 1 528.2819 201.6499)" class="st4 st9">NO</text>
+	<rect x="515.7" y="194.9" class="st1" width="8.8" height="8.8"/>
+</g>
+<rect x="33" y="449.2" class="st1" width="151.3" height="29.5"/>
+<text transform="matrix(1 0 0 1 37.2315 457.421)" class="st4 st9">Have you ever been convicted of a felony?</text>
+<g>
+	<text transform="matrix(1 0 0 1 95.8098 470.5052)" class="st4 st9">YES</text>
+	<rect x="83.2" y="463.8" class="st1" width="8.8" height="8.8"/>
+	<text transform="matrix(1 0 0 1 123.9896 470.5052)" class="st4 st9">NO</text>
+	<rect x="111.4" y="463.8" class="st1" width="8.8" height="8.8"/>
+</g>
+<rect x="33" y="617.7" class="st1" width="217.2" height="29.5"/>
+<text transform="matrix(1 0 0 1 36.944 627.2425)" class="st4 st9">Were you honorably discharged or released from your duties?</text>
+<g>
+	<text transform="matrix(1 0 0 1 128.7759 639.0231)" class="st4 st9">YES</text>
+	<rect x="116.2" y="632.3" class="st1" width="8.8" height="8.8"/>
+	<text transform="matrix(1 0 0 1 156.9557 639.0231)" class="st4 st9">NO</text>
+	<rect x="144.3" y="632.3" class="st1" width="8.8" height="8.8"/>
+</g>
+<rect x="33" y="647.3" class="st1" width="175.7" height="51.6"/>
+<rect x="208.6" y="647.3" class="st0" width="370.4" height="51.6"/>
+<text transform="matrix(1 0 0 1 36.8497 656.7706)"><tspan x="0" y="0" class="st4 st9">Do you have recommendation or documentation </tspan><tspan x="15.6" y="8.1" class="st4 st9">from previous law enforcement agency?</tspan></text>
+<g>
+	<text transform="matrix(1 0 0 1 108.005 682.811)" class="st4 st9">YES</text>
+	<rect x="95.4" y="676.1" class="st1" width="8.8" height="8.8"/>
+	<text transform="matrix(1 0 0 1 136.1848 682.811)" class="st4 st9">NO</text>
+	<rect x="123.6" y="676.1" class="st1" width="8.8" height="8.8"/>
+</g>
+<rect x="250.2" y="617.7" class="st1" width="328.8" height="29.5"/>
+<text transform="matrix(1 0 0 1 299.4626 627.2425)" class="st4 st9">Do you wish to retain your previous rank or apply as a cadet/recruit?</text>
+<g>
+	<text transform="matrix(1 0 0 1 310.7931 639.0231)" class="st4 st9">Retain Rank (Subject to approval)</text>
+	<rect x="298.2" y="632.3" class="st1" width="8.8" height="8.8"/>
+	<text transform="matrix(1 0 0 1 452.7259 639.0231)" class="st4 st9">Apply as Cadet/Recruit</text>
+	<rect x="440.1" y="632.3" class="st1" width="8.8" height="8.8"/>
+</g>
+<rect x="184.4" y="449.2" class="st1" width="109.1" height="29.5"/>
+<text transform="matrix(1 0 0 1 188.2022 457.421)" class="st4 st9">If yes, have it been expunged?</text>
+<g>
+	<text transform="matrix(1 0 0 1 226.0942 470.5052)" class="st4 st9">YES</text>
+	<rect x="213.5" y="463.8" class="st1" width="8.8" height="8.8"/>
+	<text transform="matrix(1 0 0 1 254.2739 470.5052)" class="st4 st9">NO</text>
+	<rect x="241.7" y="463.8" class="st1" width="8.8" height="8.8"/>
+</g>
+<rect x="293.4" y="449.2" class="st1" width="159" height="29.5"/>
+<text transform="matrix(1 0 0 1 305.5688 457.4211)" class="st4 st9">Do you have any on-going court cases?</text>
+<g>
+	<text transform="matrix(1 0 0 1 360.1432 470.5052)" class="st4 st9">YES</text>
+	<rect x="347.5" y="463.8" class="st1" width="8.8" height="8.8"/>
+	<text transform="matrix(1 0 0 1 388.323 470.5052)" class="st4 st9">NO</text>
+	<rect x="375.7" y="463.8" class="st1" width="8.8" height="8.8"/>
+</g>
+<rect x="452.5" y="449.2" class="st1" width="126.6" height="29.5"/>
+<text transform="matrix(1 0 0 1 455.0717 457.421)" class="st4 st9">Do you have a valid driver’s license?</text>
+<g>
+	<text transform="matrix(1 0 0 1 502.9419 470.5052)" class="st4 st9">YES</text>
+	<rect x="490.3" y="463.8" class="st1" width="8.8" height="8.8"/>
+	<text transform="matrix(1 0 0 1 531.1217 470.5052)" class="st4 st9">NO</text>
+	<rect x="518.5" y="463.8" class="st1" width="8.8" height="8.8"/>
+</g>
+<rect x="33" y="478.7" class="st0" width="546.1" height="21"/>
+<g>
+	<text transform="matrix(1 0 0 1 40.1374 493.2502)" class="st2 st3">C. TRANSFER INFORMATION (For Transfers Only)</text>
+</g>
+<rect x="33" y="698.8" class="st0" width="546.1" height="21"/>
+<rect x="33" y="719.9" class="st1" width="546.1" height="149.4"/>
+<g>
+	<text transform="matrix(1 0 0 1 40.1374 713.3533)" class="st2 st3">D. DECLARATION</text>
+</g>
+<rect x="33" y="499.8" class="st1" width="119.7" height="59"/>
+<rect x="33" y="558.7" class="st1" width="546.1" height="59"/>
+<rect x="152.7" y="499.8" class="st1" width="426.3" height="19.8"/>
+<g>
+	<text transform="matrix(1 0 0 1 58.5115 513.8342)"><tspan x="0" y="0" class="st4 st9">Are you applying as </tspan><tspan x="-5.1" y="8.1" class="st4 st9">a transfer from another</tspan><tspan x="-17.7" y="16.2" class="st4 st9">Law Enforcement Department?</tspan></text>
+	<g>
+		<text transform="matrix(1 0 0 1 80.0342 546.5483)" class="st4 st9">YES</text>
+		<rect x="67.4" y="539.8" class="st1" width="8.8" height="8.8"/>
+		<text transform="matrix(1 0 0 1 108.214 546.5483)" class="st4 st9">NO</text>
+		<rect x="95.6" y="539.8" class="st1" width="8.8" height="8.8"/>
+	</g>
+</g>
+<g>
+	<text transform="matrix(1 0 0 1 158.7883 511.8917)" class="st4 st9">Previous Department Name:</text>
+</g>
+<g>
+	<text transform="matrix(1 0 0 1 37.7512 570.3976)" class="st4 st9">Reason for Leaving or Requesting Transfer:</text>
+</g>
+<rect x="152.7" y="519.5" class="st1" width="188.6" height="19.5"/>
+<g>
+	<text transform="matrix(1 0 0 1 158.7883 531.6438)" class="st4 st9">Rank Held:</text>
+</g>
+<rect x="152.7" y="539" class="st1" width="76.7" height="19.8"/>
+<g>
+	<text transform="matrix(1 0 0 1 158.7883 551.1177)" class="st4 st9">Duration of Service:</text>
+</g>
+<rect x="229.4" y="539" class="st1" width="176.3" height="19.8"/>
+<g>
+	<text transform="matrix(1 0 0 1 237.3954 551.1177)" class="st4 st9">START DATE:</text>
+</g>
+<rect x="405.7" y="539" class="st1" width="173.3" height="19.8"/>
+<g>
+	<text transform="matrix(1 0 0 1 411.2549 551.1177)" class="st4 st9">END DATE:</text>
+</g>
+<rect x="341.3" y="519.5" class="st1" width="237.7" height="19.5"/>
+<g>
+	<text transform="matrix(1 0 0 1 347.4178 531.6438)" class="st4 st9">Supervisor’s Name:</text>
+</g>
+<rect x="213" y="656.1" class="st10" width="357.6" height="37.2"/>
+<text transform="matrix(1 0 0 1 212.9775 661.2527)"><tspan x="0" y="0" class="st4 st11">All</tspan><tspan x="8.2" y="0" class="st4 st11"> </tspan><tspan x="9.8" y="0" class="st4 st11">applicants</tspan><tspan x="47.1" y="0" class="st4 st11"> </tspan><tspan x="48.7" y="0" class="st4 st11">submitting</tspan><tspan x="86.5" y="0" class="st4 st11"> </tspan><tspan x="88.1" y="0" class="st4 st11">a</tspan><tspan x="92.8" y="0" class="st4 st11"> </tspan><tspan x="94.4" y="0" class="st4 st11">transfer</tspan><tspan x="121.7" y="0" class="st4 st11"> </tspan><tspan x="123.3" y="0" class="st4 st11">request</tspan><tspan x="150" y="0" class="st4 st11"> </tspan><tspan x="151.6" y="0" class="st4 st11">must</tspan><tspan x="169.5" y="0" class="st4 st11"> </tspan><tspan x="171.1" y="0" class="st4 st11">provide</tspan><tspan x="197.7" y="0" class="st4 st11"> </tspan><tspan x="199.3" y="0" class="st4 st11">official</tspan><tspan x="222.5" y="0" class="st4 st11"> </tspan><tspan x="224.1" y="0" class="st4 st11">recommendation</tspan><tspan x="285.7" y="0" class="st4 st11"> </tspan><tspan x="287.3" y="0" class="st4 st11">letters</tspan><tspan x="309.1" y="0" class="st4 st11"> </tspan><tspan x="310.7" y="0" class="st4 st11">or</tspan><tspan x="317.8" y="0" class="st4 st11"> </tspan><tspan x="319.4" y="0" class="st4 st11">supporting </tspan><tspan x="0" y="8.4" class="st4 st11">documentation</tspan><tspan x="54.5" y="8.4" class="st4 st11"> </tspan><tspan x="56.7" y="8.4" class="st4 st11">from</tspan><tspan x="73.3" y="8.4" class="st4 st11"> </tspan><tspan x="75.5" y="8.4" class="st4 st11">their</tspan><tspan x="91.2" y="8.4" class="st4 st11"> </tspan><tspan x="93.5" y="8.4" class="st4 st11">previous</tspan><tspan x="123.4" y="8.4" class="st4 st11"> </tspan><tspan x="125.6" y="8.4" class="st4 st11">department</tspan><tspan x="167.9" y="8.4" class="st4 st11"> </tspan><tspan x="170.1" y="8.4" class="st4 st11">or</tspan><tspan x="177.2" y="8.4" class="st4 st11"> </tspan><tspan x="179.4" y="8.4" class="st4 st11">community</tspan><tspan x="219.8" y="8.4" class="st4 st11"> </tspan><tspan x="222" y="8.4" class="st4 st11">at</tspan><tspan x="229.3" y="8.4" class="st4 st11"> </tspan><tspan x="231.5" y="8.4" class="st4 st11">the</tspan><tspan x="242.9" y="8.4" class="st4 st11"> </tspan><tspan x="245.1" y="8.4" class="st4 st11">time</tspan><tspan x="260.9" y="8.4" class="st4 st11"> </tspan><tspan x="263.1" y="8.4" class="st4 st11">of</tspan><tspan x="269.9" y="8.4" class="st4 st11"> </tspan><tspan x="272.1" y="8.4" class="st4 st11">their</tspan><tspan x="287.8" y="8.4" class="st4 st11"> </tspan><tspan x="290.1" y="8.4" class="st4 st11">interview.</tspan><tspan x="323" y="8.4" class="st4 st11"> </tspan><tspan x="325.2" y="8.4" class="st4 st11">Failure</tspan><tspan x="348.3" y="8.4" class="st4 st11"> </tspan><tspan x="350.6" y="8.4" class="st4 st11">to </tspan><tspan x="0" y="16.8" class="st4 st11">present</tspan><tspan x="26.7" y="16.8" class="st4 st11"> </tspan><tspan x="29.1" y="16.8" class="st4 st11">these</tspan><tspan x="48.5" y="16.8" class="st4 st11"> </tspan><tspan x="51" y="16.8" class="st4 st11">documents</tspan><tspan x="91.1" y="16.8" class="st4 st11"> </tspan><tspan x="93.6" y="16.8" class="st4 st11">on</tspan><tspan x="102.5" y="16.8" class="st4 st11"> </tspan><tspan x="105" y="16.8" class="st4 st11">the</tspan><tspan x="116.3" y="16.8" class="st4 st11"> </tspan><tspan x="118.8" y="16.8" class="st4 st11">day</tspan><tspan x="132.2" y="16.8" class="st4 st11"> </tspan><tspan x="134.6" y="16.8" class="st4 st11">of</tspan><tspan x="141.4" y="16.8" class="st4 st11"> </tspan><tspan x="143.9" y="16.8" class="st4 st11">the</tspan><tspan x="155.2" y="16.8" class="st4 st11"> </tspan><tspan x="157.7" y="16.8" class="st4 st11">interview</tspan><tspan x="189.1" y="16.8" class="st4 st11"> </tspan><tspan x="191.5" y="16.8" class="st4 st11">may</tspan><tspan x="207.4" y="16.8" class="st4 st11"> </tspan><tspan x="209.9" y="16.8" class="st4 st11">result</tspan><tspan x="229.2" y="16.8" class="st4 st11"> </tspan><tspan x="231.7" y="16.8" class="st4 st11">in</tspan><tspan x="237.9" y="16.8" class="st4 st11"> </tspan><tspan x="240.3" y="16.8" class="st4 st11">a</tspan><tspan x="245.1" y="16.8" class="st4 st11"> </tspan><tspan x="247.5" y="16.8" class="st4 st11">delay</tspan><tspan x="267" y="16.8" class="st4 st11"> </tspan><tspan x="269.4" y="16.8" class="st4 st11">or</tspan><tspan x="276.5" y="16.8" class="st4 st11"> </tspan><tspan x="278.9" y="16.8" class="st4 st11">denial</tspan><tspan x="300.7" y="16.8" class="st4 st11"> </tspan><tspan x="303.1" y="16.8" class="st4 st11">of</tspan><tspan x="309.9" y="16.8" class="st4 st11"> </tspan><tspan x="312.3" y="16.8" class="st4 st11">your</tspan><tspan x="327.9" y="16.8" class="st4 st11"> </tspan><tspan x="330.3" y="16.8" class="st4 st11">transfer </tspan><tspan x="0" y="25.2" class="st4 st11">application. Photocopies, screenshots, or verified digital letters are acceptable.</tspan></text>
+<rect x="42.5" y="727.4" class="st10" width="526.9" height="53.4"/>
+<text transform="matrix(1 0 0 1 42.5394 732.6014)"><tspan x="0" y="0" class="st12 st11">I,</tspan><tspan x="3.4" y="0" class="st12 st11"> </tspan><tspan x="5.7" y="0" class="st12 st11">the</tspan><tspan x="17.2" y="0" class="st12 st11"> </tspan><tspan x="19.4" y="0" class="st12 st11">undersigned</tspan><tspan x="64.2" y="0" class="st12 st11"> </tspan><tspan x="66.5" y="0" class="st12 st11">applicant,</tspan><tspan x="102.1" y="0" class="st12 st11"> </tspan><tspan x="104.4" y="0" class="st12 st11">declare</tspan><tspan x="131.3" y="0" class="st12 st11"> </tspan><tspan x="133.5" y="0" class="st12 st11">that</tspan><tspan x="148" y="0" class="st12 st11"> </tspan><tspan x="150.3" y="0" class="st12 st11">all</tspan><tspan x="158.8" y="0" class="st12 st11"> </tspan><tspan x="161" y="0" class="st12 st11">information</tspan><tspan x="202.4" y="0" class="st12 st11"> </tspan><tspan x="204.7" y="0" class="st12 st11">provided</tspan><tspan x="236.3" y="0" class="st12 st11"> </tspan><tspan x="238.5" y="0" class="st12 st11">in</tspan><tspan x="244.9" y="0" class="st12 st11"> </tspan><tspan x="247.2" y="0" class="st12 st11">this</tspan><tspan x="259.9" y="0" class="st12 st11"> </tspan><tspan x="262.2" y="0" class="st12 st11">application</tspan><tspan x="302.6" y="0" class="st12 st11"> </tspan><tspan x="304.8" y="0" class="st12 st11">is</tspan><tspan x="310.4" y="0" class="st12 st11"> </tspan><tspan x="312.7" y="0" class="st12 st11">true,</tspan><tspan x="328.4" y="0" class="st12 st11"> </tspan><tspan x="330.7" y="0" class="st12 st11">complete,</tspan><tspan x="366.1" y="0" class="st12 st11"> </tspan><tspan x="368.3" y="0" class="st12 st11">and</tspan><tspan x="382.4" y="0" class="st12 st11"> </tspan><tspan x="384.7" y="0" class="st12 st11">accurate</tspan><tspan x="416.7" y="0" class="st12 st11"> </tspan><tspan x="419" y="0" class="st12 st11">to</tspan><tspan x="426.1" y="0" class="st12 st11"> </tspan><tspan x="428.3" y="0" class="st12 st11">the</tspan><tspan x="439.8" y="0" class="st12 st11"> </tspan><tspan x="442.1" y="0" class="st12 st11">best</tspan><tspan x="457.5" y="0" class="st12 st11"> </tspan><tspan x="459.8" y="0" class="st12 st11">of</tspan><tspan x="466.6" y="0" class="st12 st11"> </tspan><tspan x="468.8" y="0" class="st12 st11">my</tspan><tspan x="480.2" y="0" class="st12 st11"> </tspan><tspan x="482.5" y="0" class="st12 st11">knowledge.</tspan><tspan x="522.8" y="0" class="st12 st11"> </tspan><tspan x="525.1" y="0" class="st12 st11">I </tspan><tspan x="0" y="8.4" class="st12 st11">understand</tspan><tspan x="41.2" y="8.4" class="st12 st11"> </tspan><tspan x="43.9" y="8.4" class="st12 st11">that</tspan><tspan x="58.4" y="8.4" class="st12 st11"> </tspan><tspan x="61.1" y="8.4" class="st12 st11">any</tspan><tspan x="74.4" y="8.4" class="st12 st11"> </tspan><tspan x="77.1" y="8.4" class="st12 st11">false</tspan><tspan x="94.1" y="8.4" class="st12 st11"> </tspan><tspan x="96.8" y="8.4" class="st12 st11">statements,</tspan><tspan x="138.8" y="8.4" class="st12 st11"> </tspan><tspan x="141.5" y="8.4" class="st12 st11">omissions,</tspan><tspan x="178.7" y="8.4" class="st12 st11"> </tspan><tspan x="181.4" y="8.4" class="st12 st11">or</tspan><tspan x="188.6" y="8.4" class="st12 st11"> </tspan><tspan x="191.2" y="8.4" class="st12 st11">misrepresentations</tspan><tspan x="260" y="8.4" class="st12 st11"> </tspan><tspan x="262.7" y="8.4" class="st12 st11">may</tspan><tspan x="278.8" y="8.4" class="st12 st11"> </tspan><tspan x="281.5" y="8.4" class="st12 st11">result</tspan><tspan x="301.2" y="8.4" class="st12 st11"> </tspan><tspan x="303.9" y="8.4" class="st12 st11">in</tspan><tspan x="310.3" y="8.4" class="st12 st11"> </tspan><tspan x="312.9" y="8.4" class="st12 st11">the</tspan><tspan x="324.4" y="8.4" class="st12 st11"> </tspan><tspan x="327.1" y="8.4" class="st12 st11">rejection</tspan><tspan x="357.9" y="8.4" class="st12 st11"> </tspan><tspan x="360.6" y="8.4" class="st12 st11">of</tspan><tspan x="367.4" y="8.4" class="st12 st11"> </tspan><tspan x="370.1" y="8.4" class="st12 st11">my</tspan><tspan x="381.4" y="8.4" class="st12 st11"> </tspan><tspan x="384.1" y="8.4" class="st12 st11">application</tspan><tspan x="424.4" y="8.4" class="st12 st11"> </tspan><tspan x="427.1" y="8.4" class="st12 st11">or</tspan><tspan x="434.3" y="8.4" class="st12 st11"> </tspan><tspan x="436.9" y="8.4" class="st12 st11">immediate</tspan><tspan x="475.9" y="8.4" class="st12 st11"> </tspan><tspan x="478.6" y="8.4" class="st12 st11">termination</tspan><tspan x="520.1" y="8.4" class="st12 st11"> </tspan><tspan x="522.7" y="8.4" class="st12 st11">if </tspan><tspan x="0" y="16.8" class="st12 st11">discovered after acceptance. I am expected to act with professionalism, honesty, and integrity.</tspan><tspan x="0" y="33.6" class="st12 st11">I</tspan><tspan x="1.8" y="33.6" class="st12 st11 st13"> </tspan><tspan x="5.1" y="33.6" class="st12 st11">further</tspan><tspan x="28.8" y="33.6" class="st12 st11 st13"> </tspan><tspan x="32" y="33.6" class="st12 st11">understand</tspan><tspan x="73.2" y="33.6" class="st12 st11 st13"> </tspan><tspan x="76.4" y="33.6" class="st12 st11">that</tspan><tspan x="90.9" y="33.6" class="st12 st11 st13"> </tspan><tspan x="94.1" y="33.6" class="st12 st11">my</tspan><tspan x="105.4" y="33.6" class="st12 st11 st13"> </tspan><tspan x="108.6" y="33.6" class="st12 st11">application</tspan><tspan x="149" y="33.6" class="st12 st11 st13"> </tspan><tspan x="152.2" y="33.6" class="st12 st11">is</tspan><tspan x="157.8" y="33.6" class="st12 st11 st13"> </tspan><tspan x="161" y="33.6" class="st12 st11">subject</tspan><tspan x="187" y="33.6" class="st12 st11 st13"> </tspan><tspan x="190.2" y="33.6" class="st12 st11">to</tspan><tspan x="197.2" y="33.6" class="st12 st11 st13"> </tspan><tspan x="200.4" y="33.6" class="st12 st11">background</tspan><tspan x="243.7" y="33.6" class="st12 st11 st13"> </tspan><tspan x="246.9" y="33.6" class="st12 st11">checks,</tspan><tspan x="273.4" y="33.6" class="st12 st11 st13"> </tspan><tspan x="276.6" y="33.6" class="st12 st11">interviews,</tspan><tspan x="313.9" y="33.6" class="st12 st11 st13"> </tspan><tspan x="317.1" y="33.6" class="st12 st11">and</tspan><tspan x="331.1" y="33.6" class="st12 st11 st13"> </tspan><tspan x="334.3" y="33.6" class="st12 st11">departmental</tspan><tspan x="383.5" y="33.6" class="st12 st11 st13"> </tspan><tspan x="386.7" y="33.6" class="st12 st11">review,</tspan><tspan x="411.3" y="33.6" class="st12 st11 st13"> </tspan><tspan x="414.5" y="33.6" class="st12 st11">and</tspan><tspan x="428.5" y="33.6" class="st12 st11 st13"> </tspan><tspan x="431.7" y="33.6" class="st12 st11">that</tspan><tspan x="446.2" y="33.6" class="st12 st11 st13"> </tspan><tspan x="449.4" y="33.6" class="st12 st11">the</tspan><tspan x="460.9" y="33.6" class="st12 st11 st13"> </tspan><tspan x="464.1" y="33.6" class="st12 st11">Los</tspan><tspan x="475.4" y="33.6" class="st12 st11 st13"> </tspan><tspan x="478.6" y="33.6" class="st12 st11">Santos</tspan><tspan x="502.9" y="33.6" class="st12 st11 st13"> </tspan><tspan x="506.1" y="33.6" class="st12 st11">Police </tspan><tspan x="0" y="42" class="st12 st11">Department reserves the right to accept or deny any applicant based on internal criteria.</tspan></text>
+<g>
+	<text transform="matrix(1 0 0 1 44.428 808.7889)" class="st4 st14">Applicant Printed Name: </text>
+</g>
+<g>
+	<text transform="matrix(1 0 0 1 420.3684 808.7889)" class="st4 st14">Date:</text>
+</g>
+<g>
+	<text transform="matrix(1 0 0 1 44.428 836.8251)" class="st4 st14">Applicant Signature:</text>
+</g>
+<line class="st1" x1="166.7" y1="811.4" x2="414.6" y2="811.4"/>
+<line class="st1" x1="148.8" y1="839.5" x2="396.7" y2="839.5"/>
+<line class="st1" x1="449.8" y1="811.4" x2="570.6" y2="811.4"/>
+</svg>
