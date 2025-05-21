@@ -632,6 +632,33 @@
         height: auto;
     }
 
+    #countdown-timer {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #15151a;
+      border: 2px solid #ff69b4;
+      padding: 10px 20px;
+      border-radius: 8px;
+      color: #fff;
+      z-index: 9999;
+      box-shadow: 0 0 10px #ff69b4;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .countdown-label {
+      font-size: 14px;
+      font-weight: light;
+      color: #ffb3d9;
+      margin-bottom: 5px;
+    }
+
+    #countdown-text {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
   </style>
     </head>
     <body>
@@ -648,8 +675,8 @@
     <!-- Announcement -->
     <section class="announcement-section" aria-label="Announcement">
         <div class="announcement-tab">Announcements</div>
-        <h2>May 16, 2025 Update</h2>
-        <p>We're almost there—the wait will soon be over. Hop into our official Discord by clicking the Discord button at the top right to join!</p>
+        <h2>May 21, 2025 Update</h2>
+        <p>The countdown as started! Hop into our official Discord by clicking the Discord button at the top right to join!</p>
  </section>
 
   <!-- Main Content -->
@@ -826,6 +853,12 @@
     </div>
 </section>
 
+<div id="countdown-timer">
+  <div class="countdown-label">Initializing Ruthless Roleplay</div>
+  <div id="countdown-text">Loading...</div>
+</div>
+
+
     <!-- SCRIPTS / JS -->
 
   <script>
@@ -908,5 +941,33 @@
   showSlide(currentIndex);
   startAutoSlide();
 </script>
+
+<script>
+  function updateCountdown() {
+    const targetDate = new Date("May 24, 2025 18:00:00").getTime();
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    const countdownText = document.getElementById("countdown-text");
+    if (!countdownText) return;
+
+    if (distance <= 0) {
+      countdownText.textContent = "The event has started!";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    countdownText.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+
+
 </body>
 </html>
