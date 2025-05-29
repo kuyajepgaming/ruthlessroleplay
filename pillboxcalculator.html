@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pillbox Medical Invoice</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f2f5;
+      padding: 40px;
+      color: #333;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto 40px;
+    }
+
+    #procedure-list {
+      flex: 1;
+      max-width: 350px;
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+      height: fit-content;
+      overflow-y: auto;
+    }
+
+    #procedure-list h3 {
+      margin-top: 20px;
+      margin-bottom: 8px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 4px;
+      font-size: 1.1em;
+      color: #007bff;
+    }
+
+    #checkboxes div {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    #checkboxes label {
+      flex: 1;
+      margin-left: 8px;
+      font-size: 0.95em;
+    }
+
+    .quantity-input {
+      width: 35px;
+      margin-left: 10px;
+      padding: 4px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .invoice {
+      flex: 2;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 800px;
+      overflow-y: auto;
+    }
+
+    .invoice img {
+      display: block;
+      margin: 0 auto 10px;
+      width: 120px;
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .header, .patient-info {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .patient-info input[type="text"] {
+      margin: 8px;
+      padding: 10px;
+      width: 250px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+
+    .invoice-line {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dashed #ccc;
+      padding: 5px 0;
+    }
+
+    .invoice-line.total {
+      font-weight: bold;
+      border-top: 2px solid #333;
+      border-bottom: none;
+      margin-top: 10px;
+      padding-top: 10px;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      font-style: italic;
+      color: #666;
+    }
+
+    pre#output {
+      white-space: pre-wrap;
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      font-size: 15px;
+      margin-top: 20px;
+    }
+
+    button {
+      display: inline-block;
+      margin: 10px 10px 0;
+      padding: 12px 25px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="procedure-list">
+      <h2>Select Procedures</h2>
+      <div id="checkboxes"></div>
+    </div>
+
+    <div class="invoice">
+      <img src="https://github.com/kuyajepgaming/ruthlessroleplay/raw/main/Website%20Photos/PillboxLogo.png" alt="Pillbox Medical Logo">
+      <h1>Pillbox Medical</h1>
+      <div class="header">
+        <p><strong>Medical Invoice</strong></p>
+        <p>Date: <span id="date"></span></p>
+      </div>
+      <div class="patient-info">
+        <input type="text" id="patientName" placeholder="Patient Name">
+        <input type="text" id="patientID" placeholder="Patient ID">
+        <input type="text" id="doctorName" placeholder="Doctor/EMT/Nurse">
+      </div>
+      <div style="text-align: center;">
+        <button onclick="generateInvoice()">Generate Invoice</button>
+      </div>
+      <pre id="output">Click "Generate Invoice" to view your bill.</pre>
+      <div class="footer">
+        Thank you for choosing Pillbox Medical ❤<br/>
+        Stay safe and take care!<br/>
+        <a href="https://ruthlessroleplay.com" target="_blank">Visit Ruthless Roleplay Website</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const categories = {
+        "Ambulance Services": [
+        { name: "Inside City Transport", price: 100 },
+        { name: "Outside City Transport", price: 150 }
+      ],
+        "Professional Fees": [
+        { name: "Doctor Fee", price: 250 },
+        { name: "Nurse Fee", price: 150 }
+      ],
+       "Surgical Procedures": [
+        { name: "Minor Operation", price: 500 },
+        { name: "Major Operation", price: 1000 }
+      ],
+        "Diagnostics": [
+        { name: "ECG", price: 100 },
+        { name: "X-Ray", price: 100 },
+        { name: "MRI", price: 150 },
+      ],
+      "Bandages & Dressings": [
+        { name: "Tourniquet", price: 25 },
+        { name: "Field Dressing", price: 10 },
+        { name: "Elastic Bandage", price: 10 },
+        { name: "Quick Clot", price: 10 },
+        { name: "Packing Bandage", price: 15 },
+        { name: "Sewing Kit", price: 50 }
+      ],
+      "Medications": [
+        { name: "Epinephrine", price: 50 },
+        { name: "Morphine", price: 25 },
+        { name: "Propofol", price: 120 },
+        { name: "Anxie-T", price: 100 }
+      ],
+      "Fluids": [
+        { name: "Blood Pack 250ml", price: 75 },
+        { name: "Blood Pack 500ml", price: 125 },
+        { name: "Saline 250ml", price: 50 },
+        { name: "Saline 500ml", price: 100 }
+      ],
+      "Splints & Casts": [
+        { name: "Leg Splint", price: 150 },
+        { name: "Leg Cast", price: 150 },
+        { name: "Arm Splint", price: 150 },
+        { name: "Arm Cast", price: 150 },
+        { name: "Neck Brace", price: 150 },
+        { name: "Neck Cast", price: 150 }
+      ]
+    };
+
+    function formatCurrency(amount) {
+      return "$" + amount.toFixed(2);
+    }
+
+    function padRight(str, length) {
+      return str + " ".repeat(Math.max(length - str.length, 0));
+    }
+
+    function padLeft(str, length) {
+      return " ".repeat(Math.max(length - str.length, 0)) + str;
+    }
+
+    function renderCheckboxes() {
+      const container = document.getElementById("checkboxes");
+      container.innerHTML = "";
+
+      let index = 0;
+      for (const [category, items] of Object.entries(categories)) {
+        const catHeader = document.createElement("h3");
+        catHeader.textContent = category;
+        container.appendChild(catHeader);
+
+        items.forEach((item) => {
+          const id = "item-" + index;
+
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.id = id;
+          checkbox.value = index;
+          checkbox.addEventListener("change", generateInvoice);
+
+          const label = document.createElement("label");
+          label.htmlFor = id;
+          label.textContent = `${item.name} (${formatCurrency(item.price)})`;
+
+          const quantity = document.createElement("input");
+          quantity.type = "number";
+          quantity.min = "1";
+          quantity.value = "1";
+          quantity.className = "quantity-input";
+          quantity.id = `qty-${index}`;
+
+          const div = document.createElement("div");
+          div.appendChild(checkbox);
+          div.appendChild(label);
+          div.appendChild(quantity);
+
+          container.appendChild(div);
+
+          index++;
+        });
+      }
+    }
+
+    const items = Object.values(categories).flat();
+
+    function generateInvoice() {
+      const markupPercent = 10;
+      const breakdownLines = [];
+      let total = 0;
+
+      const patientName = document.getElementById("patientName").value || "N/A";
+      const patientID = document.getElementById("patientID").value || "N/A";
+      const doctorName = document.getElementById("doctorName").value || "N/A";
+
+      breakdownLines.push(`Pillbox Medical Center`);
+      breakdownLines.push(`Elgin Ave., Los Santos City, San Andreas`);
+      breakdownLines.push("");
+      breakdownLines.push(`Patient: ${patientName}    ID: ${patientID}    Doctor/EMT/Nurse: ${doctorName}`);
+      breakdownLines.push("");
+      breakdownLines.push("Item                        Qty     Amount");
+      breakdownLines.push("-------------------------------------------");
+
+      items.forEach((item, index) => {
+        const checkbox = document.getElementById("item-" + index);
+        const qtyInput = document.getElementById("qty-" + index);
+
+        if (checkbox && checkbox.checked) {
+          const quantity = parseInt(qtyInput.value) || 1;
+          const cost = item.price * quantity;
+          total += cost;
+          breakdownLines.push(
+            padRight(item.name, 28) +
+            padLeft(quantity.toString(), 5) +
+            padLeft(formatCurrency(cost), 10)
+          );
+        }
+      });
+
+      const markupAmount = total * (markupPercent / 100);
+      const finalTotal = total + markupAmount;
+
+      breakdownLines.push("-------------------------------------------");
+      breakdownLines.push(padRight("Subtotal", 33) + padLeft(formatCurrency(total), 10));
+      breakdownLines.push(padRight(`Tax  (${markupPercent}%)`, 33) + padLeft(formatCurrency(markupAmount), 10));
+      breakdownLines.push("===========================================");
+      breakdownLines.push(padRight("TOTAL DUE", 33) + padLeft(formatCurrency(finalTotal), 10));
+
+      const output = breakdownLines.join("\n");
+      document.getElementById("output").textContent = output;
+    }
+
+    document.getElementById("date").textContent = new Date().toLocaleDateString();
+    renderCheckboxes();
+  </script>
+</body>
+</html>
