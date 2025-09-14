@@ -304,6 +304,74 @@
       backdrop-filter: blur(5px);
       z-index: 1000;
     }
+
+    /* Announcement Popup Styles */
+    .announcement-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+    .announcement-popup.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .announcement-content {
+      position: relative;
+      background: rgba(30, 30, 30, 0.85);
+      backdrop-filter: blur(5px);
+      padding: 40px 30px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 400px;
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      transform: scale(0.8);
+      opacity: 0;
+      animation: popupAppear 0.5s ease forwards;
+    }
+
+    .announcement-content h2 {
+      font-size: 24px;
+      letter-spacing: 3px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    .announcement-content p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 15px;
+      font-size: 22px;
+      cursor: pointer;
+      color: white;
+      transition: color 0.3s ease;
+    }
+
+    .close-btn:hover {
+      color: #ff4d4d;
+    }
+
+    @keyframes popupAppear {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
   </style>
 </head>
 <body>
@@ -435,6 +503,15 @@
     Ruthless Roleplay | Philippine-based Fivem Server | Serious Roleplay
   </footer>
 
+  <!-- Announcement Popup -->
+  <div id="announcement-popup" class="announcement-popup hidden">
+    <div class="announcement-content">
+      <span class="close-btn" id="close-popup">&times;</span>
+      <h2>ANNOUNCEMENT</h2>
+      <p>Our Server's Currently Getting A Facelift. We Will Announce Once We're Back Online.</p>
+    </div>
+  </div>
+
   <script>
     async function fetchServerStatus() {
       const statusElement = document.getElementById("server-status");
@@ -467,6 +544,22 @@
 
     fetchServerStatus();
     setInterval(fetchServerStatus, 30000);
+
+    // Announcement Popup
+    const popup = document.getElementById('announcement-popup');
+    const closeBtn = document.getElementById('close-popup');
+
+    window.addEventListener('load', () => {
+      popup.classList.add('show');
+
+      setTimeout(() => {
+        popup.classList.remove('show');
+      }, 60000);
+    });
+
+    closeBtn.addEventListener('click', () => {
+      popup.classList.remove('show');
+    });
   </script>
 
 </body>
