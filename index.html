@@ -43,7 +43,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 4px 16px;
+      padding: 8px 16px;
       padding-left: 8px;
       border-radius: 6px;
       text-decoration: none;
@@ -60,7 +60,7 @@
     }
 
     .discord-link img {
-      width: 45px;
+      width: 30px;
       height: auto;
     }
 
@@ -142,6 +142,10 @@
       gap: 20px;
     }
 
+    .about-image {
+      position: relative;
+    }
+
     .about-image img {
       width: 100%;
       max-width: 320px;
@@ -151,6 +155,51 @@
 
     .about-image img:hover {
       transform: scale(1.02);
+    }
+
+    /* Speech Bubble */
+    .speech-bubble {
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 180px;
+      padding: 10px;
+      background: white;
+      color: black;
+      font-weight: bold;
+      font-size: 14px;
+      border-radius: 12px;
+      text-align: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 10;
+      animation: none;
+    }
+
+    .speech-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 10px;
+      border-style: solid;
+      border-color: white transparent transparent transparent;
+    }
+
+    .about-image:hover .speech-bubble {
+      opacity: 1;
+      animation: bounce 0.6s ease forwards;
+    }
+
+    @keyframes bounce {
+      0% { transform: translateX(-50%) translateY(0); }
+      30% { transform: translateX(-50%) translateY(-10px); }
+      50% { transform: translateX(-50%) translateY(-5px); }
+      70% { transform: translateX(-50%) translateY(-8px); }
+      100% { transform: translateX(-50%) translateY(-7px); }
     }
 
     .about-text {
@@ -289,6 +338,7 @@
   <section class="about">
     <div class="about-image">
       <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/K_Website_Image.png" alt="Ruthless Roleplay Scene">
+      <div class="speech-bubble">Legal ba yan?!</div>
     </div>
     <div class="about-text">
       <h2>About Ruthless Roleplay</h2>
@@ -316,7 +366,7 @@
       <h3>Owner</h3>
       <div class="team-grid">
         <div class="team-member">
-          <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Ruthless%20Logo%202.png" alt="Kranzy">
+          <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/K.png" alt="Kranzy">
           <h4>Kranzy</h4>
           <p>Owner</p>
         </div>
@@ -340,12 +390,12 @@
       <h3>Admins</h3>
       <div class="team-grid">
         <div class="team-member">
-          <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Ruthless%20Logo%202.png" alt="Jay">
+          <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Jay.png" alt="Jay">
           <h4>Jay</h4>
           <p>Head Admin</p>
         </div>
         <div class="team-member">
-          <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Ruthless%20Logo%202.png" alt="Alex">
+          <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Alex.png" alt="Alex">
           <h4>Alex</h4>
           <p>Assistant Head Admin</p>
         </div>
@@ -355,7 +405,7 @@
           <p>Supporting Admin</p>
         </div>
         <div class="team-member">
-          <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Ruthless%20Logo%202.png" alt="Friza">
+          <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Friza.png" alt="Friza">
           <h4>Friza</h4>
           <p>Supporting Admin</p>
         </div>
