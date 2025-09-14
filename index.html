@@ -8,22 +8,30 @@
   <style>
     body {
       margin: 0;
-      padding: 0;
+      padding: 80px 0 60px; /* space for header + footer */
       font-family: 'Montserrat', sans-serif;
       background: url('https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Ruthless%20Roleplay_Background.png') no-repeat center center fixed;
       background-size: cover;
       color: white;
     }
 
+    /* Header */
     header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 500px;
+      padding: 10px 500px;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
     }
 
     header img {
-      width: 60px;
+      width: 50px;
       transition: transform 0.3s ease;
     }
 
@@ -35,7 +43,8 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 4px 16px;
+      padding: 6px 16px; /* keep top, right, bottom same */
+      padding-left: 13px; /* adjusted left padding */
       border-radius: 6px;
       text-decoration: none;
       color: white;
@@ -68,9 +77,10 @@
       margin-bottom: 1px;
     }
 
+    /* Welcome Section */
     .horizontal-logo {
       text-align: center;
-      margin-top: 50px;
+      margin-top: 20px;
     }
 
     .horizontal-logo h1 {
@@ -79,7 +89,7 @@
       font-weight: 700;
       letter-spacing: 10px;
       text-transform: uppercase;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
     }
 
     .horizontal-logo img {
@@ -90,10 +100,10 @@
 
     /* Server Status Section */
     .server-status {
-      margin: 40px auto;
-      padding: 15px 25px;
+      margin: 40px auto 20px; /* slightly lowered */
+      padding: 15px 20px; /* reduced padding for smaller width */
       border-radius: 8px;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: bold;
       text-align: center;
       width: fit-content;
@@ -102,26 +112,26 @@
       border: 1px solid rgba(255, 255, 255, 0.2);
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 10px;
       text-transform: uppercase;
-      letter-spacing: 2px; /* wider spacing */
+      letter-spacing: 2px;
     }
 
     .status-circle {
-      width: 22px;
-      height: 22px;
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
       flex-shrink: 0;
-      box-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
+      box-shadow: 0 0 12px rgba(0, 255, 0, 0.8);
       animation: pulse 1.5s infinite alternate;
     }
 
     @keyframes pulse {
       from {
-        box-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
+        box-shadow: 0 0 6px rgba(0, 255, 0, 0.6);
       }
       to {
-        box-shadow: 0 0 20px rgba(0, 255, 0, 1);
+        box-shadow: 0 0 15px rgba(0, 255, 0, 1);
       }
     }
 
@@ -131,14 +141,14 @@
       align-items: center;
       justify-content: center;
       max-width: 1000px;
-      margin: 80px auto;
+      margin: 10px auto; /* moved slightly higher */
       padding: 0 40px;
-      gap: 25px;
+      gap: 20px;
     }
 
     .about-image img {
       width: 100%;
-      max-width: 340px;
+      max-width: 320px;
       border-radius: 12px;
       transition: transform 0.3s ease;
     }
@@ -167,17 +177,25 @@
       color: rgba(255,255,255,0.9);
     }
 
+    /* Footer */
     footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
       text-align: center;
-      padding: 20px;
+      padding: 15px;
       font-size: 12px;
       color: rgba(255, 255, 255, 0.7);
-      margin-top: 80px;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
     }
   </style>
 </head>
 <body>
 
+  <!-- Header -->
   <header>
     <a href="#">
       <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Ruthless%20Logo%202.png" alt="Ruthless Logo">
@@ -191,11 +209,13 @@
     </a>
   </header>
 
+  <!-- Welcome Section -->
   <div class="horizontal-logo">
     <h1>Welcome To</h1>
     <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Ruthless%20Logo%202_Horizontal.png" alt="Ruthless Horizontal Logo">
   </div>
 
+  <!-- Server Status -->
   <div class="server-status" id="server-status">
     <div class="status-circle" id="status-circle"></div>
     Checking server status...
@@ -223,6 +243,7 @@
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
     Ruthless Roleplay | Philippine-based Fivem Server | Serious Roleplay
   </footer>
@@ -250,7 +271,7 @@
         statusElement.innerHTML = `<div class="status-circle" id="status-circle"></div> Server Offline`;
         const newCircle = statusElement.querySelector("#status-circle");
         newCircle.style.background = "red";
-        newCircle.style.boxShadow = "0 0 15px red";
+        newCircle.style.boxShadow = "0 0 12px red";
         newCircle.style.animation = "none";
       }
     }
