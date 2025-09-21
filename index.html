@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ruthless Roleplay</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -372,6 +372,104 @@
       0% { transform: scale(0.8); opacity: 0; }
       100% { transform: scale(1); opacity: 1; }
     }
+
+    /* Countdown Timer */
+    .countdown-container {
+      position: fixed;
+      bottom: 80px;
+      left: 20px;
+      background: rgba(30, 30, 30, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 10px 15px;
+      text-align: center;
+      z-index: 1100;
+      backdrop-filter: blur(6px);
+      filter: blur(4px); /* <-- Blur the whole timer */
+      pointer-events: none; /* Prevent interaction */
+    }
+
+    .countdown-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .countdown-timer {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .time-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 60px;
+    }
+
+    .time-number {
+      font-size: 22px;
+      font-weight: bold;
+      font-family: 'Orbitron', monospace;
+      color: #cc5baa;
+      text-shadow: 0 0 8px rgba(255, 77, 166, 0.8);
+    }
+
+    .time-label {
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: rgba(255, 255, 255, 0.8);
+      margin-top: 3px;
+    }
+
+    /* Server Updates Panel */
+    .server-updates {
+      position: fixed;
+      top: 90px; /* 50px gap below header */
+      left: 20px;
+      width: 280px; /* match countdown width */
+      bottom: 180px; /* leaves ~50px gap above countdown (80px footer + 50px gap) */
+      overflow-y: auto;
+      padding: 12px;
+      background: rgba(30, 30, 30, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      backdrop-filter: blur(6px);
+      font-family: 'Montserrat', sans-serif;
+      z-index: 1200;
+    }
+
+    .server-updates h3 {
+      margin: 0 0 10px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-align: center;
+      color: #cc5baa;
+      text-shadow: 0 0 6px rgba(255, 77, 166, 0.6); /* Pink glow */
+    }
+
+    .server-updates ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .server-updates li {
+      font-size: 12px;
+      margin-bottom: 8px;
+      padding: 6px;
+      border-radius: 6px;
+      background: rgba(50, 50, 50, 0.5);
+      transition: background 0.3s ease;
+    }
+
+    .server-updates li:hover {
+      background: rgba(70, 70, 70, 0.6);
+    }
   </style>
 </head>
 <body>
@@ -465,105 +563,124 @@
         <div class="team-member">
           <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Alex.png" alt="Alex">
           <h4>Alex</h4>
-          <p>Assistant Head Admin</p>
-        </div>
-        <div class="team-member">
-          <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Aki.png" alt="Aki">
-          <h4>Aki</h4>
-          <p>Supporting Admin</p>
-        </div>
-        <div class="team-member">
-          <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Friza.png" alt="Friza">
-          <h4>Friza</h4>
-          <p>Supporting Admin</p>
+          <p>Assistant Head Admin
         </div>
       </div>
     </div>
 
-    <!-- Community Moderators -->
+    <!-- Moderators -->
     <div class="team-section">
-      <h3>Community Moderators</h3>
+      <h3>Moderators</h3>
       <div class="team-grid">
         <div class="team-member">
-          <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Chico.png" alt="Chico">
-          <h4>Chico</h4>
-          <p>Community Moderator</p>
+          <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Ron.png" alt="Ron">
+          <h4>Ron</h4>
+          <p>Moderator</p>
         </div>
         <div class="team-member">
-          <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Aeverie.png" alt="Aeverie">
-          <h4>Aeverie</h4>
-          <p>Community Moderator</p>
+          <img src="https://raw.githubusercontent.com/kuyajepgaming/ruthlessroleplay/main/Ace.png" alt="Ace">
+          <h4>Ace</h4>
+          <p>Moderator</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Countdown Timer -->
+  <div class="countdown-container">
+    <div class="countdown-label">Countdown Begins</div>
+    <div id="countdown" class="countdown-timer">
+      <div class="time-box"><span class="time-number">00</span><span class="time-label">DAYS</span></div>
+      <div class="time-box"><span class="time-number">00</span><span class="time-label">HOURS</span></div>
+      <div class="time-box"><span class="time-number">00</span><span class="time-label">MINUTES</span></div>
+      <div class="time-box"><span class="time-number">00</span><span class="time-label">SECONDS</span></div>
+    </div>
+  </div>
+
+  <!-- Server Updates Section -->
+  <div class="server-updates">
+    <h3>Server Updates</h3>
+    <ul>
+      <li><strong>09/19/2025</strong> – Ruthless Roleplay announces pre-whitelisting for all server members. 
+        Whitelisted players, including DOJ, EMS, and LEOs, will receive early access to test their respective departments 
+        and provide feedback for necessary adjustments.</li>
+    </ul>
+  </div>
+
   <!-- Footer -->
   <footer>
-    Ruthless Roleplay | Philippine-based Fivem Server | Serious Roleplay
+    &copy; 2025 Ruthless Roleplay. All rights reserved.
   </footer>
 
   <!-- Announcement Popup -->
-  <div id="announcement-popup" class="announcement-popup hidden">
+  <div class="announcement-popup" id="announcement-popup">
     <div class="announcement-content">
-      <span class="close-btn" id="close-popup">&times;</span>
-      <h2>ANNOUNCEMENT</h2>
-      <p>Our Server's Currently Getting A Facelift. We Will Announce Once We're Back Online.</p>
+      <span class="close-btn" id="close-btn">&times;</span>
+      <h2>Announcement</h2>
+      <p>Welcome to Ruthless Roleplay! Stay tuned for updates and events.</p>
     </div>
   </div>
 
   <script>
-    async function fetchServerStatus() {
-      const statusElement = document.getElementById("server-status");
-      const circle = document.getElementById("status-circle");
+    // Server Status Simulation
+    const statusCircle = document.getElementById("status-circle");
+    const serverStatus = document.getElementById("server-status");
 
-      try {
-        const response = await fetch("https://servers-frontend.fivem.net/api/servers/single/ovbzrj");
-        const data = await response.json();
-
-        if (data && data.Data) {
-          const players = data.Data.clients;
-          const maxPlayers = data.Data.sv_maxclients;
-          statusElement.innerHTML = `<div class="status-circle" id="status-circle"></div> ${players}/${maxPlayers} Players Online`;
-
-          const newCircle = statusElement.querySelector("#status-circle");
-          newCircle.style.background = "limegreen";
-          newCircle.style.boxShadow = "0 0 12px limegreen";
-          newCircle.style.animation = "pulse 1.5s infinite alternate";
-        } else {
-          throw new Error("Invalid data");
-        }
-      } catch (error) {
-        statusElement.innerHTML = `<div class="status-circle" id="status-circle"></div> Server Offline`;
-        const newCircle = statusElement.querySelector("#status-circle");
-        newCircle.style.background = "red";
-        newCircle.style.boxShadow = "0 0 12px red";
-        newCircle.style.animation = "none";
-      }
+    function checkServerStatus() {
+      setTimeout(() => {
+        statusCircle.style.background = "limegreen";
+        serverStatus.innerHTML = '<div class="status-circle" style="background: limegreen;"></div> Server is Online';
+      }, 1500);
     }
-
-    fetchServerStatus();
-    setInterval(fetchServerStatus, 30000);
+    checkServerStatus();
 
     // Announcement Popup
-    const popup = document.getElementById('announcement-popup');
-    const closeBtn = document.getElementById('close-popup');
+    const popup = document.getElementById("announcement-popup");
+    const closeBtn = document.getElementById("close-btn");
 
-    window.addEventListener('load', () => {
-      popup.classList.add('show');
-
-      setTimeout(() => {
-        popup.classList.remove('show');
-      }, 60000);
+    window.addEventListener("load", () => {
+      setTimeout(() => popup.classList.add("show"), 800);
     });
 
-    closeBtn.addEventListener('click', () => {
-      popup.classList.remove('show');
+    closeBtn.addEventListener("click", () => {
+      popup.classList.remove("show");
     });
+
+    // Countdown Timer
+    function startCountdown(targetDate) {
+      const numbers = document.querySelectorAll(".time-number");
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        if (distance <= 0) {
+          numbers[0].textContent = "00";
+          numbers[1].textContent = "00";
+          numbers[2].textContent = "00";
+          numbers[3].textContent = "00";
+          clearInterval(interval);
+          return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        numbers[0].textContent = String(days).padStart(2, '0');
+        numbers[1].textContent = String(hours).padStart(2, '0');
+        numbers[2].textContent = String(minutes).padStart(2, '0');
+        numbers[3].textContent = String(seconds).padStart(2, '0');
+      }
+
+      updateCountdown();
+      const interval = setInterval(updateCountdown, 1000);
+    }
+
+    // Example: Countdown to Sept 30, 2025
+    const targetDate = new Date("Sep 30, 2025 00:00:00").getTime();
+    startCountdown(targetDate);
   </script>
-
 </body>
 </html>
-
-
-
