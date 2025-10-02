@@ -384,11 +384,10 @@
       padding: 10px 15px;
       text-align: center;
       z-index: 1100;
-      backdrop-filter: blur(6px);
-      filter: blur(4px); /* <-- Blur the whole timer */
-      pointer-events: none; /* Prevent interaction */
+      /* blur removed */
+      pointer-events: none; 
     }
-
+    
     .countdown-label {
       font-size: 12px;
       text-transform: uppercase;
@@ -396,20 +395,20 @@
       margin-bottom: 6px;
       color: rgba(255, 255, 255, 0.85);
     }
-
+    
     .countdown-timer {
       display: flex;
       justify-content: center;
       gap: 12px;
     }
-
+    
     .time-box {
       display: flex;
       flex-direction: column;
       align-items: center;
       min-width: 60px;
     }
-
+    
     .time-number {
       font-size: 22px;
       font-weight: bold;
@@ -417,7 +416,7 @@
       color: #cc5baa;
       text-shadow: 0 0 8px rgba(255, 77, 166, 0.8);
     }
-
+    
     .time-label {
       font-size: 10px;
       letter-spacing: 1px;
@@ -598,12 +597,24 @@
 
   <!-- Countdown Timer -->
   <div class="countdown-container">
-    <div class="countdown-label">Countdown Begins</div>
-    <div id="countdown" class="countdown-timer">
-      <div class="time-box"><span class="time-number">00</span><span class="time-label">DAYS</span></div>
-      <div class="time-box"><span class="time-number">00</span><span class="time-label">HOURS</span></div>
-      <div class="time-box"><span class="time-number">00</span><span class="time-label">MINUTES</span></div>
-      <div class="time-box"><span class="time-number">00</span><span class="time-label">SECONDS</span></div>
+    <div class="countdown-label">Server Re-Launch</div>
+    <div class="countdown-timer" id="countdown">
+      <div class="time-box">
+        <div class="time-number" id="days">00</div>
+        <div class="time-label">Days</div>
+      </div>
+      <div class="time-box">
+        <div class="time-number" id="hours">00</div>
+        <div class="time-label">Hours</div>
+      </div>
+      <div class="time-box">
+        <div class="time-number" id="minutes">00</div>
+        <div class="time-label">Minutes</div>
+      </div>
+      <div class="time-box">
+        <div class="time-number" id="seconds">00</div>
+        <div class="time-label">Seconds</div>
+      </div>
     </div>
   </div>
 
@@ -611,6 +622,7 @@
   <div class="server-updates">
     <h3>Server Updates</h3>
     <ul>
+      <li><strong>10/02/2025</strong> – Official announcement: Ruthless Roleplay will <strong>re-launch</strong> this Friday, October 3rd at 6:00 PM (Philippines time). Make sure to join Discord and get whitelisted early!</li>
       <li><strong>09/19/2025</strong> – Ruthless Roleplay announces pre-whitelisting for all server members. 
         Whitelisted players, including DOJ, EMS, and LEOs, will receive early access to test their respective departments 
         and provide feedback for necessary adjustments.</li>
@@ -635,7 +647,7 @@
     // Server Status Simulation
     const statusCircle = document.getElementById("status-circle");
     const serverStatus = document.getElementById("server-status");
-
+  
     function checkServerStatus() {
       setTimeout(() => {
         statusCircle.style.background = "limegreen";
@@ -643,27 +655,27 @@
       }, 1500);
     }
     checkServerStatus();
-
+  
     // Announcement Popup
     const popup = document.getElementById("announcement-popup");
     const closeBtn = document.getElementById("close-btn");
-
+  
     window.addEventListener("load", () => {
       setTimeout(() => popup.classList.add("show"), 800);
     });
-
+  
     closeBtn.addEventListener("click", () => {
       popup.classList.remove("show");
     });
-
+  
     // Countdown Timer
     function startCountdown(targetDate) {
       const numbers = document.querySelectorAll(".time-number");
-
+  
       function updateCountdown() {
         const now = new Date().getTime();
         const distance = targetDate - now;
-
+  
         if (distance <= 0) {
           numbers[0].textContent = "00";
           numbers[1].textContent = "00";
@@ -672,25 +684,27 @@
           clearInterval(interval);
           return;
         }
-
+  
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
+  
         numbers[0].textContent = String(days).padStart(2, '0');
         numbers[1].textContent = String(hours).padStart(2, '0');
         numbers[2].textContent = String(minutes).padStart(2, '0');
         numbers[3].textContent = String(seconds).padStart(2, '0');
       }
-
+  
       updateCountdown();
       const interval = setInterval(updateCountdown, 1000);
     }
-
-    // Example: Countdown to Sept 30, 2025
-    const targetDate = new Date("Sep 30, 2025 00:00:00").getTime();
+  
+    // Countdown to Friday, Oct 3, 2025, 6:00 PM (Philippines Time UTC+8)
+    const targetDate = new Date("Oct 3, 2025 18:00:00 GMT+0800").getTime();
     startCountdown(targetDate);
   </script>
+
 </body>
 </html>
+
